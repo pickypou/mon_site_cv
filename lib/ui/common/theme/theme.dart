@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
 ThemeData theme = ThemeData(
-    primaryColor: Colors.grey[700],
-    secondaryHeaderColor: Colors.orangeAccent);
+    primaryColor: Colors.grey[800],
+    secondaryHeaderColor: Colors.orange[500]);
 
 TextStyle titleStyle(BuildContext context) {
   Size size = MediaQuery.sizeOf(context);
-  double? titlefont = size.width / 10;
+  double? titlefont = size.width / 11;
   return Theme.of(context).textTheme.headlineLarge?.copyWith(
         fontSize: titlefont,
         color: theme.secondaryHeaderColor,
@@ -17,11 +17,11 @@ TextStyle titleStyle(BuildContext context) {
 
 TextStyle titleStyleMedium(BuildContext context) {
   Size size = MediaQuery.sizeOf(context);
-  double? titlefont = size.width / 18;
+  double? titlefont = size.width / 12;
   return Theme.of(context).textTheme.headlineLarge?.copyWith(
         fontSize: titlefont,
         color: theme.secondaryHeaderColor,
-        fontFamily: "lora",
+        fontFamily: "lora".toUpperCase(),
       ) ??
       const TextStyle();
 }
