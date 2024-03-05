@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
 ThemeData theme = ThemeData(
-    primaryColor: Colors.grey[700], secondaryHeaderColor: Colors.orangeAccent);
+    primaryColor: Colors.grey[700],
+    secondaryHeaderColor: Colors.orangeAccent);
 
 TextStyle titleStyle(BuildContext context) {
   Size size = MediaQuery.sizeOf(context);
@@ -10,13 +11,6 @@ TextStyle titleStyle(BuildContext context) {
         fontSize: titlefont,
         color: theme.secondaryHeaderColor,
         fontFamily: "Lora",
-        shadows: [
-          const Shadow(
-            offset: Offset(1.0, 1.0),
-            blurRadius: 3.0,
-            color: Colors.black,
-          ),
-        ],
       ) ??
       const TextStyle();
 }
@@ -28,13 +22,6 @@ TextStyle titleStyleMedium(BuildContext context) {
         fontSize: titlefont,
         color: theme.secondaryHeaderColor,
         fontFamily: "lora",
-        shadows: [
-          const Shadow(
-            offset: Offset(1.0, 1.0),
-            blurRadius: 3.0,
-            color: Colors.black,
-          ),
-        ],
       ) ??
       const TextStyle();
 }

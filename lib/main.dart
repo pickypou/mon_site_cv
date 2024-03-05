@@ -17,6 +17,7 @@ class MyApp extends StatelessWidget {
       title: 'Mon_site_cv',
       theme: theme,
       home: const ViewAll(),
+
     );
   }
 }
