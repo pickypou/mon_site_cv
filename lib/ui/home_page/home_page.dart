@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mon_site_cv/ui/common/theme/theme.dart';
 
-import '../common/bouton-route/bouton-route.dart';
+import '../common/bouton-route/bouton_route.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -24,15 +24,15 @@ class HomePage extends StatelessWidget {
               ),
               Text('& web mobile', style: titleStyleMedium(context),
               ),
+              const SizedBox(height: 30,),
               const Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  ButtonRoute(),
-                  ButtonRoute(),
-                  ButtonRoute(),
+                  ButtonRoute(text: 'Parcours',),
+                  ButtonRoute(text: 'Portfolio',),
+                  ButtonRoute(text: 'Contact',),
                 ],
               )
-
             ],
           ),
         ),
