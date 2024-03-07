@@ -3,7 +3,7 @@ import 'package:mon_site_cv/ui/common/theme/theme.dart';
 
 class RouteButton extends StatefulWidget {
   final String text;
-  const RouteButton({Key? key, required this.text}) : super(key: key);
+  const RouteButton({super.key, required this.text});
 
   @override
   _RouteButtonState createState() => _RouteButtonState();

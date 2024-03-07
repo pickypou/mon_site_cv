@@ -7,13 +7,15 @@ class ImageProfile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: MediaQuery.sizeOf(context).height,
-      width: MediaQuery.sizeOf(context).width * 2.1,
-      decoration:  const BoxDecoration(
-        image: DecorationImage(
-            image: AssetImage(ImageProfile.imagePath), ),
+    return SizedBox(
+      height: MediaQuery.sizeOf(context).height /2,
+      width: MediaQuery.sizeOf(context).width ,
+         child:
+      Image.asset(
+        ImageProfile.imagePath,
+        fit: BoxFit.fill,
       ),
+
     );
   }
 }
