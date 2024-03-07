@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:mon_site_cv/ui/common/theme/theme.dart';
+import 'package:mon_site_cv/ui/common/widgets/image_profile/image_profile.dart';
 
-import '../common/bouton-route/bouton_route.dart';
+import '../common/widgets/route_button/route_button.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -28,10 +29,20 @@ class HomePage extends StatelessWidget {
               const Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  ButtonRoute(text: 'Parcours',),
-                  ButtonRoute(text: 'Portfolio',),
-                  ButtonRoute(text: 'Contact',),
+                  RouteButton(text: 'Parcours'),
+                  RouteButton(text: 'portfolio'),
+                  RouteButton(text: 'Contact')
                 ],
+              ),
+
+              const SizedBox(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment:  CrossAxisAlignment.end,
+                  children: [
+                    ImageProfile()
+                  ],
+                ),
               )
             ],
           ),

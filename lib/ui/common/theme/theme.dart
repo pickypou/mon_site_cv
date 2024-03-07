@@ -37,6 +37,20 @@ TextStyle titleStyleSmall(BuildContext context) {
       const TextStyle();
 }
 
+TextStyle textStyleText(BuildContext context) {
+  Size size = MediaQuery.sizeOf(context);
+  double? titlefont = size.width / 30;
+  return Theme.of(context).textTheme.headlineLarge?.copyWith(
+    fontSize: titlefont,
+    color: theme.secondaryHeaderColor,
+    fontFamily: "lato",
+  ) ??
+      const TextStyle();
+}
+
+
+
+
 TextStyle? textStyleInput(BuildContext context, String inputText) {
   int baseFontSize = 20;
   double textFontSize =
@@ -50,3 +64,5 @@ TextStyle? textStyleInput(BuildContext context, String inputText) {
           ) ??
       const TextStyle();
 }
+
+
