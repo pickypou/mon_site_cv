@@ -48,28 +48,32 @@ class _ButtonRouteState extends State<ButtonRoute>
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: _animate,
-      child: Stack(
-        children: [
-          ClipOval(
-            child: Container(
-              width: 35.0 + (15.0 * (1 - _animation.value)),
-              height: 35.0 * (1 - _animation.value),
-              color: Colors.blue,
-            ),
-          ),
-          Center(
-            child: Opacity(
-              opacity: _animation.value,
-              child: Text(
-                widget.text,
-                style: TextStyle(
-                  fontSize: 16.0,
-                  color: Colors.white,
+      child: AnimatedBuilder(
+        animation: _animation,
+        builder: (context, child) {
+          return Stack(
+            alignment: Alignment.center,
+            children: [
+              ClipOval(
+                child: Container(
+                  width: 35.0 + (15.0 * (1 - _animation.value)),
+                  height: 35.0 * (1 - _animation.value),
+                  color: Colors.blue,
                 ),
               ),
-            ),
-          ),
-        ],
+              Opacity(
+                opacity: _animation.value,
+                child: Text(
+                  widget.text,
+                  style: TextStyle(
+                    fontSize: 16.0,
+                    color: Colors.white,
+                  ),
+                ),
+              ),
+            ],
+          );
+        },
       ),
     );
   }
