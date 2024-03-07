@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:mon_site_cv/ui/common/theme/theme.dart';
 
-class ButtonRoute extends StatefulWidget {
+class RouteButton extends StatefulWidget {
   final String text;
-  const ButtonRoute({Key? key, required this.text}) : super(key: key);
+  const RouteButton({Key? key, required this.text}) : super(key: key);
 
   @override
-  _ButtonRouteState createState() => _ButtonRouteState();
+  _RouteButtonState createState() => _RouteButtonState();
 }
 
-class _ButtonRouteState extends State<ButtonRoute>
+class _RouteButtonState extends State<RouteButton>
     with SingleTickerProviderStateMixin {
   late AnimationController _animationController;
   late Animation<double> _animation;
@@ -22,20 +23,16 @@ class _ButtonRouteState extends State<ButtonRoute>
       duration: const Duration(seconds: 2),
     );
 
+    Future.delayed(const Duration(seconds: 2), () {
+      _animationController.forward();
+    });
+
     _animation = Tween<double>(begin: 0.0, end: 1.0).animate(
       CurvedAnimation(
         parent: _animationController,
         curve: Curves.easeInOutCubic,
       ),
     );
-  }
-
-  void _animate() {
-    if (_animationController.status == AnimationStatus.completed) {
-      _animationController.reverse();
-    } else {
-      _animationController.forward();
-    }
   }
 
   @override
@@ -47,7 +44,13 @@ class _ButtonRouteState extends State<ButtonRoute>
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: _animate,
+      onTap: () {
+        if (_animationController.status == AnimationStatus.completed) {
+          _animationController.reverse();
+        } else {
+          _animationController.forward();
+        }
+      },
       child: AnimatedBuilder(
         animation: _animation,
         builder: (context, child) {
@@ -58,17 +61,14 @@ class _ButtonRouteState extends State<ButtonRoute>
                 child: Container(
                   width: 35.0 + (15.0 * (1 - _animation.value)),
                   height: 35.0 * (1 - _animation.value),
-                  color: Colors.blue,
+                  color: theme.secondaryHeaderColor,
                 ),
               ),
               Opacity(
                 opacity: _animation.value,
                 child: Text(
                   widget.text,
-                  style: TextStyle(
-                    fontSize: 16.0,
-                    color: Colors.white,
-                  ),
+                  style: textStyleText(context),
                 ),
               ),
             ],
