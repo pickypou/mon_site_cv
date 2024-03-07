@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:mon_site_cv/ui/common/theme/theme.dart';
 
 class ButtonRoute extends StatefulWidget {
   final String text;
-  const ButtonRoute({super.key, required this.text});
+  const ButtonRoute({Key? key, required this.text}) : super(key: key);
 
   @override
   _ButtonRouteState createState() => _ButtonRouteState();
@@ -11,66 +10,67 @@ class ButtonRoute extends StatefulWidget {
 
 class _ButtonRouteState extends State<ButtonRoute>
     with SingleTickerProviderStateMixin {
-  late AnimationController _controller;
+  late AnimationController _animationController;
   late Animation<double> _animation;
 
   @override
   void initState() {
     super.initState();
-    _controller = AnimationController(
+
+    _animationController = AnimationController(
       vsync: this,
-      duration: const Duration(seconds: 1),
+      duration: const Duration(seconds: 2),
     );
-    _animation = Tween<double>(begin: 1.0, end: 0.2).animate(
+
+    _animation = Tween<double>(begin: 0.0, end: 1.0).animate(
       CurvedAnimation(
-        parent: _controller,
+        parent: _animationController,
         curve: Curves.easeInOutCubic,
       ),
     );
   }
 
   void _animate() {
-    if (_controller.status == AnimationStatus.completed) {
-      _controller.reverse();
+    if (_animationController.status == AnimationStatus.completed) {
+      _animationController.reverse();
     } else {
-      _controller.forward();
+      _animationController.forward();
     }
+  }
+
+  @override
+  void dispose() {
+    _animationController.dispose();
+    super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: _animate,
-      child: AnimatedBuilder(
-        animation: _animation,
-        builder: (context, child) {
-          return ClipOval(
+      child: Stack(
+        children: [
+          ClipOval(
             child: Container(
-              width: 35.0,
-              height: 35.0 * _animation.value,
-              color: theme.secondaryHeaderColor,
-              child: Center(
-                child: _animation.value <= 0.21
-                    ? Text(
-                  widget.text,
-                  style: TextStyle(
-                    fontSize: 16.0,
-                    fontWeight: FontWeight.bold,
-                    color: theme.secondaryHeaderColor,
-                  ),
-                )
-                    : const SizedBox.shrink(),
+              width: 35.0 + (15.0 * (1 - _animation.value)),
+              height: 35.0 * (1 - _animation.value),
+              color: Colors.blue,
+            ),
+          ),
+          Center(
+            child: Opacity(
+              opacity: _animation.value,
+              child: Text(
+                widget.text,
+                style: TextStyle(
+                  fontSize: 16.0,
+                  color: Colors.white,
+                ),
               ),
             ),
-          );
-        },
+          ),
+        ],
       ),
     );
-  }
-
-  @override
-  void dispose() {
-    _controller.dispose();
-    super.dispose();
   }
 }
