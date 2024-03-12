@@ -7,15 +7,38 @@ class ImageProfile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: MediaQuery.sizeOf(context).height /2,
-      width: MediaQuery.sizeOf(context).width ,
-         child:
-      Image.asset(
-        ImageProfile.imagePath,
-        fit: BoxFit.fill,
-      ),
+    final screenWidth = MediaQuery.of(context).size.width;
 
-    );
+    if (screenWidth < 650) {
+      return SizedBox(
+        height: MediaQuery.of(context).size.height / 1.8,
+        width: MediaQuery.of(context).size.width,
+        child: Padding(
+          padding: EdgeInsets.zero,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              Image.asset(
+                ImageProfile.imagePath,
+                fit: BoxFit.fill,
+              ),
+
+            ],
+          ),
+        ),
+      );
+    } else {
+      return Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.end,
+        children: [
+          Image.asset(
+            ImageProfile.imagePath,
+            fit: BoxFit.fill,
+          ),
+        ],
+      );
+    }
   }
 }

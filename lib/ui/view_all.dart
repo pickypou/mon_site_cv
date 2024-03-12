@@ -9,18 +9,15 @@ class ViewAll extends StatelessWidget {
   Widget build(BuildContext context) {
     return  Scaffold(
       backgroundColor: theme.primaryColor,
-      body: const SingleChildScrollView(
-        child:
-        Stack(
-          children: [
-            Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                HomePage(),
-              ],
-            )
-          ],
-        ),
+      body:
+       const SingleChildScrollView(
+       child: Column(
+         mainAxisAlignment: MainAxisAlignment.center,
+         children: <Widget>[
+           HomePage(),
+         ],
+       ),
+
       ),
        );
   }
