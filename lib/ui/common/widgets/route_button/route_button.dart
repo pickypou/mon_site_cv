@@ -6,10 +6,10 @@ class RouteButton extends StatefulWidget {
   const RouteButton({super.key, required this.text});
 
   @override
-  _RouteButtonState createState() => _RouteButtonState();
+  RouteButtonState createState() => RouteButtonState();
 }
 
-class _RouteButtonState extends State<RouteButton>
+class RouteButtonState extends State<RouteButton>
     with SingleTickerProviderStateMixin {
   late AnimationController _animationController;
   late Animation<double> _animation;

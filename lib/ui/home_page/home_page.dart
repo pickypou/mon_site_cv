@@ -31,35 +31,100 @@ class HomePage extends StatelessWidget {
                       Text('& web mobile', style: titleStyleMedium(context)),
                       Padding(
                           padding: const EdgeInsets.fromLTRB(0, 25, 0, 60),
-                          child: Column(
+                          child: SizedBox(
+                            height: 73,
+                            width: MediaQuery.sizeOf(context).width,
+                            child: const Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                const Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceAround,
-                                  children: [
-                                    RouteButton(
-                                      text: 'Parcours',
-                                    ),
-                                    RouteButton(text: 'Portfolio'),
-                                    RouteButton(text: 'Contact')
-                                  ],
-                                ),
-                                SizedBox(
-                                  height:
-                                      MediaQuery.of(context).size.height * 0.9
-                                  ,
-                                  child: const ImageProfile(),
-                                ),
-                              ]))
+                                Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceAround,
+                                    children: [
+                                      RouteButton(text: 'Mon parcours'),
+                                      RouteButton(text: 'Portfolio'),
+                                      RouteButton(text: 'Contact'),
+                                    ])
+                              ],
+                            ),
+                          ))
                     ]),
-              )
+              ),
+              const ImageProfile(),
             ],
           ),
         ),
       );
     } else if (screenWidth >= 650 && screenWidth < 950) {
-      return const ImageProfile();
+      return Center(
+        child: Padding(
+          padding: const EdgeInsets.fromLTRB(15, 25, 0, 0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Text('SPYSSCHAERT', style: titleStyleMedium(context)),
+              Text('Ludovic', style: titleStyleMedium(context)),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(0, 25, 15, 0),
+                child: Column(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      Text('Développeur web', style: titleStyleMedium(context)),
+                      Text('& web mobile', style: titleStyleMedium(context)),
+                      Padding(
+                          padding: const EdgeInsets.fromLTRB(0, 25, 0, 60),
+                          child: SizedBox(
+                            height: 100,
+                            width: MediaQuery.sizeOf(context).width,
+                            child: const Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment:CrossAxisAlignment.center,
+                              children: [
+                                Row(
+                                    mainAxisAlignment:
+                                    MainAxisAlignment.spaceAround,
+                                    children: [SizedBox(
+                                      child: Column(
+                                        mainAxisAlignment: MainAxisAlignment.start,
+                                        crossAxisAlignment: CrossAxisAlignment.end,
+                                        children: [
+                                          RouteButton(text: 'Mon parcours'),
+                                        ],
+                                      ),
+                                    ),
+                                      SizedBox(
+                                        child: Column(
+                                          mainAxisAlignment: MainAxisAlignment.center,
+                                          crossAxisAlignment: CrossAxisAlignment.center,
+                                          children: [
+                                            RouteButton(text: 'Portfolio'),
+                                          ],
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        child: Column(
+                                          mainAxisAlignment: MainAxisAlignment.end,
+                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                          children: [
+                                            RouteButton(text: 'Portfolio'),
+                                          ],
+                                        ),
+                                      ),
+
+
+
+                                      RouteButton(text: 'Contact'),
+                                    ])
+                              ],
+                            ),
+                          ))
+                    ]),
+              ),
+              const ImageProfile(),
+            ],
+          ),
+        ),
+      );
     } else {
       return const ImageProfile();
     }
