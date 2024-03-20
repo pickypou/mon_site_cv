@@ -56,77 +56,116 @@ class HomePage extends StatelessWidget {
         ),
       );
     } else if (screenWidth >= 650 && screenWidth < 950) {
-      return Center(
-        child: Padding(
-          padding: const EdgeInsets.fromLTRB(15, 25, 0, 0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              Text('SPYSSCHAERT', style: titleStyleMedium(context)),
-              Text('Ludovic', style: titleStyleMedium(context)),
-              Padding(
-                padding: const EdgeInsets.fromLTRB(0, 25, 15, 0),
-                child: Column(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      Text('Développeur web', style: titleStyleMedium(context)),
-                      Text('& web mobile', style: titleStyleMedium(context)),
-                      Padding(
-                          padding: const EdgeInsets.fromLTRB(0, 25, 0, 60),
+      return SizedBox(
+          height: MediaQuery.sizeOf(context).height,
+          width: MediaQuery.sizeOf(context).width,
+          child: Padding(
+              padding: const EdgeInsets.fromLTRB(20, 20, 0, 0),
+              child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(children: [
+                      Text(
+                        'SPYSSCHAERT \n Ludovic',
+                        style: titleStyleMedium(context),
+                      ),
+                      Flexible(
+                          child: Container(
+                        child: const SizedBox(
+                          width: double
+                              .infinity, // Le SizedBox prend toute la largeur disponible à l'intérieur du Container
+                          height: 170,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: [
+                              Column(
+                                mainAxisAlignment: MainAxisAlignment.end,
+                                crossAxisAlignment: CrossAxisAlignment.end,
+                                children: [RouteButton(text: 'Mon\nparcours')],
+                              ),
+                              Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [RouteButton(text: 'Portfolio')],
+                              ),
+                              Column(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [RouteButton(text: 'Contact')],
+                              )
+                            ],
+                          ),
+                        ),
+                      )),
+                    ]),
+                    Flexible(
+                      child: Container(
                           child: SizedBox(
-                            height: 100,
-                            width: MediaQuery.sizeOf(context).width,
-                            child: const Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              crossAxisAlignment:CrossAxisAlignment.center,
+                        width: double.infinity,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            const Column(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              crossAxisAlignment: CrossAxisAlignment.end,
                               children: [
-                                Row(
-                                    mainAxisAlignment:
-                                    MainAxisAlignment.spaceAround,
-                                    children: [SizedBox(
-                                      child: Column(
-                                        mainAxisAlignment: MainAxisAlignment.start,
-                                        crossAxisAlignment: CrossAxisAlignment.end,
-                                        children: [
-                                          RouteButton(text: 'Mon parcours'),
-                                        ],
-                                      ),
-                                    ),
-                                      SizedBox(
-                                        child: Column(
-                                          mainAxisAlignment: MainAxisAlignment.center,
-                                          crossAxisAlignment: CrossAxisAlignment.center,
-                                          children: [
-                                            RouteButton(text: 'Portfolio'),
-                                          ],
-                                        ),
-                                      ),
-                                      SizedBox(
-                                        child: Column(
-                                          mainAxisAlignment: MainAxisAlignment.end,
-                                          crossAxisAlignment: CrossAxisAlignment.start,
-                                          children: [
-                                            RouteButton(text: 'Portfolio'),
-                                          ],
-                                        ),
-                                      ),
-
-
-
-                                      RouteButton(text: 'Contact'),
-                                    ])
+                                ImageProfile(),
                               ],
                             ),
-                          ))
-                    ]),
-              ),
-              const ImageProfile(),
-            ],
-          ),
-        ),
-      );
+                            Expanded(
+                                child: Column(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Padding(
+                                  padding:
+                                      const EdgeInsets.fromLTRB(0, 0, 0, 200),
+                                  child: Text(
+                                    'Développeur Web \n & Web Mobile',
+                                    style: titleStyleMedium(context),
+                                  ),
+                                )
+                              ],
+                            ))
+                          ],
+                        ),
+                      )),
+                    ),
+
+                    // rien après
+                  ])));
     } else {
-      return const ImageProfile();
+      return SizedBox(
+          height: MediaQuery.sizeOf(context).height,
+          width: MediaQuery.sizeOf(context).width,
+          child: Padding(
+              padding: const EdgeInsets.fromLTRB(20, 20, 0, 0),
+              child:
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                      Flexible(
+              child: Container(
+                child: SizedBox(
+                  width: double.infinity,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text('SPYSSCHAERT \n Ludovic', style: titleStyleMedium(context),
+                      ),
+                    ],
+                  ),
+
+
+
+                ),
+              )
+
+          ),
+                    ])
+                  ));
     }
   }
 }

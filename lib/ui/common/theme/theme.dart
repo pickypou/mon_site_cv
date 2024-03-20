@@ -15,7 +15,7 @@ TextStyle titleStyle(BuildContext context) {
       const TextStyle();
 }
 
-TextStyle titleStyleMedium(BuildContext context) {
+TextStyle titleStyleLarge(BuildContext context) {
   Size size = MediaQuery.sizeOf(context);
   double? titlefont = size.width / 12;
   return Theme.of(context).textTheme.headlineLarge?.copyWith(
@@ -23,6 +23,17 @@ TextStyle titleStyleMedium(BuildContext context) {
         color: theme.secondaryHeaderColor,
         fontFamily: "lora".toUpperCase(),
       ) ??
+      const TextStyle();
+}
+
+TextStyle titleStyleMedium(BuildContext context) {
+  Size size = MediaQuery.sizeOf(context);
+  double? titlefont = size.width / 17;
+  return Theme.of(context).textTheme.headlineLarge?.copyWith(
+    fontSize: titlefont,
+    color: theme.secondaryHeaderColor,
+    fontFamily: "lora".toUpperCase(),
+  ) ??
       const TextStyle();
 }
 
@@ -39,7 +50,7 @@ TextStyle titleStyleSmall(BuildContext context) {
 
 TextStyle textStyleText(BuildContext context) {
   Size size = MediaQuery.sizeOf(context);
-  double? titlefont = size.width / 30;
+  double? titlefont = size.width / 40;
   return Theme.of(context).textTheme.headlineLarge?.copyWith(
     fontSize: titlefont,
     color: theme.secondaryHeaderColor,
