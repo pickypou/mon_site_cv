@@ -28,22 +28,22 @@ class ImageProfile extends StatelessWidget {
           ),
         ),
       );
-    } else if( screenWidth >= 650 && screenWidth < 950){
+    } else {
       return SizedBox(
-        width: MediaQuery.sizeOf(context).width /2,
+        width: MediaQuery
+            .sizeOf(context)
+            .width / 2,
         child: Padding(
           padding: EdgeInsets.zero,
           child:
-              Image.asset(
-                ImageProfile.imagePath,
-                fit: BoxFit.cover,
-              ),
-
+          Image.asset(
+            ImageProfile.imagePath,
+            fit: BoxFit.cover,
           ),
 
+        ),
+
       );
-    }else {
-      return const SizedBox();
     }
   }
 }

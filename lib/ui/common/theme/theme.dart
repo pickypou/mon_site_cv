@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 ThemeData theme = ThemeData(
     primaryColor: Colors.grey[800],
@@ -6,7 +7,7 @@ ThemeData theme = ThemeData(
 
 TextStyle titleStyle(BuildContext context) {
   Size size = MediaQuery.sizeOf(context);
-  double? titlefont = size.width / 11;
+  double titlefont = size.width / 11;
   return Theme.of(context).textTheme.headlineLarge?.copyWith(
         fontSize: titlefont,
         color: theme.secondaryHeaderColor,
@@ -16,47 +17,46 @@ TextStyle titleStyle(BuildContext context) {
 }
 
 TextStyle titleStyleLarge(BuildContext context) {
-  Size size = MediaQuery.sizeOf(context);
-  double? titlefont = size.width / 12;
-  return Theme.of(context).textTheme.headlineLarge?.copyWith(
-        fontSize: titlefont,
-        color: theme.secondaryHeaderColor,
-        fontFamily: "lora".toUpperCase(),
-      ) ??
-      const TextStyle();
+  Size size = MediaQuery.of(context).size;
+  double titleFontSize = size.width / 12;
+
+  return GoogleFonts.lora().copyWith(
+    fontSize: titleFontSize,
+    fontWeight: FontWeight.bold,
+    color: Theme.of(context).secondaryHeaderColor,
+  );
 }
 
 TextStyle titleStyleMedium(BuildContext context) {
-  Size size = MediaQuery.sizeOf(context);
-  double? titlefont = size.width / 17;
-  return Theme.of(context).textTheme.headlineLarge?.copyWith(
-    fontSize: titlefont,
-    color: theme.secondaryHeaderColor,
-    fontFamily: "lora".toUpperCase(),
-  ) ??
-      const TextStyle();
+  Size size = MediaQuery.of(context).size;
+  double titleFontSize = size.width / 17;
+
+  return GoogleFonts.lora().copyWith(
+    fontSize: titleFontSize,
+    fontWeight: FontWeight.bold,
+    color: Theme.of(context).secondaryHeaderColor,
+  );
 }
 
 TextStyle titleStyleSmall(BuildContext context) {
   Size size = MediaQuery.sizeOf(context);
-  double? titlefont = size.width / 30;
-  return Theme.of(context).textTheme.headlineLarge?.copyWith(
-            fontSize: titlefont,
-            color: theme.secondaryHeaderColor,
-            fontFamily: "lato",
-          ) ??
-      const TextStyle();
+  double? titleFontSize = size.width / 30;
+  return
+    GoogleFonts.lora().copyWith(
+      fontSize: titleFontSize,
+      fontWeight: FontWeight.bold,
+      color: Theme.of(context).secondaryHeaderColor,
+    );
 }
 
 TextStyle textStyleText(BuildContext context) {
   Size size = MediaQuery.sizeOf(context);
-  double? titlefont = size.width / 40;
-  return Theme.of(context).textTheme.headlineLarge?.copyWith(
-    fontSize: titlefont,
-    color: theme.secondaryHeaderColor,
-    fontFamily: "lato",
-  ) ??
-      const TextStyle();
+  double? titleFontSize = size.width / 40;
+  return GoogleFonts.lato().copyWith(
+    fontSize: titleFontSize,
+    fontWeight: FontWeight.bold,
+    color: Theme.of(context).secondaryHeaderColor,
+  );
 }
 
 
@@ -67,13 +67,11 @@ TextStyle? textStyleInput(BuildContext context, String inputText) {
   double textFontSize =
       inputText.length > 20 ? baseFontSize - 1.5 : baseFontSize.toDouble();
 
-  return Theme.of(context).textTheme.headlineLarge?.copyWith(
-            fontSize: textFontSize,
-            color: theme.secondaryHeaderColor,
-            fontFamily: "lato",
-            // Ajoute d'autres propriétés de style si nécessaire
-          ) ??
-      const TextStyle();
+  return GoogleFonts.lora().copyWith(
+    fontSize: textFontSize,
+    fontWeight: FontWeight.bold,
+    color: Theme.of(context).secondaryHeaderColor,
+  );
 }
 
 

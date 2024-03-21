@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:mon_site_cv/ui/common/widgets/image_profile/image_profile.dart';
 import 'package:mon_site_cv/ui/common/widgets/route_button/route_button.dart';
@@ -55,7 +56,8 @@ class HomePage extends StatelessWidget {
           ),
         ),
       );
-    } else if (screenWidth >= 650 && screenWidth < 950) {
+    } else //if (screenWidth >= 650 && screenWidth < 950)
+       {
       return SizedBox(
           height: MediaQuery.sizeOf(context).height,
           width: MediaQuery.sizeOf(context).width,
@@ -135,37 +137,6 @@ class HomePage extends StatelessWidget {
 
                     // rien après
                   ])));
-    } else {
-      return SizedBox(
-          height: MediaQuery.sizeOf(context).height,
-          width: MediaQuery.sizeOf(context).width,
-          child: Padding(
-              padding: const EdgeInsets.fromLTRB(20, 20, 0, 0),
-              child:
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                      Flexible(
-              child: Container(
-                child: SizedBox(
-                  width: double.infinity,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text('SPYSSCHAERT \n Ludovic', style: titleStyleMedium(context),
-                      ),
-                    ],
-                  ),
-
-
-
-                ),
-              )
-
-          ),
-                    ])
-                  ));
     }
   }
 }
