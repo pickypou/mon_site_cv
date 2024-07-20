@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
-
 import '../common/theme/theme.dart';
 import '../common/widgets/createSlideRoute/create_slide_route.dart';
 import '../common/widgets/route_button/route_button.dart';
@@ -11,14 +10,8 @@ class PortfolioView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final List<Map<String, String>> images = [
-      {'path': 'assets/images/judo_seclin.png', 'url': 'https://example1.com'},
-      {'path': 'assets/images/charles_cantin.png', 'url': 'https://example2.com'},
-      {'path': 'assets/images/les_marcheurs.png', 'url': 'https://example3.com'},
-    ];
-
     return Container(
-      color: theme.primaryColor,
+      color: Theme.of(context).primaryColor,
       height: 600,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -28,27 +21,57 @@ class PortfolioView extends StatelessWidget {
             style: titleStyleMedium(context),
           ),
           Text(
-            "Mes réalisations :",
+            "Mes réalisations : ",
             style: textStyleText(context),
           ),
-          const SizedBox(height: 20),
-          // Utilisation de GestureDetector pour ajouter un lien à l'image
-          for (var image in images)
-            GestureDetector(
-              onTap: () async {
-                final Uri url = Uri.parse(image['url']!);
-                if (await canLaunchUrl(url)) {
-                  await launchUrl(url);
-                } else {
-                  throw 'Could not launch $url';
-                }
-              },
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Image.asset(image['path']!),
+          Wrap(
+            spacing: 80.0, // espace horizontal entre les images
+            runSpacing: 20.0, // espace vertical entre les lignes
+            children: [
+              // Première image avec lien
+              GestureDetector(
+                onTap: () async {
+                  const url = 'https://photographe-cantin.netlify.app/';
+                  if (await canLaunchUrl(Uri.parse(url))) {
+                    await launchUrl(Uri.parse(url));
+                  }
+                },
+                child: Image.asset(
+                  'assets/images/charles_cantin.png',
+                  width: 180, // ajustez la largeur de l'image
+                  height: 180, // ajustez la hauteur de l'image
+                ),
               ),
-            ),
-          const SizedBox(height: 20),
+              // Deuxième image avec lien
+              GestureDetector(
+                onTap: () async {
+                  const url = 'https://judoseclin.fr/';
+                  if (await canLaunchUrl(Uri.parse(url))) {
+                    await launchUrl(Uri.parse(url));
+                  }
+                },
+                child: Image.asset(
+                  'assets/images/judo_seclin.png',
+                  width: 180, // ajustez la largeur de l'image
+                  height: 180, // ajustez la hauteur de l'image
+                ),
+              ),
+              // Troisième image avec lien
+              GestureDetector(
+                onTap: () async {
+                  const url = 'https://les-marcheurs.netlify.app';
+                  if (await canLaunchUrl(Uri.parse(url))) {
+                    await launchUrl(Uri.parse(url));
+                  }
+                },
+                child: Image.asset(
+                  'assets/images/les_marcheurs.png',
+                  width: 180, // ajustez la largeur de l'image
+                  height: 180, // ajustez la hauteur de l'image
+                ),
+              ),
+            ],
+          ),
           const RouteButton(
             text: "Accueil",
             destinationPage: HomePage(),
