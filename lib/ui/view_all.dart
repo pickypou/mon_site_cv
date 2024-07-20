@@ -28,7 +28,7 @@ class ViewAll extends StatelessWidget {
             ),
             SizedBox(
               height: MediaQuery.of(context).size.height,
-              child: const ContactView(),
+              child:  ContactView(),
             ),
           ],
         ),
