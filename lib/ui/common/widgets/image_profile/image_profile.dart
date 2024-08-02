@@ -7,43 +7,19 @@ class ImageProfile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final screenWidth = MediaQuery.of(context).size.width;
+    final size = MediaQuery.of(context).size;
 
-    if (screenWidth < 650) {
-      return SizedBox(
-        height: MediaQuery.of(context).size.height / 1.8,
-        width: MediaQuery.of(context).size.width,
-        child: Padding(
-          padding: EdgeInsets.zero,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.end,
-            children: [
-              Image.asset(
-                ImageProfile.imagePath,
-                fit: BoxFit.fill,
-              ),
-
-            ],
-          ),
+    return Container(
+      width: size.width,
+      height: size.height, // Prendre toute la hauteur disponible
+      child: FittedBox(
+        fit: BoxFit.cover, // Ajuste l'image pour couvrir tout l'espace
+        child: Image.asset(
+          ImageProfile.imagePath,
+          width: size.width, // Assure que l'image couvre toute la largeur
+          //height: size.height, // Assure que l'image couvre toute la hauteur
         ),
-      );
-    } else {
-      return SizedBox(
-        width: MediaQuery
-            .sizeOf(context)
-            .width / 2,
-        child: Padding(
-          padding: EdgeInsets.zero,
-          child:
-          Image.asset(
-            ImageProfile.imagePath,
-            fit: BoxFit.cover,
-          ),
-
-        ),
-
-      );
-    }
+      ),
+    );
   }
 }

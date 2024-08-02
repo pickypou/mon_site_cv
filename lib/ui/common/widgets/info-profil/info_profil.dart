@@ -9,7 +9,7 @@ import '../../theme/theme.dart';
 class InfoProfil extends HookWidget {
   final String docUrl;
 
-  const InfoProfil({Key? key, required this.docUrl}) : super(key: key);
+  const InfoProfil({super.key, required this.docUrl});
 
   @override
   Widget build(BuildContext context) {
