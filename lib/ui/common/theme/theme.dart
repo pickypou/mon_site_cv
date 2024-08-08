@@ -55,7 +55,7 @@ TextStyle titleStyleLarge(BuildContext context) {
 
 TextStyle titleStyleMedium(BuildContext context) {
   Size size = MediaQuery.of(context).size;
-  double titleFontSize = size.width / 17;
+  double titleFontSize = size.width / 20;
 
   return GoogleFonts.lora().copyWith(
     fontSize: titleFontSize,
@@ -78,10 +78,10 @@ TextStyle titleStyleSmall(BuildContext context) {
 
 TextStyle textStyleText(BuildContext context) {
   Size size = MediaQuery.sizeOf(context);
-  double? titleFontSize = size.width / 58;
+  double? titleFontSize = size.width / 55;
   return GoogleFonts.lato().copyWith(
     fontSize: titleFontSize,
-    fontWeight: FontWeight.bold,
+    //fontWeight: FontWeight.bold,
     color: Theme.of(context).secondaryHeaderColor,
     decoration: TextDecoration.none,  // Ajoutez cette ligne
   );
