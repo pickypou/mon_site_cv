@@ -23,7 +23,7 @@ class ParcoursView extends StatelessWidget {
                   style: titleStyleMedium(context),
                 ),
                 const Padding(
-                  padding: EdgeInsets.all(60),
+                  padding: EdgeInsets.all(58),
                   child: Center(
                     child: InfoProfil(docUrl: 'assets/markdown/mon-parcours.md'),
                   ),
