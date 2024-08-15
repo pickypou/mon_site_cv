@@ -10,30 +10,65 @@ class ParcoursView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: theme.primaryColor, // Changez cette couleur selon vos besoins
-      child: SizedBox(
-        child: Center(
-          child: SingleChildScrollView(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  "Mon parcours",
-                  style: titleStyleMedium(context),
-                ),
-                const Padding(
-                  padding: EdgeInsets.all(59),
-                  child: Center(
-                    child: InfoProfil(docUrl: 'assets/markdown/mon-parcours.md'),
+    final size = MediaQuery.sizeOf(context);
+    if(size.width < 750) {
+      return Container(
+        color: theme.primaryColor, // Changez cette couleur selon vos besoins
+        child: SizedBox(
+          child: Center(
+            child: SingleChildScrollView(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    "Mon parcours",
+                    style: titleStyleMedium(context),
                   ),
-                ),
-                const RouteButton(text: "Accueil", destinationPage: HomePage(), transitionBuilder: slideFromLeft)
-              ],
+                  const Padding(
+                    padding: EdgeInsets.all(0),
+                    child: Center(
+                      child: InfoProfil(
+                          docUrl: 'assets/markdown/mon-parcours.md'),
+                    ),
+                  ),
+                  const RouteButton(text: "Accueil",
+                      destinationPage: HomePage(),
+                      transitionBuilder: slideFromLeft)
+                ],
+              ),
             ),
           ),
         ),
-      ),
-    );
+      );
+    } else {
+      return Container(
+        color: theme.primaryColor, // Changez cette couleur selon vos besoins
+        child: SizedBox(
+          child: Center(
+            child: SingleChildScrollView(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    "Mon parcours",
+                    style: titleStyleMedium(context),
+                  ),
+                  const Padding(
+                    padding: EdgeInsets.all(59),
+                    child: Center(
+                      child: InfoProfil(
+                          docUrl: 'assets/markdown/mon-parcours.md'),
+                    ),
+                  ),
+                  const RouteButton(text: "Accueil",
+                      destinationPage: HomePage(),
+                      transitionBuilder: slideFromLeft)
+                ],
+              ),
+            ),
+          ),
+        ),
+      );
+    }
   }
 }

@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:mon_site_cv/ui/common/widgets/createSlideRoute/create_slide_route.dart';
 import 'package:mon_site_cv/ui/common/widgets/image_profile/image_profile.dart';
