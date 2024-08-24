@@ -17,7 +17,7 @@ class HomePage extends StatelessWidget {
     final screenHeight = MediaQuery.sizeOf(context);
     final size = MediaQuery.sizeOf(context);
 
-    if(size.width < 750) {
+    if (size.width < 750) {
       return Scaffold(
         body: Container(
           width: screenWidth.width,
@@ -27,12 +27,12 @@ class HomePage extends StatelessWidget {
             children: [
               // Partie du texte
               Padding(
-                padding: const EdgeInsets.fromLTRB(0, 85, 0, 55),
+                padding: const EdgeInsets.fromLTRB(15, 85, 15, 55),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Text('SPYSSCHAERT', style: titleStyleLarge(context)),
+                    Text('SPYSSCHAERT', style: titleStyleMedium(context)),
                     Text('Ludovic', style: titleStyleMedium(context)),
                     const SizedBox(
                       height: 45,
@@ -41,14 +41,27 @@ class HomePage extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text('Développeur web',
-                            style: titleStyleLarge(context)),
+                            style: titleStyleMedium(context)),
                         Text('& web mobile', style: titleStyleMedium(context)),
                         const SizedBox(
                           height: 45,
                         ),
+                        Text(
+                          '''J'ai débuté en autodidacte, en apprenant les bases du développement web avec HTML et CSS à travers des tutoriels YouTube,
+     puis j'ai approfondi mes connaissances avec des cours sur Udemy, en me spécialisant progressivement dans
+     JavaScript et des frameworks comme jQuery et ReactJS.
+     Mon apprentissage s'est ensuite structuré avec des formations certifiantes :
+     un certificat Obsquat en développement web en 2019 et une formation "Apple Fondation" chez Simplon
+     où j'ai découvert Swift et SwiftUI. En 2020, j'ai obtenu un diplôme de développeur full-stack de
+     niveau Bac +2 avec Studi.
+     Aujourd'hui, je me concentre sur Flutter, un framework multi-plateforme me permettant de créer des
+     applications web, mobiles et desktop avec un seul code, compatible avec iOS et Android.''',
+                          style: textStyleText(context),
+                        ),
                         Padding(
-                          padding: const EdgeInsets.fromLTRB(0, 0, 0, 60),
+                          padding: const EdgeInsets.fromLTRB(0, 0, 0, 70),
                           child: SizedBox(
+
                             width: screenWidth.width,
                             child: const Row(
                               mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -86,8 +99,7 @@ class HomePage extends StatelessWidget {
           ),
         ),
       );
-
-    }else {
+    } else {
       return Scaffold(
         body: Container(
           color: theme.primaryColor, // Applique la couleur de fond ici
@@ -110,24 +122,22 @@ class HomePage extends StatelessWidget {
                             destinationPage: ParcoursView(),
                             transitionBuilder: slideFromRight,
                           ),
-                          Padding(padding: EdgeInsets.fromLTRB(200, 45, 0, 0),
-                            child:
-                            RouteButton(
+                          Padding(
+                            padding: EdgeInsets.fromLTRB(200, 45, 0, 0),
+                            child: RouteButton(
                               text: "Portfolio",
                               destinationPage: PortfolioView(),
                               transitionBuilder: slideFromLeft,
                             ),
                           ),
-                          Padding(padding: EdgeInsets.fromLTRB(325, 45, 0, 0),
-                          child:
-                          RouteButton(
-                            text: "Contact",
-                            destinationPage: ContactView(),
-                            transitionBuilder: slideFromBottom,
+                          Padding(
+                            padding: EdgeInsets.fromLTRB(325, 45, 0, 0),
+                            child: RouteButton(
+                              text: "Contact",
+                              destinationPage: ContactView(),
+                              transitionBuilder: slideFromBottom,
+                            ),
                           ),
-                          ),
-
-
                         ],
                       ),
                     ),
@@ -135,7 +145,8 @@ class HomePage extends StatelessWidget {
                     Expanded(
                       child: Container(
                         width: double.infinity,
-                        child: ImageProfile(), // Assurez-vous que ce widget est correctement configuré
+                        child:
+                            ImageProfile(), // Assurez-vous que ce widget est correctement configuré
                       ),
                     ),
                   ],
@@ -145,7 +156,7 @@ class HomePage extends StatelessWidget {
               Expanded(
                 flex: 2, // Proportion de la colonne droite
                 child: Padding(
-                  padding: const EdgeInsets.all(16.0),
+                  padding: const EdgeInsets.all(20.0),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -157,6 +168,19 @@ class HomePage extends StatelessWidget {
                         'Développeur web \n & web mobile',
                         style: titleStyleMedium(context),
                       ),
+                      Text(
+                        '''J'ai débuté en autodidacte, en apprenant les bases du développement web avec HTML et CSS à travers des tutoriels YouTube,
+     puis j'ai approfondi mes connaissances avec des cours sur Udemy, en me spécialisant progressivement dans
+     JavaScript et des frameworks comme jQuery et ReactJS.
+     Mon apprentissage s'est ensuite structuré avec des formations certifiantes :
+     un certificat Obsquat en développement web en 2019 et une formation "Apple Fondation" chez Simplon
+     où j'ai découvert Swift et SwiftUI. En 2020, j'ai obtenu un diplôme de développeur full-stack de
+     niveau Bac +2 avec Studi.
+     Aujourd'hui, je me concentre sur Flutter, un framework multi-plateforme me permettant de créer des
+     applications web, mobiles et desktop avec un seul code, compatible avec iOS et Android.''',
+                        style: textStyleTextAccueil(context),
+                      ),
+
                     ],
                   ),
                 ),
@@ -165,9 +189,6 @@ class HomePage extends StatelessWidget {
           ),
         ),
       );
-
-
-
     }
   }
 }
