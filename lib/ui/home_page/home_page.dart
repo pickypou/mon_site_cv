@@ -146,7 +146,7 @@ class HomePage extends StatelessWidget {
                       child: Container(
                         width: double.infinity,
                         child:
-                            ImageProfile(), // Assurez-vous que ce widget est correctement configuré
+                            const ImageProfile(), // Assurez-vous que ce widget est correctement configuré
                       ),
                     ),
                   ],
@@ -168,6 +168,7 @@ class HomePage extends StatelessWidget {
                         'Développeur web \n & web mobile',
                         style: titleStyleMedium(context),
                       ),
+                      const SizedBox(height: 25,),
                       Text(
                         '''J'ai débuté en autodidacte, en apprenant les bases du développement web avec HTML et CSS à travers des tutoriels YouTube,
      puis j'ai approfondi mes connaissances avec des cours sur Udemy, en me spécialisant progressivement dans
