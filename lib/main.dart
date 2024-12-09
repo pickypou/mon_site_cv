@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Mon_site_cv',
+      title: 'Ludovic Spysschaert',
       theme: theme,
       home: const HomePage(),
 

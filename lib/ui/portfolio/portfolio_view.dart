@@ -10,6 +10,7 @@ class PortfolioView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.sizeOf(context);
     return Container(
       color: Theme.of(context).primaryColor,
       height: 600,
@@ -20,10 +21,12 @@ class PortfolioView extends StatelessWidget {
             "Portfolio",
             style: titleStyleMedium(context),
           ),
+          const SizedBox(height: 65,),
           Text(
             "Mes réalisations : ",
             style: textStyleText(context),
           ),
+          const SizedBox(height: 65,),
           Wrap(
             spacing: 80.0, // espace horizontal entre les images
             runSpacing: 20.0, // espace vertical entre les lignes
@@ -38,8 +41,8 @@ class PortfolioView extends StatelessWidget {
                 },
                 child: Image.asset(
                   'assets/images/charles_cantin.png',
-                  width: 180, // ajustez la largeur de l'image
-                  height: 180, // ajustez la hauteur de l'image
+                  width: size.width/5, // ajustez la largeur de l'image
+                  height: size.height / 5, // ajustez la hauteur de l'image
                 ),
               ),
               // Deuxième image avec lien
@@ -52,8 +55,8 @@ class PortfolioView extends StatelessWidget {
                 },
                 child: Image.asset(
                   'assets/images/judo_seclin.png',
-                  width: 180, // ajustez la largeur de l'image
-                  height: 180, // ajustez la hauteur de l'image
+                  width: size.width/5, // ajustez la largeur de l'image
+                  height: size.height / 5, // ajustez la hauteur de l'image
                 ),
               ),
               // Troisième image avec lien
@@ -66,12 +69,26 @@ class PortfolioView extends StatelessWidget {
                 },
                 child: Image.asset(
                   'assets/images/les_marcheurs.png',
-                  width: 180, // ajustez la largeur de l'image
-                  height: 180, // ajustez la hauteur de l'image
+                  width: size.width/5, // ajustez la largeur de l'image
+                  height: size.height / 5, // ajustez la hauteur de l'image
+                ),
+              ),
+              GestureDetector(
+                onTap: () async {
+                  const url = 'https://lecoconssbe.fr/';
+                  if (await canLaunchUrl(Uri.parse(url))) {
+                    await launchUrl(Uri.parse(url));
+                  }
+                },
+                child: Image.asset(
+                  'assets/images/le_cocon.png',
+                  width: size.width/5, // ajustez la largeur de l'image
+                  height: size.height / 5, // ajustez la hauteur de l'image
                 ),
               ),
             ],
           ),
+          const SizedBox(height: 65,),
           const RouteButton(
             text: "Accueil",
             destinationPage: HomePage(),
