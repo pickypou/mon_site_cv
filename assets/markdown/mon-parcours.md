@@ -16,15 +16,6 @@ J'ai commencé ma formation en développement web en regardant des tutoriels sur
 ### Spécialisation Actuelle
 Aujourd'hui, je me spécialise en **Flutter**, un framework qui me permet de développer des applications pour le Web, le mobile, et des applications de bureau, tout avec un seul code. **Flutter** est compatible avec divers systèmes d'exploitation, y compris **iOS** et **Android**.
 
-### Projets et Réalisations
-- **Projet 1** : Site internet pour un photographe, avec un exemple de photos en carousel sans rechargement de page. Technologies utilisées : **HTML**, **CSS**, **JavaScript**.
-    - **Charles CANTIN photographe** : Visitez mon site web : [Visitez le site](https://photographe-cantin.netlify.app/).
-
-- **Projet 2** : Site pour le Judo Club de Seclin. Ce site a été réalisé en **Flutter** avec une base de données sur **Firebase**. Il permet de :
-    - Fournir des informations en temps réel aux adhérents du club.
-    - Permettre aux adhérents de s'inscrire pour voir les compétitions à venir.
-    - Permettre l'inscription aux compétitions.
-    - **Judo Club Seclin** : Visitez le site web : [Visitez le site](https://judoseclin.fr/).
 
 ### Compétences Clés
 - **HTML/CSS** : Maîtrise des standards du web.

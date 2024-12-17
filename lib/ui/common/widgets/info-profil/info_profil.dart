@@ -4,7 +4,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-import '../../theme/theme.dart';
+import '../../../../theme.dart';
 
 class InfoProfil extends HookWidget {
   final String docUrl;
@@ -25,11 +25,12 @@ class InfoProfil extends HookWidget {
     }, [docUrl]);
 
     return Card(
+      color: theme.colorScheme.secondary,
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 25, horizontal: 10),
         child: MarkdownBody(
           data: contenu.value,
-          styleSheet: getMDTheme(context, Colors.white),
+          styleSheet: getMDTheme(context, Colors.transparent),
           onTapLink: (text, url, title) {
             if (url != null) {
               launchUrl(Uri.parse(url));

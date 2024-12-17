@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mon_site_cv/ui/common/theme/theme.dart';
+import 'package:mon_site_cv/theme.dart';
 
 class RouteButton extends StatelessWidget {
   final String text;
@@ -19,7 +19,10 @@ class RouteButton extends StatelessWidget {
       onPressed: () {
         Navigator.of(context).push(transitionBuilder(destinationPage));
       },
-      child: Text(text, style: textStyleText(context),),
+      child: Text(
+        text,
+        style: textStyleText(context),
+      ),
     );
   }
 }

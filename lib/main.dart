@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mon_site_cv/ui/common/theme/theme.dart';
+import 'package:mon_site_cv/theme.dart';
 import 'package:mon_site_cv/ui/home_page/home_page.dart';
 
 void main() {
@@ -17,7 +17,6 @@ class MyApp extends StatelessWidget {
       title: 'Ludovic Spysschaert',
       theme: theme,
       home: const HomePage(),
-
     );
   }
 }

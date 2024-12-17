@@ -3,7 +3,8 @@ import 'package:mon_site_cv/ui/common/widgets/createSlideRoute/create_slide_rout
 import 'package:mon_site_cv/ui/common/widgets/route_button/route_button.dart';
 import 'package:mon_site_cv/ui/home_page/home_page.dart';
 import 'package:url_launcher/url_launcher.dart';
-import '../common/theme/theme.dart';
+
+import '../../theme.dart';
 
 class ContactView extends StatefulWidget {
   const ContactView({super.key});
@@ -34,7 +35,9 @@ class _ContactViewState extends State<ContactView> {
         await launchUrl(emailUri);
       } else {
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('Impossible d\'ouvrir l\'application de messagerie.')),
+          const SnackBar(
+              content:
+                  Text('Impossible d\'ouvrir l\'application de messagerie.')),
         );
       }
     }
@@ -92,8 +95,10 @@ class _ContactViewState extends State<ContactView> {
                   onPressed: _sendEmail,
                   child: const Text('Envoyer'),
                 ),
-                const RouteButton(text: "Accueil",
-                    destinationPage: HomePage(), transitionBuilder: slideFromLeft)
+                const RouteButton(
+                    text: "Accueil",
+                    destinationPage: HomePage(),
+                    transitionBuilder: slideFromLeft)
               ],
             ),
           ),
@@ -122,7 +127,7 @@ class _ContactViewState extends State<ContactView> {
         fillColor: Colors.white,
       ),
       validator: validator ??
-              (value) {
+          (value) {
             if (value == null || value.isEmpty) {
               return 'Veuillez entrer votre $label';
             }

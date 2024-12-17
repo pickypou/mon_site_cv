@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:mon_site_cv/ui/common/theme/theme.dart';
+import 'package:mon_site_cv/theme.dart';
 import 'package:mon_site_cv/ui/common/widgets/createSlideRoute/create_slide_route.dart';
 import 'package:mon_site_cv/ui/common/widgets/route_button/route_button.dart';
 import 'package:mon_site_cv/ui/home_page/home_page.dart';
+
 import '../common/widgets/info-profil/info_profil.dart';
 
 class ParcoursView extends StatelessWidget {
@@ -11,7 +12,7 @@ class ParcoursView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.sizeOf(context);
-    if(size.width < 750) {
+    if (size.width < 750) {
       return Container(
         color: theme.primaryColor, // Changez cette couleur selon vos besoins
         child: SizedBox(
@@ -27,11 +28,12 @@ class ParcoursView extends StatelessWidget {
                   const Padding(
                     padding: EdgeInsets.all(0),
                     child: Center(
-                      child: InfoProfil(
-                          docUrl: 'assets/markdown/mon-parcours.md'),
+                      child:
+                          InfoProfil(docUrl: 'assets/markdown/mon-parcours.md'),
                     ),
                   ),
-                  const RouteButton(text: "Accueil",
+                  const RouteButton(
+                      text: "Accueil",
                       destinationPage: HomePage(),
                       transitionBuilder: slideFromLeft)
                 ],
@@ -54,13 +56,13 @@ class ParcoursView extends StatelessWidget {
                     style: titleStyleMedium(context),
                   ),
                   const Padding(
-                    padding: EdgeInsets.all(59),
-                    child: Center(
-                      child: InfoProfil(
-                          docUrl: 'assets/markdown/mon-parcours.md'),
-                    ),
-                  ),
-                  const RouteButton(text: "Accueil",
+                      padding: EdgeInsets.all(59),
+                      child: Center(
+                        child: InfoProfil(
+                            docUrl: 'assets/markdown/mon-parcours.md'),
+                      )),
+                  const RouteButton(
+                      text: "Accueil",
                       destinationPage: HomePage(),
                       transitionBuilder: slideFromLeft)
                 ],

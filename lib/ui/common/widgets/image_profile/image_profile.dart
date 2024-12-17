@@ -17,12 +17,15 @@ class ImageProfile extends StatelessWidget {
       children: [
         Flexible(
           flex: 1,
-          child: Container(
-            width: size.width * 0.8, // Contrôle la largeur (ajustez en fonction du besoin)
-            height: size.height * 0.8, // Contrôle la hauteur (ajustez en fonction du besoin)
+          child: SizedBox(
+            width: size.width *
+                0.8, // Contrôle la largeur (ajustez en fonction du besoin)
+            height: size.height *
+                0.9, // Contrôle la hauteur (ajustez en fonction du besoin)
             child: Image.asset(
               ImageProfile.imagePath,
-              fit: BoxFit.cover, // Vous pouvez expérimenter avec BoxFit.contain, BoxFit.fill, etc.
+              fit: BoxFit
+                  .cover, // Vous pouvez expérimenter avec BoxFit.contain, BoxFit.fill, etc.
             ),
           ),
         ),
