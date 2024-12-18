@@ -3,7 +3,7 @@ import 'package:mon_site_cv/ui/common/widgets/createSlideRoute/create_slide_rout
 import 'package:mon_site_cv/ui/common/widgets/image_profile/image_profile.dart';
 import 'package:mon_site_cv/ui/common/widgets/route_button/route_button.dart';
 import 'package:mon_site_cv/ui/contact/contact_view.dart';
-import 'package:mon_site_cv/ui/parcours/parcours_view.dart';
+import 'package:mon_site_cv/ui/parcours/view/parcours_view.dart';
 import 'package:mon_site_cv/ui/portfolio/portfolio_view.dart';
 
 import '../../theme.dart';

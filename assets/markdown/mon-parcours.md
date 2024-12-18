@@ -7,19 +7,19 @@ J'ai commencé ma formation en développement web en regardant des tutoriels sur
 - **ReactJS** : Formation complète sur ReactJS avec Udemy.
 
 ### Formation Structurée
-- **Centre de Formation** (2019) : Formation en développement web où j'ai obtenu le certificat **Obsquat**.
-- **Simplon** (2020) : Formation "Apple Fondation" où j'ai appris les bases de **Swift** et **SwiftUI**, avec un certificat à la clé.
+- Centre de Formation (2019) : Formation en développement web où j'ai obtenu le certificat Obsquat.
+- Simplon (2020) : Formation "Apple Fondation" où j'ai appris les bases de Swift et SwiftUI, avec un certificat à la clé.
 
 ### Formation Avancée
-- **Studi** (2020) : Formation de développeur **full-stack** où j'ai obtenu un diplôme de niveau **Bac +2** en Développement Web et Mobile.
+Studi (2020) : Formation de développeur full-stack où j'ai obtenu un diplôme de niveau Bac +2 en Développement Web et Mobile.
 
 ### Spécialisation Actuelle
-Aujourd'hui, je me spécialise en **Flutter**, un framework qui me permet de développer des applications pour le Web, le mobile, et des applications de bureau, tout avec un seul code. **Flutter** est compatible avec divers systèmes d'exploitation, y compris **iOS** et **Android**.
+Aujourd'hui, je me spécialise en Flutter, un framework qui me permet de développer des applications pour le Web, le mobile, et des applications de bureau, tout avec un seul code. Flutter est compatible avec divers systèmes d'exploitation, y compris iOS et Android.
 
 
 ### Compétences Clés
-- **HTML/CSS** : Maîtrise des standards du web.
-- **JavaScript** : Compétence en frameworks modernes comme ReactJS.
-- **PHP Symfony** : Expérience avec la programmation côté serveur.
-- **Swift/SwiftUI** : Développement d'applications iOS.
-- **Flutter** : Développement multi-plateforme avec un seul code.
+HTML/CSS : Maîtrise des standards du web.\n
+JavaScript : Compétence en frameworks modernes comme ReactJS.\n
+PHP Symfony : Expérience avec la programmation côté serveur.\n
+Swift/SwiftUI : Développement d'applications iOS.\n
+Flutter : Développement multi-plateforme avec un seul code.
