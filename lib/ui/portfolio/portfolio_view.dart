@@ -4,7 +4,9 @@ import 'package:url_launcher/url_launcher.dart';
 import '../../theme.dart';
 import '../common/widgets/createSlideRoute/create_slide_route.dart';
 import '../common/widgets/route_button/route_button.dart';
+import '../contact/contact_view.dart';
 import '../home_page/home_page.dart';
+import '../parcours/view/parcours_view.dart';
 
 class PortfolioView extends StatelessWidget {
   const PortfolioView({super.key});
@@ -96,10 +98,25 @@ class PortfolioView extends StatelessWidget {
           const SizedBox(
             height: 65,
           ),
-          const RouteButton(
-            text: "Accueil",
-            destinationPage: HomePage(),
-            transitionBuilder: slideFromRight,
+          const Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              RouteButton(
+                text: "Mon parcours",
+                destinationPage: ParcoursView(),
+                transitionBuilder: slideFromRight,
+              ),
+              RouteButton(
+                text: "Accueil",
+                destinationPage: HomePage(),
+                transitionBuilder: slideFromBottom,
+              ),
+              RouteButton(
+                text: "Contact",
+                destinationPage: ContactView(),
+                transitionBuilder: slideFromLeft,
+              ),
+            ],
           ),
         ],
       ),

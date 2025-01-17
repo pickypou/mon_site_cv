@@ -3,18 +3,18 @@ import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 ThemeData theme = ThemeData(
-  primaryColor: Colors.grey[800],
-  scaffoldBackgroundColor: Colors.grey[400],
+  primaryColor: Colors.grey[800]!,
+  scaffoldBackgroundColor: Colors.grey[400]!,
   colorScheme: const ColorScheme(
-    brightness: Brightness.light, // Mode clair
-    primary: Colors.orange, // Couleur principale
-    onPrimary: Color(0xFFFFFFFF), // Couleur du texte sur la couleur primaire
-    secondary: Colors.transparent, // Couleur secondaire
-    onSecondary: Colors.white, // Texte sur couleur secondaire
-    error: Colors.red, // Couleur pour les erreurs
-    onError: Colors.white, // Texte sur couleur d'erreur
-    surface: Colors.white, // Couleur des surfaces (boutons, cartes, etc.)
-    onSurface: Colors.black, // Texte sur les surfaces
+    brightness: Brightness.light,
+    primary: Colors.orange,
+    onPrimary: Color(0xFFFFFFFF),
+    secondary: Colors.transparent,
+    onSecondary: Colors.white,
+    error: Colors.red,
+    onError: Colors.white,
+    surface: Colors.white, // Ajout du "!"
+    onSurface: Colors.black,
   ),
 );
 MarkdownStyleSheet getMDTheme(BuildContext context, Color transparent) =>

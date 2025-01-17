@@ -39,6 +39,13 @@ class _ParcoursListViewState extends State<ParcoursListView> {
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              Text(
+                "Mon Parcours",
+                style: titleStyleMedium(context),
+              ),
+              const SizedBox(
+                height: 55,
+              ),
               // Carousel slider
               Stack(
                 alignment: Alignment.center,
