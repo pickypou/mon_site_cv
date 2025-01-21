@@ -43,18 +43,6 @@ class HomePage extends StatelessWidget {
                         const SizedBox(
                           height: 45,
                         ),
-                        Text(
-                          '''J'ai débuté en autodidacte, en apprenant les bases du développement web avec HTML et CSS à travers des tutoriels YouTube,
-     puis j'ai approfondi mes connaissances avec des cours sur Udemy, en me spécialisant progressivement dans
-     JavaScript et des frameworks comme jQuery et ReactJS.
-     Mon apprentissage s'est ensuite structuré avec des formations certifiantes :
-     un certificat Obsquat en développement web en 2019 et une formation "Apple Fondation" chez Simplon
-     où j'ai découvert Swift et SwiftUI. En 2020, j'ai obtenu un diplôme de développeur full-stack de
-     niveau Bac +2 avec Studi.
-     Aujourd'hui, je me concentre sur Flutter, un framework multi-plateforme me permettant de créer des
-     applications web, mobiles et desktop avec un seul code, compatible avec iOS et Android.''',
-                          style: textStyleText(context),
-                        ),
                         Padding(
                           padding: const EdgeInsets.fromLTRB(0, 0, 0, 70),
                           child: SizedBox(
