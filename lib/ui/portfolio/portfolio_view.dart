@@ -69,13 +69,13 @@ class PortfolioView extends StatelessWidget {
               // Troisième image avec lien
               GestureDetector(
                 onTap: () async {
-                  const url = 'https://les-marcheurs.netlify.app';
+                  const url = 'https://gerarddcoachsportif.fr/';
                   if (await canLaunchUrl(Uri.parse(url))) {
                     await launchUrl(Uri.parse(url));
                   }
                 },
                 child: Image.asset(
-                  'assets/images/les_marcheurs.png',
+                  'assets/images/gerard.png',
                   width: size.width / 5, // ajustez la largeur de l'image
                   height: size.height / 5, // ajustez la hauteur de l'image
                 ),
@@ -89,6 +89,19 @@ class PortfolioView extends StatelessWidget {
                 },
                 child: Image.asset(
                   'assets/images/le_cocon.png',
+                  width: size.width / 5, // ajustez la largeur de l'image
+                  height: size.height / 5, // ajustez la hauteur de l'image
+                ),
+              ),
+              GestureDetector(
+                onTap: () async {
+                  const url = 'https://mycs-b0307.web.app/';
+                  if (await canLaunchUrl(Uri.parse(url))) {
+                    await launchUrl(Uri.parse(url));
+                  }
+                },
+                child: Image.asset(
+                  'assets/images/mycs.png',
                   width: size.width / 5, // ajustez la largeur de l'image
                   height: size.height / 5, // ajustez la hauteur de l'image
                 ),

@@ -98,7 +98,7 @@ class _ParcoursListViewState extends State<ParcoursListView> {
                     options: CarouselOptions(
                       height: carouselHeight,
                       autoPlay: true,
-                      autoPlayInterval: const Duration(seconds: 15),
+                      autoPlayInterval: const Duration(seconds: 20),
                       enlargeCenterPage: true,
                       viewportFraction: 0.8,
                       aspectRatio: 16 / 9,
