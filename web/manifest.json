@@ -1,11 +1,11 @@
 {
-    "name": "mon_site_cv",
-    "short_name": "mon_site_cv",
-    "start_url": ".",
+    "name": "Ludovic Spysschaert - Développeur Web & Mobile",
+    "short_name": "LS Dev",
+    "description": "Portfolio de Ludovic Spysschaert, développeur web & mobile basé à Seclin.",
+    "start_url": "/",
     "display": "standalone",
     "background_color": "#0175C2",
     "theme_color": "#0175C2",
-    "description": "Mon site cv.",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [
@@ -30,7 +30,7 @@
             "sizes": "512x512",
             "type": "image/png",
             "purpose": "maskable"
-        }
+        },
         {
             "sizes": "32x3 16x16",
             "src": "favicon.ico",

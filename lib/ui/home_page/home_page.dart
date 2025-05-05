@@ -5,13 +5,37 @@ import 'package:mon_site_cv/ui/common/widgets/route_button/route_button.dart';
 import 'package:mon_site_cv/ui/contact/contact_view.dart';
 import 'package:mon_site_cv/ui/parcours/view/parcours_view.dart';
 import 'package:mon_site_cv/ui/portfolio/portfolio_view.dart';
+import 'package:web/web.dart' as web;
 
 import '../../theme.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
   @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  @override
+  void initState() {
+    super.initState();
+    injectH1Tag(); // Appel SEO
+  }
+
+  void injectH1Tag() {
+    // Vérifie si le h1 est déjà là
+    final existing = web.document.getElementById('seo-title');
+    if (existing != null) return;
+
+    final h1 = web.document.createElement('h1');
+    h1.setAttribute('id', 'seo-title');
+    h1.textContent = 'Ludovic Spysschaert - Développeur web & mobile';
+    h1.setAttribute('style', 'display: none'); // invisible à l’écran
+
+    web.document.body?.append(h1);
+  }
+
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.sizeOf(context);
     final screenHeight = MediaQuery.sizeOf(context);
