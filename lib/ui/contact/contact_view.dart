@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mon_site_cv/ui/common/widgets/clickable_image.dart';
 import 'package:mon_site_cv/ui/common/widgets/createSlideRoute/create_slide_route.dart';
 import 'package:mon_site_cv/ui/common/widgets/route_button/route_button.dart';
 import 'package:mon_site_cv/ui/home_page/home_page.dart';
@@ -125,6 +126,14 @@ class _ContactViewState extends State<ContactView> {
                   child: const Text('Envoyer'),
                 ),
                 const SizedBox(height: 20),
+                const Row(
+                  children: [
+                   ClickableImage(imagePath: 'assets/images/facebook.webp',
+                   url: 'https://www.facebook.com/ludowebfreelance/?viewas=100000686899395',
+                   )
+                  ],
+
+                ),
                 const Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
