@@ -129,7 +129,7 @@ class _ContactViewState extends State<ContactView> {
                 const Row(
                   children: [
                    ClickableImage(imagePath: 'assets/images/facebook.webp',
-                   url: 'https://www.facebook.com/ludowebfreelance/?viewas=100000686899395',
+                   url: 'https://www.facebook.com/ludowebfreelance/',
                    )
                   ],
 

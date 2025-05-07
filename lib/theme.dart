@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import 'core/utils/calculated_font_size.dart';
+
 ThemeData theme = ThemeData(
   primaryColor: Colors.grey[800]!,
   scaffoldBackgroundColor: Colors.grey[400]!,
@@ -91,14 +93,12 @@ TextStyle titleStyleSmall(BuildContext context) {
 }
 
 TextStyle textStyleText(BuildContext context) {
-  Size size = MediaQuery.sizeOf(context);
-  double? titleFontSize = size.width / 55;
-  return GoogleFonts.lato().copyWith(
-    fontSize: titleFontSize,
-    //fontWeight: FontWeight.bold,
-    color: Theme.of(context).colorScheme.primary,
-    decoration: TextDecoration.none, // Ajoutez cette ligne
-  );
+  return
+    GoogleFonts.montserrat().copyWith(
+      fontSize: calculateFontSize(context, ratio: 70),
+      color: Theme.of(context).colorScheme.primary,
+      decoration: TextDecoration.none,
+    );
 }
 
 TextStyle textStyleTextAccueil(BuildContext context) {
