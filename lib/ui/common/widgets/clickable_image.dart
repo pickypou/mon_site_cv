@@ -6,41 +6,50 @@ class ClickableImage extends StatelessWidget {
   final String imagePath;
   final String? route;
   final String? url;
+  final double width;
+  final double height;
 
   const ClickableImage({
-    super.key,
+    Key? key,
     required this.imagePath,
     this.route,
     this.url,
-  }) : assert(route != null || url != null, 'Vous devez fournir soit une route soit une URL.');
+    this.width = 75,
+    this.height = 75,
+  }) : assert(route != null || url != null, 'Vous devez fournir soit une route soit une URL.'),
+        super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
+    return InkWell(
       onTap: () async {
         if (route != null) {
           context.go(route!);
         } else if (url != null) {
-          await _launchURL(url!);
+          await _launchURL(context, url!);
         }
       },
-      child: Image.asset(
-        imagePath,
-        width: 75,
-        height: 75,
-        fit: BoxFit.contain,
+      child: Tooltip(
+        message: route ?? url ?? '',
+        child: Image.asset(
+          imagePath,
+          width: width,
+          height: height,
+          fit: BoxFit.contain,
+        ),
       ),
     );
   }
 
-  Future<void> _launchURL(String urlString) async {
-    final Uri url = Uri.parse(urlString);
+  Future<void> _launchURL(BuildContext context, String urlString) async {
+    final Uri parsedUrl = Uri.parse(urlString);
     if (!await launchUrl(
-      url,
+      parsedUrl,
       mode: LaunchMode.externalApplication,
-      webViewConfiguration: const WebViewConfiguration(enableJavaScript: true),
     )) {
-      throw 'Impossible d\'ouvrir l\'URL $urlString';
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Impossible d\'ouvrir l\'URL $urlString')),
+      );
     }
   }
 }

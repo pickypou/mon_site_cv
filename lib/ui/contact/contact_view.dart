@@ -130,10 +130,14 @@ class _ContactViewState extends State<ContactView> {
                   children: [
                    ClickableImage(imagePath: 'assets/images/facebook.webp',
                    url: 'https://www.facebook.com/ludowebfreelance/',
-                   )
+                   ),
+                    const SizedBox(width: 35,),
+                    ClickableImage(imagePath: 'assets/images/whatsapp.png',
+                    url: 'https://wa.me/33638845768',)
                   ],
 
                 ),
+                const SizedBox(height: 25,),
                 const Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
