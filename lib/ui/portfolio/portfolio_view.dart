@@ -1,135 +1,99 @@
 import 'package:flutter/material.dart';
-import 'package:url_launcher/url_launcher.dart';
 
-import '../../theme.dart';
-import '../common/widgets/createSlideRoute/create_slide_route.dart';
-import '../common/widgets/route_button/route_button.dart';
-import '../contact/contact_view.dart';
-import '../home_page/home_page.dart';
-import '../parcours/view/parcours_view.dart';
+import '../common/widgets/clickable_image.dart';
+import 'data/portfolio_data.dart';
 
-class PortfolioView extends StatelessWidget {
-  const PortfolioView({super.key});
+class PortfolioSection extends StatefulWidget {
+  const PortfolioSection({super.key, required ScrollController scrollController});
+
+  @override
+  State<PortfolioSection> createState() => _PortfolioSectionState();
+}
+
+class _PortfolioSectionState extends State<PortfolioSection> with SingleTickerProviderStateMixin {
+  late final AnimationController _controller;
+
+  @override
+  void initState() {
+    super.initState();
+
+    _controller = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 1000),
+    )..forward(); // démarre l’animation
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  Widget _buildAnimatedProject(int index, double itemWidth) {
+    final project = projects[index];
+    final animation = CurvedAnimation(
+      parent: _controller,
+      curve: Interval(index * 0.1, 1.0, curve: Curves.easeOut),
+    );
+
+    return FadeTransition(
+      opacity: animation,
+      child: ScaleTransition(
+        scale: animation,
+        child: SizedBox(
+          width: itemWidth,
+          child: Column(
+            children: [
+              ClickableImage(
+                imagePath: project.imagePath,
+                url: project.url,
+                width: itemWidth,
+                height: itemWidth * 0.6,
+              ),
+              const SizedBox(height: 8),
+              Text(
+                project.title,
+                style: Theme.of(context).textTheme.titleSmall,
+                textAlign: TextAlign.center,
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.sizeOf(context);
-    return Container(
-      color: Theme.of(context).primaryColor,
-      height: 600,
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 48.0, horizontal: 16.0),
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
+      Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 16.0),
+          child:
           Text(
-            "Portfolio",
-            style: titleStyleMedium(context),
+            "Mes Projets", textAlign: TextAlign.center,
+            style: Theme.of(context).textTheme.headlineMedium?.copyWith(),
           ),
-          const SizedBox(
-            height: 65,
-          ),
-          Text(
-            "Mes réalisations : ",
-            style: textStyleText(context),
-          ),
-          const SizedBox(
-            height: 65,
-          ),
-          Wrap(
-            spacing: 80.0, // espace horizontal entre les images
-            runSpacing: 20.0, // espace vertical entre les lignes
-            children: [
-              // Première image avec lien
-              GestureDetector(
-                onTap: () async {
-                  const url = 'https://photographe-cantin.netlify.app/';
-                  if (await canLaunchUrl(Uri.parse(url))) {
-                    await launchUrl(Uri.parse(url));
-                  }
-                },
-                child: Image.asset(
-                  'assets/images/charles_cantin.png',
-                  width: size.width / 5, // ajustez la largeur de l'image
-                  height: size.height / 5, // ajustez la hauteur de l'image
+      ),
+          const SizedBox(height: 25,),
+          LayoutBuilder(
+            builder: (context, constraints) {
+              final isWide = constraints.maxWidth > 1000;
+              final crossAxisCount = isWide ? 3 : (constraints.maxWidth > 600 ? 2 : 1);
+              final itemWidth = (constraints.maxWidth - 24 * (crossAxisCount - 1)) / crossAxisCount;
+
+              return Wrap(
+                spacing: 24,
+                runSpacing: 32,
+                children: List.generate(
+                  projects.length,
+                      (index) => _buildAnimatedProject(index, itemWidth),
                 ),
-              ),
-              // Deuxième image avec lien
-              GestureDetector(
-                onTap: () async {
-                  const url = 'https://judoseclin.fr/';
-                  if (await canLaunchUrl(Uri.parse(url))) {
-                    await launchUrl(Uri.parse(url));
-                  }
-                },
-                child: Image.asset(
-                  'assets/images/judo_seclin.png',
-                  width: size.width / 5, // ajustez la largeur de l'image
-                  height: size.height / 5, // ajustez la hauteur de l'image
-                ),
-              ),
-              // Troisième image avec lien
-              GestureDetector(
-                onTap: () async {
-                  const url = 'https://gerarddcoachsportif.fr/';
-                  if (await canLaunchUrl(Uri.parse(url))) {
-                    await launchUrl(Uri.parse(url));
-                  }
-                },
-                child: Image.asset(
-                  'assets/images/gerard.png',
-                  width: size.width / 5, // ajustez la largeur de l'image
-                  height: size.height / 5, // ajustez la hauteur de l'image
-                ),
-              ),
-              GestureDetector(
-                onTap: () async {
-                  const url = 'https://lecoconssbe.fr/';
-                  if (await canLaunchUrl(Uri.parse(url))) {
-                    await launchUrl(Uri.parse(url));
-                  }
-                },
-                child: Image.asset(
-                  'assets/images/le_cocon.png',
-                  width: size.width / 5, // ajustez la largeur de l'image
-                  height: size.height / 5, // ajustez la hauteur de l'image
-                ),
-              ),
-              GestureDetector(
-                onTap: () async {
-                  const url = 'https://mycs-b0307.web.app/';
-                  if (await canLaunchUrl(Uri.parse(url))) {
-                    await launchUrl(Uri.parse(url));
-                  }
-                },
-                child: Image.asset(
-                  'assets/images/mycs.png',
-                  width: size.width / 5, // ajustez la largeur de l'image
-                  height: size.height / 5, // ajustez la hauteur de l'image
-                ),
-              ),
-            ],
-          ),
-          const SizedBox(
-            height: 65,
-          ),
-          const Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              RouteButton(
-                text: "Mon parcours",
-                destinationPage: ParcoursView(),
-                transitionBuilder: slideFromRight,
-              ),
-              RouteButton(
-                text: "Accueil",
-                destinationPage: HomePage(),
-                transitionBuilder: slideFromBottom,
-              ),
-              RouteButton(
-                text: "Contact",
-                destinationPage: ContactView(),
-                transitionBuilder: slideFromLeft,
-              ),
-            ],
+              );
+            },
           ),
         ],
       ),

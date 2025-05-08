@@ -1,16 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:mon_site_cv/ui/common/widgets/clickable_image.dart';
-import 'package:mon_site_cv/ui/common/widgets/createSlideRoute/create_slide_route.dart';
-import 'package:mon_site_cv/ui/common/widgets/route_button/route_button.dart';
-import 'package:mon_site_cv/ui/home_page/home_page.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-import '../../theme.dart';
-import '../parcours/view/parcours_view.dart';
-import '../portfolio/portfolio_view.dart';
-
 class ContactView extends StatefulWidget {
-  const ContactView({super.key});
+  final ScrollController scrollController;
+  const ContactView({super.key, required this.scrollController});
 
   @override
   _ContactViewState createState() => _ContactViewState();
@@ -39,8 +33,8 @@ class _ContactViewState extends State<ContactView> {
       } else {
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(
-              content:
-                  Text('Impossible d\'ouvrir l\'application de messagerie.')),
+            content: Text('Impossible d\'ouvrir l\'application de messagerie.'),
+          ),
         );
       }
     }
@@ -48,29 +42,36 @@ class _ContactViewState extends State<ContactView> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: theme.primaryColor,
-      body: Center(
-        child: SingleChildScrollView(
-          padding: const EdgeInsets.all(16.0),
+    final size = MediaQuery.of(context).size;
+
+    // Remove the Scaffold and just return the content
+    return SingleChildScrollView(
+      controller: widget.scrollController,
+      padding: const EdgeInsets.all(16.0),
+      child: Center(
+        child: ConstrainedBox(
+          constraints: const BoxConstraints(maxWidth: 800),
           child: Form(
             key: _formKey,
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
+                const SizedBox(height: 30),
                 Text(
-                  "Contactez-nous",
-                  style: titleStyleMedium(context),
+                  "Contactez-moi",
+                  style: Theme.of(context).textTheme.headlineMedium,
                 ),
                 const SizedBox(height: 20),
                 _buildTextField(
                   controller: _nameController,
                   label: 'Nom',
+                  width: size.width * 0.5,
                 ),
                 const SizedBox(height: 10),
                 _buildTextField(
                   controller: _surnameController,
                   label: 'Prénom',
+                  width: size.width * 0.5,
                 ),
                 const SizedBox(height: 10),
                 _buildTextField(
@@ -86,12 +87,14 @@ class _ContactViewState extends State<ContactView> {
                     }
                     return null;
                   },
+                  width: size.width * 0.5,
                 ),
                 const SizedBox(height: 10),
                 _buildTextField(
                   controller: _messageController,
                   label: 'Message',
                   maxLines: 5,
+                  width: size.width * 0.5,
                 ),
                 const SizedBox(height: 20),
                 ElevatedButton(
@@ -100,23 +103,20 @@ class _ContactViewState extends State<ContactView> {
                       const EdgeInsets.symmetric(vertical: 15, horizontal: 30),
                     ),
                     backgroundColor: WidgetStateProperty.resolveWith<Color>(
-                      (states) {
+                          (states) {
                         if (states.contains(WidgetState.pressed)) {
-                          return theme.primaryColor; // Fond quand pressé
+                          return Theme.of(context).colorScheme.secondary;
                         }
-                        return theme.primaryColor; // Fond par défaut
+                        return Theme.of(context).colorScheme.surface;
                       },
                     ),
-                    shape:
-                        WidgetStateProperty.resolveWith<RoundedRectangleBorder>(
-                      (states) {
+                    shape: WidgetStateProperty.resolveWith<RoundedRectangleBorder>(
+                          (states) {
                         return RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(30.0),
                           side: BorderSide(
-                            color: theme.colorScheme.primary,
-                            width: states.contains(WidgetState.pressed)
-                                ? 1.5
-                                : 1.5, // Bordure dynamique
+                            color: Theme.of(context).colorScheme.primary,
+                            width: 1.5,
                           ),
                         );
                       },
@@ -127,37 +127,20 @@ class _ContactViewState extends State<ContactView> {
                 ),
                 const SizedBox(height: 20),
                 const Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                   ClickableImage(imagePath: 'assets/images/facebook.webp',
-                   url: 'https://www.facebook.com/ludowebfreelance/',
-                   ),
-                    const SizedBox(width: 35,),
-                    ClickableImage(imagePath: 'assets/images/whatsapp.png',
-                    url: 'https://wa.me/33638845768',)
-                  ],
-
-                ),
-                const SizedBox(height: 25,),
-                const Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    RouteButton(
-                      text: "Mon parcours",
-                      destinationPage: ParcoursView(),
-                      transitionBuilder: slideFromRight,
+                    ClickableImage(
+                      imagePath: 'assets/images/facebook.webp',
+                      url: 'https://www.facebook.com/ludowebfreelance/',
                     ),
-                    RouteButton(
-                      text: "Accueil",
-                      destinationPage: HomePage(),
-                      transitionBuilder: slideFromBottom,
-                    ),
-                    RouteButton(
-                      text: "Portfolio",
-                      destinationPage: PortfolioView(),
-                      transitionBuilder: slideFromLeft,
+                    SizedBox(width: 35),
+                    ClickableImage(
+                      imagePath: 'assets/images/whatsapp.png',
+                      url: 'https://wa.me/33638845768',
                     ),
                   ],
                 ),
+                const SizedBox(height: 40),
               ],
             ),
           ),
@@ -166,63 +149,55 @@ class _ContactViewState extends State<ContactView> {
     );
   }
 
+// Rest of the code remains the same...
+
   Widget _buildTextField({
     required TextEditingController controller,
     required String label,
     TextInputType keyboardType = TextInputType.text,
     int maxLines = 1,
     String? Function(String?)? validator,
+    double? width,
   }) {
-    Size size = MediaQuery.sizeOf(context);
-    return Center(
-        child: SizedBox(
-            width: size.width *
-                0.5, // Largeur personnalisée (ajuste selon tes besoins)
-            child: TextFormField(
-              controller: controller,
-              keyboardType: keyboardType,
-              maxLines: maxLines,
-              style: TextStyle(
-                  color: Theme.of(context)
-                      .colorScheme
-                      .primary), // Texte de la couleur primaire
-              decoration: InputDecoration(
-                labelText: label,
-                labelStyle: TextStyle(
-                    color: Theme.of(context)
-                        .colorScheme
-                        .primary), // Label de la couleur primaire
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(15.0),
-                  borderSide: BorderSide(
-                      color: Theme.of(context)
-                          .colorScheme
-                          .primary), // Bordure initiale
-                ),
-                enabledBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(15.0),
-                  borderSide: BorderSide(
-                      color: Theme.of(context)
-                          .colorScheme
-                          .primary), // Bordure activée
-                ),
-                focusedBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(15.0),
-                  borderSide: BorderSide(
-                      color: Theme.of(context).colorScheme.primary,
-                      width: 2.0), // Bordure quand le champ est focus
-                ),
-                filled: true,
-                fillColor: theme.primaryColor, // Fond du champ
-              ),
-              validator: validator ??
-                  (value) {
-                    if (value == null || value.isEmpty) {
-                      return 'Veuillez entrer votre $label';
-                    }
-                    return null;
-                  },
-            )));
+    return SizedBox(
+      width: width,
+      child: TextFormField(
+        controller: controller,
+        keyboardType: keyboardType,
+        maxLines: maxLines,
+        style: TextStyle(
+          color: Theme.of(context).colorScheme.primary,
+        ),
+        decoration: InputDecoration(
+          labelText: label,
+          labelStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(15.0),
+            borderSide: BorderSide(color: Theme.of(context).colorScheme.primary),
+          ),
+          enabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(15.0),
+            borderSide: BorderSide(color: Theme.of(context).colorScheme.primary),
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(15.0),
+            borderSide: BorderSide(
+              color: Theme.of(context).colorScheme.primary,
+              width: 2.0,
+            ),
+          ),
+          filled: true,
+          fillColor: Theme.of(context).colorScheme.primary.withOpacity(0.05),
+        ),
+        validator: validator ??
+                (value) {
+              if (value == null || value.isEmpty) {
+                return 'Veuillez entrer votre $label';
+              }
+              return null;
+            },
+      ),
+    );
   }
 
   @override

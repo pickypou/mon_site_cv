@@ -10,14 +10,13 @@ class ClickableImage extends StatelessWidget {
   final double height;
 
   const ClickableImage({
-    Key? key,
+    super.key,
     required this.imagePath,
     this.route,
     this.url,
     this.width = 75,
     this.height = 75,
-  }) : assert(route != null || url != null, 'Vous devez fournir soit une route soit une URL.'),
-        super(key: key);
+  }) : assert(route != null || url != null, 'Vous devez fournir soit une route soit une URL.');
 
   @override
   Widget build(BuildContext context) {

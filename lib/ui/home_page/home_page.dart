@@ -1,208 +1,125 @@
 import 'package:flutter/material.dart';
-import 'package:mon_site_cv/ui/common/widgets/createSlideRoute/create_slide_route.dart';
-import 'package:mon_site_cv/ui/common/widgets/image_profile/image_profile.dart';
-import 'package:mon_site_cv/ui/common/widgets/route_button/route_button.dart';
-import 'package:mon_site_cv/ui/contact/contact_view.dart';
-import 'package:mon_site_cv/ui/parcours/view/parcours_view.dart';
-import 'package:mon_site_cv/ui/portfolio/portfolio_view.dart';
-import 'package:web/web.dart' as web;
-
-import '../../theme.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+  final ScrollController scrollController;
+
+  const HomePage({
+    super.key,
+    required this.scrollController,
+  });
 
   @override
   State<HomePage> createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> {
+  double _scrollOffset = 0;
+
   @override
   void initState() {
     super.initState();
-    injectH1Tag(); // Appel SEO
+    widget.scrollController.addListener(_updateScrollOffset);
   }
 
-  void injectH1Tag() {
-    // Vérifie si le h1 est déjà là
-    final existing = web.document.getElementById('seo-title');
-    if (existing != null) return;
-
-    final h1 = web.document.createElement('h1');
-    h1.setAttribute('id', 'seo-title');
-    h1.textContent = 'Ludovic Spysschaert - Développeur web & mobile';
-    h1.setAttribute('style', 'display: none'); // invisible à l’écran
-
-    web.document.body?.append(h1);
+  @override
+  void dispose() {
+    widget.scrollController.removeListener(_updateScrollOffset);
+    super.dispose();
   }
 
+  void _updateScrollOffset() {
+    setState(() {
+      _scrollOffset = widget.scrollController.offset;
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
-    final screenWidth = MediaQuery.sizeOf(context);
-    final screenHeight = MediaQuery.sizeOf(context);
-    final size = MediaQuery.sizeOf(context);
+    final screenWidth = MediaQuery.of(context).size.width;
+    final isMobile = screenWidth < 600;
 
-    if (size.width < 750) {
-      return Scaffold(
-        body: Container(
-          width: screenWidth.width,
-          height: screenHeight.height,
-          color: theme.primaryColor, // Fond d'écran de couleur
-          child: Column(
-            children: [
-              // Partie du texte
-              Padding(
-                padding: const EdgeInsets.fromLTRB(15, 85, 15, 55),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Text('SPYSSCHAERT', style: titleStyleMedium(context)),
-                    Text('Ludovic', style: titleStyleMedium(context)),
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text('Développeur web',
-                            style: titleStyleMedium(context)),
-                        Text('& web mobile', style: titleStyleMedium(context)),
-                        const SizedBox(
-                          height: 45,
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.fromLTRB(0, 0, 0, 70),
-                          child: SizedBox(
-                            width: screenWidth.width,
-                            child: const Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceAround,
-                              children: [
-                                RouteButton(
-                                  text: "Mon parcours",
-                                  destinationPage: ParcoursView(),
-                                  transitionBuilder: slideFromRight,
-                                ),
-                                RouteButton(
-                                  text: "Portfolio",
-                                  destinationPage: PortfolioView(),
-                                  transitionBuilder: slideFromLeft,
-                                ),
-                                RouteButton(
-                                  text: "Contact",
-                                  destinationPage: ContactView(),
-                                  transitionBuilder: slideFromBottom,
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
+    return SizedBox(
+      height: MediaQuery.of(context).size.height,
+      width: double.infinity,
+      child: Stack(
+        children: [
+          // Texte en fond
+          Positioned(
+            top: MediaQuery.of(context).size.height * 0.2,
+            left: 0,
+            right: 0,
+            child: Opacity(
+              opacity: (_scrollOffset < 300) ? 1 - (_scrollOffset / 300) : 0,
+              child: Text(
+                "Développeur web et web mobile",
+                style: Theme.of(context).textTheme.headlineMedium?.copyWith(
+                  fontWeight: FontWeight.bold,
+                  color: Colors.grey.shade500,
                 ),
+                textAlign: TextAlign.center,
               ),
-              // Espace flexible qui pousse l'image vers le bas
 
-              const Expanded(
-                child: ImageProfile(),
-              ),
-            ],
+            ),
           ),
-        ),
-      );
-    } else {
-      return Container(
-          width: size.width,
-          height: size.height,
-          color: theme.primaryColor,
-          child: Column(children: [
-            // Première partie : Deux colonnes alignées en hauteur
-            Expanded(
-              flex: 2,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  // Colonne gauche
-                  Container(
-                    padding: const EdgeInsets.fromLTRB(20, 20, 0, 20),
-                    width: size.width * 0.4,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text('SPYSSCHAERT', style: titleStyleMedium(context)),
-                        Text('Ludovic', style: titleStyleMedium(context)),
-                      ],
-                    ),
-                  ),
 
-                  // Colonne droite
-                  Container(
-                    padding: const EdgeInsets.fromLTRB(0, 20, 20, 20),
-                    width: size.width * 0.5,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          'Développeur web \n & web mobile',
-                          style: titleStyleMedium(context),
-                          textAlign: TextAlign.center,
-                        ),
-                      ],
+          // Contenu principal
+          Padding(
+            padding: const EdgeInsets.only(top: 75),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                // Nom
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                  child: Text(
+                    "Ludovic SPYSSCHAERT",
+                    textAlign: TextAlign.center,
+                    style: Theme.of(context).textTheme.headlineLarge?.copyWith(
+                      fontWeight: FontWeight.bold,
                     ),
                   ),
-                ],
-              ),
+                ),
+                const SizedBox(height: 35,),
+
+                SizedBox(height: MediaQuery.of(context).size.height * 0.25),
+
+                // Avatar + logo
+                Center(
+                  child: Wrap(
+                    alignment: WrapAlignment.center,
+                    spacing: 50,
+                    runSpacing: 20,
+                    children: [
+                      const CircleAvatar(
+                        radius: 95,
+                        backgroundImage: AssetImage("assets/images/ludo.png"),
+                      ),
+                      Image.asset(
+                        "assets/images/flutter-logo.png",
+                        width: isMobile ? 120 : 200,
+                      ),
+                    ],
+                  ),
+                ),
+
+                const SizedBox(height: 35),
+
+                // Spécialisation
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                  child: Text(
+                    "Spécialisé en développement flutter web et mobile",
+                    textAlign: TextAlign.center,
+                    style: Theme.of(context).textTheme.headlineSmall?.copyWith(
+                      color: Theme.of(context).colorScheme.primary,
+                    ),
+                  ),
+                ),
+              ],
             ),
-
-            // Deuxième partie : Section centrale avec image et boutons
-            Expanded(
-              flex: 3,
-              child: Stack(
-                alignment: Alignment.bottomCenter,
-                children: [
-                  // Image centrale (touche le bas)
-                  Positioned(
-                    bottom: 0,
-                    child: Container(
-                      width: size.width * 0.4,
-                      height: size.height * 0.5,
-                      child: const ImageProfile(),
-                    ),
-                  ),
-
-                  // Bouton à gauche (décalé vers la gauche)
-                  const Positioned(
-                    left: 180, // Décalage supplémentaire
-                    child: RouteButton(
-                      text: "Portfolio",
-                      destinationPage: PortfolioView(),
-                      transitionBuilder: slideFromRight,
-                    ),
-                  ),
-
-                  // Bouton en haut (décalé vers le haut)
-                  const Positioned(
-                    top: 10, // Décalage supplémentaire vers le haut
-                    child: RouteButton(
-                      text: "Mon parcours",
-                      destinationPage: ParcoursView(),
-                      transitionBuilder: slideFromLeft,
-                    ),
-                  ),
-
-                  // Bouton à droite
-                  const Positioned(
-                    right: 230,
-                    child: RouteButton(
-                      text: "Contact",
-                      destinationPage: ContactView(),
-                      transitionBuilder: slideFromBottom,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ]));
-    }
+          ),
+        ],
+      ),
+    );
   }
 }

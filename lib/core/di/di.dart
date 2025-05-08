@@ -11,5 +11,5 @@ final GetIt getIt = GetIt.instance;
   asExtension: false,
 )
 Future<void> configureDependencies() async {
-  await init(getIt);
+   init(getIt);
 }

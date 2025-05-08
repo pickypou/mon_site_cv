@@ -7,16 +7,15 @@ final ThemeData appTheme = ThemeData(
   primaryColor: AppColors.slate,
   colorScheme: const ColorScheme.light(
     primary: AppColors.slate,
-    onPrimary: Colors.white,
+    onPrimary: AppColors.slate,
     secondary: AppColors.sage,
-    onSecondary: Colors.white,
+    onSecondary: AppColors.peach,
     error: Colors.red,
     onError: Colors.white,
-    background: AppColors.peach,
-    onBackground: AppColors.slate,
-    surface: AppColors.white,
+    surface: AppColors.olive,
     onSurface: AppColors.black,
   ),
+
   textTheme: const TextTheme(
     headlineLarge: TextStyle(
       fontFamily: 'Roboto',
