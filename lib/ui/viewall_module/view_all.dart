@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:mon_site_cv/ui/contact/contact_view.dart';
-import 'package:mon_site_cv/ui/parcours/view/parcours_view.dart';
-import 'package:mon_site_cv/ui/portfolio/portfolio_view.dart';
 import 'package:mon_site_cv/ui/raison_flutter/raison_flutter.dart';
-import 'package:mon_site_cv/ui/view_web/view_web.dart';
 
 import '../common/widgets/custom_appbar.dart';
 import '../common/widgets/footer.dart';
 import '../home_page/home_page.dart';
+import '../parcours/view/parcours_view.dart';
+import '../portfolio/portfolio_view.dart';
+import '../view_web/view_web.dart';
 
 class ViewAll extends StatelessWidget {
   final GlobalKey accueil = GlobalKey();
@@ -16,12 +16,9 @@ class ViewAll extends StatelessWidget {
   final GlobalKey viewWeb = GlobalKey();
   final GlobalKey flutter = GlobalKey();
   final GlobalKey contact = GlobalKey();
-  final ScrollController _scrollControllerAccueil = ScrollController();
-  final ScrollController _scrollControllerPortfolio = ScrollController();
-  final ScrollController _scrollControllerParcours = ScrollController();
-  final ScrollController _scrollControllerFlutter = ScrollController();
-  final ScrollController _scrollControllerViewWeb = ScrollController();
-  final ScrollController _scrollControllerContact = ScrollController();
+
+  // Utilisez un seul ScrollController pour la vue principale
+  final ScrollController _scrollController = ScrollController();
 
   ViewAll({super.key});
 
@@ -37,10 +34,10 @@ class ViewAll extends StatelessWidget {
       case 'parcours':
         key = parcours;
         break;
-      case 'viewWeb':
+      case 'viewWeb':  // Assurez-vous que cela correspond à ce que vous utilisez dans l'AppBar
         key = viewWeb;
         break;
-      case 'flutter':
+      case 'flutter':  // Assurez-vous que cela correspond à ce que vous utilisez dans l'AppBar
         key = flutter;
         break;
       case 'contact':
@@ -75,47 +72,47 @@ class ViewAll extends StatelessWidget {
         viewWeb: viewWeb,
         flutter: flutter,
         contact: contact,
-      )
+
+     )
           : null,
       body: SingleChildScrollView(
-        controller: _scrollControllerAccueil,
+        controller: _scrollController,  // Un seul controller ici
         child: Column(
           children: [
             HomePage(
               key: accueil,
-              scrollController: _scrollControllerAccueil,
+              // Ne passez PAS de scrollController ici
             ),
             const SizedBox(height: 35),
             Image.asset("assets/images/divider.png"),
             const SizedBox(height: 35),
             PortfolioSection(
               key: portfolio,
-              scrollController: _scrollControllerPortfolio,
+              // Ne passez PAS de scrollController ici
             ),
             const SizedBox(height: 35),
             Image.asset("assets/images/divider.png"),
             const SizedBox(height: 35),
             MonParcoursSection(
               key: parcours,
-              scrollController: _scrollControllerParcours,
+              // Ne passez PAS de scrollController ici
             ),
             const SizedBox(height: 35),
             Image.asset("assets/images/divider.png"),
             const SizedBox(height: 35),
-            ViewWeb(key: viewWeb,
-                scrollController: _scrollControllerViewWeb
+            ViewWeb(
+              key: viewWeb,
+              // Ne passez PAS de scrollController ici
             ),
             const SizedBox(height: 35),
             Image.asset("assets/images/divider.png"),
             const SizedBox(height: 35),
-            RaisonFlutter(key: flutter,
-                scrollController: _scrollControllerFlutter),
+             RaisonFlutter(key: flutter,),
             const SizedBox(height: 35),
             Image.asset("assets/images/divider.png"),
             const SizedBox(height: 35),
-            ContactView(key: contact,
-                scrollController: _scrollControllerContact),
-
+            ContactView(key:contact),
+            const SizedBox(height: 35),
             const Footer(),
           ],
         ),
@@ -123,4 +120,3 @@ class ViewAll extends StatelessWidget {
     );
   }
 }
-

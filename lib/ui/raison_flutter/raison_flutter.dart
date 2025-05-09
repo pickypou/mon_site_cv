@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 
 class RaisonFlutter extends StatelessWidget {
-  final ScrollController scrollController;
 
   const RaisonFlutter({
     super.key,
-    required this.scrollController,
+
   });
 
   @override

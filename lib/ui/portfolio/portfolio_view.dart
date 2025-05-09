@@ -4,7 +4,7 @@ import '../common/widgets/clickable_image.dart';
 import 'data/portfolio_data.dart';
 
 class PortfolioSection extends StatefulWidget {
-  const PortfolioSection({super.key, required ScrollController scrollController});
+  const PortfolioSection({super.key});
 
   @override
   State<PortfolioSection> createState() => _PortfolioSectionState();
@@ -16,11 +16,10 @@ class _PortfolioSectionState extends State<PortfolioSection> with SingleTickerPr
   @override
   void initState() {
     super.initState();
-
     _controller = AnimationController(
       vsync: this,
       duration: const Duration(milliseconds: 1000),
-    )..forward(); // démarre l’animation
+    )..forward();
   }
 
   @override
@@ -70,15 +69,15 @@ class _PortfolioSectionState extends State<PortfolioSection> with SingleTickerPr
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-      Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16.0),
-          child:
-          Text(
-            "Mes Projets", textAlign: TextAlign.center,
-            style: Theme.of(context).textTheme.headlineMedium?.copyWith(),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16.0),
+            child: Text(
+              "Mes Projets",
+              textAlign: TextAlign.center,
+              style: Theme.of(context).textTheme.headlineMedium,
+            ),
           ),
-      ),
-          const SizedBox(height: 25,),
+          const SizedBox(height: 25),
           LayoutBuilder(
             builder: (context, constraints) {
               final isWide = constraints.maxWidth > 1000;

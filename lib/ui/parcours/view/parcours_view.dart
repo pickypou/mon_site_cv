@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 class MonParcoursSection extends StatelessWidget {
-  final ScrollController scrollController;
-  const MonParcoursSection({super.key, required this.scrollController});
+
+  const MonParcoursSection({super.key,});
 
   @override
   Widget build(BuildContext context) {
@@ -43,7 +43,6 @@ class MonParcoursSection extends StatelessWidget {
     ];
 
     return SingleChildScrollView(
-      controller: scrollController,
       padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 24),
       child: Center(
         child: ConstrainedBox(

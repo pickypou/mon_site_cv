@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:mon_site_cv/ui/common/widgets/clickable_image.dart';
-import 'package:url_launcher/url_launcher.dart';
+import 'package:cloud_functions/cloud_functions.dart';
 
 class ContactView extends StatefulWidget {
-  final ScrollController scrollController;
-  const ContactView({super.key, required this.scrollController});
+  const ContactView({super.key});
 
   @override
   _ContactViewState createState() => _ContactViewState();
@@ -17,23 +16,63 @@ class _ContactViewState extends State<ContactView> {
   final _emailController = TextEditingController();
   final _messageController = TextEditingController();
 
-  Future<void> _sendEmail() async {
-    if (_formKey.currentState!.validate()) {
-      final Uri emailUri = Uri(
-        scheme: 'mailto',
-        path: 'spysschaert.ludo@gmail.com',
-        query: 'subject=Demande de contact&body=Nom: ${_nameController.text}\n'
-            'Prénom: ${_surnameController.text}\n'
-            'Email: ${_emailController.text}\n\n'
-            'Message: ${_messageController.text}',
-      );
+  bool _isSending = false;
 
-      if (await canLaunchUrl(emailUri)) {
-        await launchUrl(emailUri);
-      } else {
+  Future<void> _sendEmailViaFirebase() async {
+    if (_formKey.currentState!.validate()) {
+      setState(() {
+        _isSending = true;
+      });
+
+      try {
+        debugPrint('Nom: ${_nameController.text}, Prénom: ${_surnameController.text}, Email: ${_emailController.text}, Message: ${_messageController.text}');
+
+        // Appel de la fonction Firebase
+        final functions = FirebaseFunctions.instance;
+        final result = await functions.httpsCallable('sendEmail').call({
+          'name': _nameController.text,
+          'surname': _surnameController.text,
+          'email': _emailController.text,
+          'message': _messageController.text,
+        });
+
+        setState(() {
+          _isSending = false;
+        });
+
+        if (result.data['success'] == true) {
+          // Email envoyé avec succès
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(
+              content: Text('Votre message a été envoyé avec succès!'),
+              backgroundColor: Colors.green,
+            ),
+          );
+
+          // Réinitialiser le formulaire
+          _formKey.currentState!.reset();
+          _nameController.clear();
+          _surnameController.clear();
+          _emailController.clear();
+          _messageController.clear();
+        } else {
+          // Erreur lors de l'envoi
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(
+              content: Text('Erreur lors de l\'envoi du message.'),
+              backgroundColor: Colors.red,
+            ),
+          );
+        }
+      } catch (e) {
+        setState(() {
+          _isSending = false;
+        });
+
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
-            content: Text('Impossible d\'ouvrir l\'application de messagerie.'),
+          SnackBar(
+            content: Text('Erreur: $e'),
+            backgroundColor: Colors.red,
           ),
         );
       }
@@ -44,9 +83,7 @@ class _ContactViewState extends State<ContactView> {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
 
-    // Remove the Scaffold and just return the content
     return SingleChildScrollView(
-      controller: widget.scrollController,
       padding: const EdgeInsets.all(16.0),
       child: Center(
         child: ConstrainedBox(
@@ -122,8 +159,23 @@ class _ContactViewState extends State<ContactView> {
                       },
                     ),
                   ),
-                  onPressed: _sendEmail,
-                  child: const Text('Envoyer'),
+                  onPressed: _isSending ? null : _sendEmailViaFirebase,
+                  child: _isSending
+                      ? const Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      SizedBox(
+                        width: 20,
+                        height: 20,
+                        child: CircularProgressIndicator(
+                          strokeWidth: 2,
+                        ),
+                      ),
+                      SizedBox(width: 10),
+                      Text('Envoi en cours...'),
+                    ],
+                  )
+                      : const Text('Envoyer'),
                 ),
                 const SizedBox(height: 20),
                 const Row(
@@ -149,8 +201,7 @@ class _ContactViewState extends State<ContactView> {
     );
   }
 
-// Rest of the code remains the same...
-
+  // Le reste de votre code reste inchangé
   Widget _buildTextField({
     required TextEditingController controller,
     required String label,
@@ -159,6 +210,7 @@ class _ContactViewState extends State<ContactView> {
     String? Function(String?)? validator,
     double? width,
   }) {
+    // Votre code existant pour _buildTextField
     return SizedBox(
       width: width,
       child: TextFormField(
