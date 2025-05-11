@@ -1,54 +1,82 @@
 const functions = require("firebase-functions");
+const express = require("express");
 const nodemailer = require("nodemailer");
 const cors = require("cors")({origin: true});
+const app = express();
+const admin = require("firebase-admin");
 
-// Configurez votre transporteur d'email
+admin.initializeApp();
+
+// Utilisez CORS middleware
+app.use(cors);
+
+
+const gmailConfig = {
+  user: process.env.GMAIL_USER || "spysschaert.ludo@gmail.com",
+  pass: process.env.GMAIL_PASS || "whvm fjtc ilmt bzkc",
+};
+
+// Transporteur pour l'envoi d'emails
 const transporter = nodemailer.createTransport({
   service: "gmail",
   auth: {
-    user: "spysschaert.ludo@gmail.com",
-    pass: "Ludo03121971", // ⚠️ À sécuriser avec des variables d'env ensuite
+    user: gmailConfig.user,
+    pass: gmailConfig.pass,
   },
 });
 
-// Fonction HTTP pour envoyer un email
-exports.sendEmail = functions.https.onRequest((req, res) => {
-  cors(req, res, async () => {
-    if (req.method !== "POST") {
-      return res.status(405).send({error: "Méthode non autorisée"});
+// Fonction API (Express)
+exports.api = functions.https.onRequest((req, res) => {
+  const app = express();
+
+  // Route simple
+  app.get("/", (req, res) => {
+    res.send("Service running");
+  });
+
+  // Important: Faire passer la requête à l'application Express
+  return app(req, res);
+});
+
+// Fonction callable depuis Flutter
+exports.sendEmail = functions.https.onCall(async (data, context) => {
+  try {
+    if (!data.name || !data.surname || !data.email || !data.message) {
+      throw new functions.https.HttpsError(
+          "invalid-argument",
+          "Tous les champs sont obligatoires",
+      );
     }
 
-    const {name, surname, email, message} = req.body;
-
-    if (!name || !surname || !email || !message) {
-      return res.status(400).send({error: "Données manquantes"});
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(data.email)) {
+      throw new functions.https.HttpsError("invalid-argument",
+          "Email invalide");
     }
 
     const mailOptions = {
-      from: `"Formulaire de contact" <spysschaert.ludo@gmail.com>`,
-      to: "spysschaert.ludo@gmail.com",
-      replyTo: email,
-      subject: "Nouveau message de contact",
-      text: `Nom: ${name}\nPrénom: ${surname}\nEmail:
-      ${email}\n\nMessage: ${message}`,
-      html: `
-        <h2>Nouveau message de contact</h2>
-        <p><strong>Nom:</strong> ${name}</p>
-        <p><strong>Prénom:</strong> ${surname}</p>
-        <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Message:</strong></p>
-        <p>${message.replace(/\n/g, "<br>")}</p>
-      `,
+      from: `"Formulaire de contact" <${gmailConfig.user}>`,
+      to: gmailConfig.user,
+      replyTo: data.email,
+      subject: `Nouveau message de ${data.name} ${data.surname}`,
+      text: `Nom: ${data.name}\nPrénom: ${data.surname}\nEmail:
+    ${data.email}\nMessage:\n${data.message}`,
+      html: `<h2>Nouveau message</h2>
+           <p><strong>Nom:</strong> ${data.name}</p>
+           <p><strong>Prénom:</strong> ${data.surname}</p>
+           <p><strong>Email:</strong> <a href="mailto:${data.email}">
+           ${data.email}</a></p>
+           <p><strong>Message:</strong></p>
+           <p>${data.message.replace(/\n/g, "<br>")}</p>`,
     };
 
-    try {
-      await transporter.sendMail(mailOptions);
-      console.log("Email envoyé avec succès");
-      res.status(200).send({success: true});
-    } catch (error) {
-      console.error("Erreur lors de l'envoi de l'email:", error);
-      res.status(500).send({error:
-       "Erreur lors de l'envoi de l'email", detail: error.message});
-    }
-  });
+
+    await transporter.sendMail(mailOptions);
+    return {success: true, message: "Email envoyé avec succès"};
+  } catch (error) {
+    console.error("Erreur d'envoi d'email:", error);
+    throw new functions.https.HttpsError("internal", "Erreur lors de l'envoi", {
+      detail: error.message,
+    });
+  }
 });

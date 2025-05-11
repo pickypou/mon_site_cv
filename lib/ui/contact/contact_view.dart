@@ -26,7 +26,7 @@ class _ContactViewState extends State<ContactView> {
 
       try {
         debugPrint('Nom: ${_nameController.text}, Prénom: ${_surnameController.text}, Email: ${_emailController.text}, Message: ${_messageController.text}');
-
+        debugPrint('Tentative d\'appel à la fonction Firebase sendEmail');
         // Appel de la fonction Firebase
         final functions = FirebaseFunctions.instance;
         final result = await functions.httpsCallable('sendEmail').call({
@@ -35,6 +35,7 @@ class _ContactViewState extends State<ContactView> {
           'email': _emailController.text,
           'message': _messageController.text,
         });
+        debugPrint('Réponse de la fonction: ${result.data}');
 
         setState(() {
           _isSending = false;
