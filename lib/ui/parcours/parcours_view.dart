@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mon_site_cv/theme.dart';
 
 class MonParcoursSection extends StatelessWidget {
 
@@ -54,12 +55,10 @@ class MonParcoursSection extends StatelessWidget {
                 child: Text(
                   "Mon Parcours",
                   textAlign: TextAlign.center,
-                  style: Theme.of(context).textTheme.headlineMedium?.copyWith(
-                    fontWeight: FontWeight.bold,
-                    color: Theme.of(context).colorScheme.primary,
+                  style: titleStyleLarge(context)
                   ),
                 ),
-              ),
+              
               const SizedBox(height: 20),
               ...parcours.map((item) => _ParcoursCard(item: item)),
             ],
@@ -92,15 +91,14 @@ class _ParcoursCard extends StatelessWidget {
         children: [
           Text(
             item.titre,
-            style: Theme.of(context).textTheme.titleMedium?.copyWith(
-              fontWeight: FontWeight.bold,
+            style: titleStyleSmall(context)
             ),
-          ),
+
           const SizedBox(height: 8),
           Text(
             item.description,
             textAlign: TextAlign.start,
-            style: Theme.of(context).textTheme.bodyMedium,
+            style: textStylePara(context),
           ),
         ],
       ),

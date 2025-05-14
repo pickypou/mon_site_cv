@@ -5,7 +5,7 @@ import 'package:mon_site_cv/ui/raison_flutter/raison_flutter.dart';
 import '../common/widgets/custom_appbar.dart';
 import '../common/widgets/footer.dart';
 import '../home_page/home_page.dart';
-import '../parcours/view/parcours_view.dart';
+import '../parcours/parcours_view.dart';
 import '../portfolio/portfolio_view.dart';
 import '../view_web/view_web.dart';
 

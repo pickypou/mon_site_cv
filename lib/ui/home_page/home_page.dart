@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+import '../../theme.dart';
+
+
 class HomePage extends StatefulWidget {
   final ScrollController? scrollController;
 
@@ -39,8 +42,6 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    final screenWidth = MediaQuery.of(context).size.width;
-    final isMobile = screenWidth < 600;
 
     return SingleChildScrollView(
       controller: widget.scrollController,
@@ -52,19 +53,17 @@ class _HomePageState extends State<HomePage> {
             Text(
               "Ludovic SPYSSCHAERT",
               textAlign: TextAlign.center,
-              style: Theme.of(context).textTheme.headlineLarge?.copyWith(
-                  fontWeight: FontWeight.bold,
+              style: titleStyleLarge(context)
               ),
-            ),
             const SizedBox(height: 40),
 
             Text(
               "Développeur web et web mobile",
               textAlign: TextAlign.center,
-              style: Theme.of(context).textTheme.headlineLarge?.copyWith(
-                fontWeight: FontWeight.bold,
+              style: titleStyleLarge(context)
+
               ),
-            ),
+
             const SizedBox(height: 50),
 
             const Wrap(
@@ -85,10 +84,9 @@ class _HomePageState extends State<HomePage> {
             Text(
               "Spécialisé en développement flutter web et mobile",
               textAlign: TextAlign.center,
-              style: Theme.of(context).textTheme.headlineSmall?.copyWith(
-                color: Theme.of(context).colorScheme.primary,
+              style: titleStyleMedium(context),
+
               ),
-            ),
           ],
         ),
       ),

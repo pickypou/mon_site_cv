@@ -37,7 +37,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      backgroundColor: Theme.of(context).colorScheme.secondary,
+      backgroundColor: Theme.of(context).colorScheme.onPrimary,
       title: Text(
         title,
         textAlign: TextAlign.center,
@@ -65,7 +65,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
         child: Center(
           child: Text(
             label,
-            style: TextStyle(fontSize: 16.0, color: Theme.of(context).colorScheme.onSecondary),
+            style: TextStyle(fontSize: 16.0, color: Theme.of(context).colorScheme.surface),
           ),
         ),
       ),
@@ -104,48 +104,48 @@ class CustomDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Drawer(
-      backgroundColor: Theme.of(context).colorScheme.secondary,
+      backgroundColor: Theme.of(context).colorScheme.onPrimary,
       elevation: 0,
       child: ListView(
         padding: EdgeInsets.zero,
         children: [
           ListTile(
-            title: Text('Accueil', style: TextStyle(color: Theme.of(context).colorScheme.onSecondary)),
+            title: Text('Accueil', style: TextStyle(color: Theme.of(context).colorScheme.surface)),
             onTap: () {
               _scrollToSection(accueil);
               Navigator.pop(context);
             },
           ),
           ListTile(
-            title: Text('Mes réalisation', style: TextStyle(color: Theme.of(context).colorScheme.onSecondary)),
+            title: Text('Mes réalisation', style: TextStyle(color: Theme.of(context).colorScheme.surface)),
             onTap: () {
               _scrollToSection(portfolio);
               Navigator.pop(context);
             },
           ),
           ListTile(
-            title: Text('Mon parcours', style: TextStyle(color: Theme.of(context).colorScheme.onSecondary)),
+            title: Text('Mon parcours', style: TextStyle(color: Theme.of(context).colorScheme.surface)),
             onTap: () {
               _scrollToSection(parcours);
               Navigator.pop(context);
             },
           ),
           ListTile(
-            title: Text('Etre vu sur le web', style: TextStyle(color: Theme.of(context).colorScheme.onSecondary)),
+            title: Text('Etre vu sur le web', style: TextStyle(color: Theme.of(context).colorScheme.surface)),
             onTap: () {
               _scrollToSection(viewWeb);
               Navigator.pop(context);
             },
           ),
           ListTile(
-            title: Text('Ma spécialisation', style: TextStyle(color: Theme.of(context).colorScheme.onSecondary)),
+            title: Text('Ma spécialisation', style: TextStyle(color: Theme.of(context).colorScheme.surface)),
             onTap: () {
               _scrollToSection(flutter);
               Navigator.pop(context);
             },
           ),
           ListTile(
-            title: Text('Contact', style: TextStyle(color: Theme.of(context).colorScheme.onSecondary)),
+            title: Text('Contact', style: TextStyle(color: Theme.of(context).colorScheme.surface)),
             onTap: () {
               _scrollToSection(contact);
               Navigator.pop(context);

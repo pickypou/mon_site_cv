@@ -1,7 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:mon_site_cv/core/theme/app_theme.dart';
+import 'package:mon_site_cv/theme.dart';
 import 'package:path_provider/path_provider.dart';
 
 
@@ -42,7 +42,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp.router(
       debugShowCheckedModeBanner: false,
       title: 'Ludovic Spysschaert',
-      theme: appTheme,
+      theme: theme,
      routerConfig: appRouterConfig.router,
     );
   }

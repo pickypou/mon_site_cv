@@ -14,8 +14,8 @@ class ClickableImage extends StatelessWidget {
     required this.imagePath,
     this.route,
     this.url,
-    this.width = 75,
-    this.height = 75,
+    this.width = 50,
+    this.height = 50,
   }) : assert(route != null || url != null, 'Vous devez fournir soit une route soit une URL.');
 
   @override

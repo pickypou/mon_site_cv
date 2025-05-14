@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mon_site_cv/theme.dart';
 
 import '../common/widgets/clickable_image.dart';
 import 'data/portfolio_data.dart';
@@ -47,7 +48,7 @@ class _PortfolioSectionState extends State<PortfolioSection> with SingleTickerPr
                 imagePath: project.imagePath,
                 url: project.url,
                 width: itemWidth,
-                height: itemWidth * 0.6,
+                height: itemWidth * 0.4,
               ),
               const SizedBox(height: 8),
               Text(
@@ -64,17 +65,20 @@ class _PortfolioSectionState extends State<PortfolioSection> with SingleTickerPr
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 48.0, horizontal: 16.0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16.0),
+    return SingleChildScrollView(
+        padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 24),
+        child: Center(
+        child: ConstrainedBox(
+        constraints: const BoxConstraints(maxWidth: 900),
+    child: Column(
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: [
+    Center(
+
             child: Text(
-              "Mes Projets",
+              "Mes réalisations",
               textAlign: TextAlign.center,
-              style: Theme.of(context).textTheme.headlineMedium,
+              style: titleStyleLarge(context)
             ),
           ),
           const SizedBox(height: 25),
@@ -96,6 +100,8 @@ class _PortfolioSectionState extends State<PortfolioSection> with SingleTickerPr
           ),
         ],
       ),
+    )
+        )
     );
   }
 }

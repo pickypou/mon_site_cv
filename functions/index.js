@@ -1,3 +1,4 @@
+const functions = require("firebase-functions");
 const {onCall} = require("firebase-functions/v2/https");
 const {onRequest} = require("firebase-functions/v2/https");
 const {logger} = require("firebase-functions");
@@ -7,16 +8,10 @@ const cors = require("cors")({origin: true});
 
 admin.initializeApp();
 
-// Configuration avec fallback si les variables ne sont pas définies
-const gmailConfig = process.env.GMAIL_USER && process.env.GMAIL_PASS ?
-  {
-    user: process.env.GMAIL_USER,
-    pass: process.env.GMAIL_PASS,
-  } :
-  {
-    user: "spysschaert.ludo@gmail.com",
-    pass: "whvm fjtc ilmt bzkc",
-  };
+const gmailConfig = {
+  user: functions.config().gmail.user,
+  pass: functions.config().gmail.pass,
+};
 
 // Configuration du transporteur
 const transporter = nodemailer.createTransport({
