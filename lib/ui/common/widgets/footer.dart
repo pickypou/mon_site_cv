@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
+
+import '../../../theme.dart';
 
 class Footer extends StatelessWidget {
   final double? fontSize;
@@ -6,85 +9,73 @@ class Footer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Obtenir la largeur de l'écran pour la responsivité
-    final screenWidth = MediaQuery.of(context).size.width;
-    final isSmallScreen = screenWidth < 600;
 
-    return Container(
-      constraints: BoxConstraints(
-        // Hauteur adaptative selon la taille d'écran
-        maxHeight: isSmallScreen ? 150 : 80,
-        minHeight: 56.0,
-      ),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Divider(color: Theme.of(context).colorScheme.primary, thickness: 1),
-          Expanded(
-            child: Padding(
-              // Padding adaptatif
-              padding: EdgeInsets.symmetric(
-                horizontal: isSmallScreen ? 16 : 45,
-                vertical: 10,
-              ),
-              // Choisir la disposition en fonction de la taille d'écran
-              child:
-              isSmallScreen
-                  ? _buildSmallScreenLayout(context)
-                  : _buildLargeScreenLayout(context),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-
-  // Disposition pour petits écrans
-  Widget _buildSmallScreenLayout(BuildContext context) {
     return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        // L'image est déjà dimensionnée dans le composant ClickableImage
-
-        Text(
-          "© 2025 Ludovic SPYSSCHAERT tous droits réservés",
-          style: Theme.of(context).textTheme.bodyLarge?.copyWith(),
-          textAlign: TextAlign.center,
+        Divider(
+          color: theme.colorScheme.secondary,
+          thickness: 1,
         ),
-        /*const SizedBox(height: 4),
-        Text(
-          "N° de Siret : 75073281000015",
-          style: textStyleTextAccueil(context),
-          textAlign: TextAlign.center,
-        ),*/
-      ],
-    );
-  }
+        Padding(
+            padding: const EdgeInsets.all(16.0),
+            child:Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween, // ← Ajoutez cette ligne
+              children: [
+                Flexible( // ← Enveloppez les Text/TextButton dans Flexible
+                  child: Text(
+                    "© 2025 Ludovic SPYSSCHAERT tous droits réservés",
+                    style: textStyleText(context),
+                    overflow: TextOverflow.ellipsis, // ← Optionnel pour éviter les débordements
+                  ),
+                ),
+                Flexible(
+                  child: Text("75073281000015", style: textStyleText(context),)
+                ),
+                // ↓ Ajoutez un SizedBox pour l'icône
+                SizedBox(
+                    width: 40, // ← Largeur garantie
+                    child: PopupMenuButton<String>(
+                      icon: const Icon(Icons.info_outline, color: Colors.black), // Icône noire visible
+                      color: Colors.white, // Fond du menu
+                      onSelected: (value) {
+                        if (value == 'mentions') {
+                          launchUrl(Uri.parse('/mentions-legales.html'));
+                        } else if (value == 'confidentialite') {
+                          launchUrl(Uri.parse('/confidentialite.html'));
+                        } else if (value == 'cookies') {
+                          launchUrl(Uri.parse('/cookies.html'));
+                        }
+                      },
+                      itemBuilder: (BuildContext context) => [
+                        const PopupMenuItem<String>(
+                          value: 'mentions',
+                          child: Text(
+                            'Mentions légales',
+                            style: TextStyle(color: Colors.black),
+                          ),
+                        ),
+                        const PopupMenuItem<String>(
+                          value: 'confidentialite',
+                          child: Text(
+                            'Politique de confidentialité',
+                            style: TextStyle(color: Colors.black),
+                          ),
+                        ),
+                        const PopupMenuItem<String>(
+                          value: 'cookies',
+                          child: Text(
+                            'Politique des cookies',
+                            style: TextStyle(color: Colors.black),
+                          ),
+                        ),
+                      ],
+                    )
 
-  // Disposition pour écrans moyens et grands
-  Widget _buildLargeScreenLayout(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      children: [
 
-        Flexible(
-          flex: 2,
-          child: Text(
-            "© 2025 Ludovic SPYSSCHAERT tous droits réservés",
-            style: Theme.of(context).textTheme.bodyLarge?.copyWith(),
-            textAlign: TextAlign.center,
-            overflow: TextOverflow.ellipsis,
-          ),
+                ),
+              ],
+            )
         ),
-/*Flexible(
-          flex: 1,
-          child: Text(
-            "N° de Siret : 75073281000015",
-            style: textStyleTextAccueil(context),
-            overflow: TextOverflow.ellipsis,
-          ),
-        ),*/
       ],
     );
   }
