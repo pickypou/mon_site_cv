@@ -7,4 +7,5 @@ final List<Project> projects = [
   Project("entrepreneur en bâtiemant ", "assets/images/greg.png", "https://gregorydescamp.fr/"),
   Project("associassion sportive ", "assets/images/judo_seclin.png", "https://judoseclin.fr/"),
   Project("associassion sportive ", "assets/images/mycs.png", "https://mycseclin.fr/"),
+  Project("Créations artisanales", "assets/images/feerique-petillantes.png", "https://feeriqueetpetillante.fr/")
 ];
