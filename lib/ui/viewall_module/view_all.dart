@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mon_site_cv/ui/contact/contact_view.dart';
 import 'package:mon_site_cv/ui/raison_flutter/raison_flutter.dart';
+import 'package:mon_site_cv/ui/tarifs_page/tarifs_page.dart';
 
 import '../common/widgets/custom_appbar.dart';
 import '../common/widgets/footer.dart';
@@ -15,6 +16,7 @@ class ViewAll extends StatelessWidget {
   final GlobalKey parcours = GlobalKey();
   final GlobalKey viewWeb = GlobalKey();
   final GlobalKey flutter = GlobalKey();
+  final GlobalKey tarifs = GlobalKey();
   final GlobalKey contact = GlobalKey();
 
   // Utilisez un seul ScrollController pour la vue principale
@@ -40,6 +42,10 @@ class ViewAll extends StatelessWidget {
       case 'flutter':  // Assurez-vous que cela correspond à ce que vous utilisez dans l'AppBar
         key = flutter;
         break;
+        case 'tarifs':
+          key = tarifs;
+          break;
+
       case 'contact':
         key = contact;
         break;
@@ -71,6 +77,7 @@ class ViewAll extends StatelessWidget {
         parcours: parcours,
         viewWeb: viewWeb,
         flutter: flutter,
+        tarifs: tarifs,
         contact: contact,
 
      )
@@ -108,6 +115,10 @@ class ViewAll extends StatelessWidget {
             Image.asset("assets/images/divider.png"),
             const SizedBox(height: 35),
              RaisonFlutter(key: flutter,),
+            const SizedBox(height: 35),
+            Image.asset("assets/images/divider.png"),
+            const SizedBox(height: 35),
+            TarifsPage(key: tarifs,),
             const SizedBox(height: 35),
             Image.asset("assets/images/divider.png"),
             const SizedBox(height: 35),

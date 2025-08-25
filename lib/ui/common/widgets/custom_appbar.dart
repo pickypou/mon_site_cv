@@ -51,6 +51,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
             _buildNavItem(context, 'Mon parcours', 'parcours'),
             _buildNavItem(context, 'Etre vu sur le web', 'viewWeb'),
             _buildNavItem(context, 'Ma spécialisation', 'flutter'),
+            _buildNavItem(context, 'Tarifs', 'tarifs'),
             _buildNavItem(context, 'Contact', 'contact'),
           ],
       ],
@@ -79,6 +80,7 @@ class CustomDrawer extends StatelessWidget {
   final GlobalKey parcours;
   final GlobalKey viewWeb;
   final GlobalKey flutter;
+  final GlobalKey tarifs;
   final GlobalKey contact;
 
   const CustomDrawer({
@@ -88,6 +90,7 @@ class CustomDrawer extends StatelessWidget {
     required this.parcours,
     required this.viewWeb,
     required this.flutter,
+    required this.tarifs,
     required this.contact,
   });
 
@@ -141,6 +144,13 @@ class CustomDrawer extends StatelessWidget {
             title: Text('Ma spécialisation', style: TextStyle(color: Theme.of(context).colorScheme.surface)),
             onTap: () {
               _scrollToSection(flutter);
+              Navigator.pop(context);
+            },
+          ),
+          ListTile(
+            title: Text('Tarifs', style: TextStyle(color: Theme.of(context).colorScheme.surface)),
+            onTap: () {
+              _scrollToSection(tarifs);
               Navigator.pop(context);
             },
           ),
