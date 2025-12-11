@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mon_site_cv/theme.dart';
 
-import '../../theme.dart';
 
 class TarifsPage extends StatelessWidget {
   const TarifsPage({super.key});

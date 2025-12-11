@@ -31,6 +31,7 @@ class _HomePageState extends State<HomePage> {
   }
 
   void _updateScrollOffset() {
+
     // Vérifiez si scrollController n'est pas null avant d'accéder à offset
     if (widget.scrollController != null) {
       setState(() {
