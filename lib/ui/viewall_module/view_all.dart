@@ -6,6 +6,7 @@ import 'package:mon_site_cv/ui/tarifs_page/tarifs_page.dart';
 import '../common/widgets/custom_appbar.dart';
 import '../common/widgets/footer.dart';
 import '../home_page/home_page.dart';
+import '../methode_travail/methode_travail_view.dart';
 import '../parcours/parcours_view.dart';
 import '../portfolio/portfolio_view.dart';
 import '../view_web/view_web.dart';
@@ -13,6 +14,7 @@ import '../view_web/view_web.dart';
 class ViewAll extends StatelessWidget {
   final GlobalKey accueil = GlobalKey();
   final GlobalKey portfolio = GlobalKey();
+  final GlobalKey methode = GlobalKey();
   final GlobalKey parcours = GlobalKey();
   final GlobalKey viewWeb = GlobalKey();
   final GlobalKey flutter = GlobalKey();
@@ -33,18 +35,21 @@ class ViewAll extends StatelessWidget {
       case 'realisation':
         key = portfolio;
         break;
+      case 'methode':
+        key = methode;
+        break;
       case 'parcours':
         key = parcours;
         break;
-      case 'viewWeb':  // Assurez-vous que cela correspond à ce que vous utilisez dans l'AppBar
+      case 'viewWeb': // Assurez-vous que cela correspond à ce que vous utilisez dans l'AppBar
         key = viewWeb;
         break;
-      case 'flutter':  // Assurez-vous que cela correspond à ce que vous utilisez dans l'AppBar
+      case 'flutter': // Assurez-vous que cela correspond à ce que vous utilisez dans l'AppBar
         key = flutter;
         break;
-        case 'tarifs':
-          key = tarifs;
-          break;
+      case 'tarifs':
+        key = tarifs;
+        break;
 
       case 'contact':
         key = contact;
@@ -72,18 +77,18 @@ class ViewAll extends StatelessWidget {
       ),
       drawer: size.width < 749
           ? CustomDrawer(
-        accueil: accueil,
-        portfolio: portfolio,
-        parcours: parcours,
-        viewWeb: viewWeb,
-        flutter: flutter,
-        tarifs: tarifs,
-        contact: contact,
-
-     )
+              accueil: accueil,
+              portfolio: portfolio,
+              methode: methode,
+              parcours: parcours,
+              viewWeb: viewWeb,
+              flutter: flutter,
+              tarifs: tarifs,
+              contact: contact,
+            )
           : null,
       body: SingleChildScrollView(
-        controller: _scrollController,  // Un seul controller ici
+        controller: _scrollController, // Un seul controller ici
         child: Column(
           children: [
             HomePage(
@@ -96,6 +101,12 @@ class ViewAll extends StatelessWidget {
             PortfolioSection(
               key: portfolio,
               // Ne passez PAS de scrollController ici
+            ),
+            const SizedBox(height: 35),
+            Image.asset("assets/images/divider.png"),
+            const SizedBox(height: 35),
+            MethodeTravailView(
+              key: methode,
             ),
             const SizedBox(height: 35),
             Image.asset("assets/images/divider.png"),
@@ -114,15 +125,19 @@ class ViewAll extends StatelessWidget {
             const SizedBox(height: 35),
             Image.asset("assets/images/divider.png"),
             const SizedBox(height: 35),
-             RaisonFlutter(key: flutter,),
+            RaisonFlutter(
+              key: flutter,
+            ),
             const SizedBox(height: 35),
             Image.asset("assets/images/divider.png"),
             const SizedBox(height: 35),
-            TarifsPage(key: tarifs,),
+            TarifsPage(
+              key: tarifs,
+            ),
             const SizedBox(height: 35),
             Image.asset("assets/images/divider.png"),
             const SizedBox(height: 35),
-            ContactView(key:contact),
+            ContactView(key: contact),
             const SizedBox(height: 35),
             const Footer(),
           ],

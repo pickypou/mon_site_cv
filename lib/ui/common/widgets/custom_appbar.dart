@@ -46,14 +46,15 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       actions: [
         if (MediaQuery.of(context).size.width > 750) // For large screens
           ...[
-            _buildNavItem(context, 'Accueil', 'accueil'),
-            _buildNavItem(context, 'Mes réalisation', 'realisation'),
-            _buildNavItem(context, 'Mon parcours', 'parcours'),
-            _buildNavItem(context, 'Etre vu sur le web', 'viewWeb'),
-            _buildNavItem(context, 'Ma spécialisation', 'flutter'),
-            _buildNavItem(context, 'Tarifs', 'tarifs'),
-            _buildNavItem(context, 'Contact', 'contact'),
-          ],
+          _buildNavItem(context, 'Accueil', 'accueil'),
+          _buildNavItem(context, 'Mes réalisation', 'realisation'),
+          _buildNavItem(context, 'Méthode de travail', 'methode'),
+          _buildNavItem(context, 'Mon parcours', 'parcours'),
+          _buildNavItem(context, 'Etre vu sur le web', 'viewWeb'),
+          _buildNavItem(context, 'Ma spécialisation', 'flutter'),
+          _buildNavItem(context, 'Tarifs', 'tarifs'),
+          _buildNavItem(context, 'Contact', 'contact'),
+        ],
       ],
     );
   }
@@ -66,7 +67,8 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
         child: Center(
           child: Text(
             label,
-            style: TextStyle(fontSize: 16.0, color: Theme.of(context).colorScheme.surface),
+            style: TextStyle(
+                fontSize: 16.0, color: Theme.of(context).colorScheme.surface),
           ),
         ),
       ),
@@ -77,6 +79,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
 class CustomDrawer extends StatelessWidget {
   final GlobalKey accueil;
   final GlobalKey portfolio;
+  final GlobalKey methode;
   final GlobalKey parcours;
   final GlobalKey viewWeb;
   final GlobalKey flutter;
@@ -87,6 +90,7 @@ class CustomDrawer extends StatelessWidget {
     super.key,
     required this.accueil,
     required this.portfolio,
+    required this.methode,
     required this.parcours,
     required this.viewWeb,
     required this.flutter,
@@ -113,49 +117,64 @@ class CustomDrawer extends StatelessWidget {
         padding: EdgeInsets.zero,
         children: [
           ListTile(
-            title: Text('Accueil', style: TextStyle(color: Theme.of(context).colorScheme.surface)),
+            title: Text('Accueil',
+                style: TextStyle(color: Theme.of(context).colorScheme.surface)),
             onTap: () {
               _scrollToSection(accueil);
               Navigator.pop(context);
             },
           ),
           ListTile(
-            title: Text('Mes réalisation', style: TextStyle(color: Theme.of(context).colorScheme.surface)),
+            title: Text('Mes réalisation',
+                style: TextStyle(color: Theme.of(context).colorScheme.surface)),
             onTap: () {
               _scrollToSection(portfolio);
               Navigator.pop(context);
             },
           ),
           ListTile(
-            title: Text('Mon parcours', style: TextStyle(color: Theme.of(context).colorScheme.surface)),
+            title: Text('Méthode de travail',
+                style: TextStyle(color: Theme.of(context).colorScheme.surface)),
+            onTap: () {
+              _scrollToSection(methode);
+              Navigator.pop(context);
+            },
+          ),
+          ListTile(
+            title: Text('Mon parcours',
+                style: TextStyle(color: Theme.of(context).colorScheme.surface)),
             onTap: () {
               _scrollToSection(parcours);
               Navigator.pop(context);
             },
           ),
           ListTile(
-            title: Text('Etre vu sur le web', style: TextStyle(color: Theme.of(context).colorScheme.surface)),
+            title: Text('Etre vu sur le web',
+                style: TextStyle(color: Theme.of(context).colorScheme.surface)),
             onTap: () {
               _scrollToSection(viewWeb);
               Navigator.pop(context);
             },
           ),
           ListTile(
-            title: Text('Ma spécialisation', style: TextStyle(color: Theme.of(context).colorScheme.surface)),
+            title: Text('Ma spécialisation',
+                style: TextStyle(color: Theme.of(context).colorScheme.surface)),
             onTap: () {
               _scrollToSection(flutter);
               Navigator.pop(context);
             },
           ),
           ListTile(
-            title: Text('Tarifs', style: TextStyle(color: Theme.of(context).colorScheme.surface)),
+            title: Text('Tarifs',
+                style: TextStyle(color: Theme.of(context).colorScheme.surface)),
             onTap: () {
               _scrollToSection(tarifs);
               Navigator.pop(context);
             },
           ),
           ListTile(
-            title: Text('Contact', style: TextStyle(color: Theme.of(context).colorScheme.surface)),
+            title: Text('Contact',
+                style: TextStyle(color: Theme.of(context).colorScheme.surface)),
             onTap: () {
               _scrollToSection(contact);
               Navigator.pop(context);
