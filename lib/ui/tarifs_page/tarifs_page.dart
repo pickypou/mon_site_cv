@@ -34,17 +34,17 @@ class TarifsPage extends StatelessWidget {
               DataRow(cells: [
                 DataCell(Text("Site vitrine clé en main")),
                 DataCell(Text("Création complète + mise en ligne Firebase")),
-                DataCell(Text("900 €")),
+                DataCell(Text("1000 €")),
               ]),
               DataRow(cells: [
                 DataCell(Text("Maintenance annuelle")),
                 DataCell(Text("Débogage illimité + 3 mises à jour mineures")),
-                DataCell(Text("100 € / an")),
+                DataCell(Text("200 € / an")),
               ]),
               DataRow(cells: [
                 DataCell(Text("Forfait complet")),
                 DataCell(Text("Site vitrine + maintenance incluse")),
-                DataCell(Text("1000 €")),
+                DataCell(Text("1150 €")),
               ]),
               DataRow(cells: [
                 DataCell(Text("Modification hors forfait")),

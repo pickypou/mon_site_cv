@@ -1,0 +1,12 @@
+Analyzing mon_site_cv...                                        
+
+   info • Don't use 'BuildContext's across async gaps • lib/ui/common/widgets/clickable_image.dart:49:28 • use_build_context_synchronously
+   info • 'MaterialStateProperty' is deprecated and shouldn't be used. Use WidgetStateProperty instead. Moved to the Widgets layer to make code available outside of Material. This feature was deprecated after v3.19.0-0.3.pre • lib/ui/common/widgets/form_submit_button.dart:68:18 • deprecated_member_use
+   info • 'MaterialStateProperty' is deprecated and shouldn't be used. Use WidgetStateProperty instead. Moved to the Widgets layer to make code available outside of Material. This feature was deprecated after v3.19.0-0.3.pre • lib/ui/common/widgets/form_submit_button.dart:69:26 • deprecated_member_use
+   info • 'MaterialState' is deprecated and shouldn't be used. Use WidgetState instead. Moved to the Widgets layer to make code available outside of Material. This feature was deprecated after v3.19.0-0.3.pre • lib/ui/common/widgets/form_submit_button.dart:70:43 • deprecated_member_use
+   info • 'MaterialStateProperty' is deprecated and shouldn't be used. Use WidgetStateProperty instead. Moved to the Widgets layer to make code available outside of Material. This feature was deprecated after v3.19.0-0.3.pre • lib/ui/common/widgets/form_submit_button.dart:74:16 • deprecated_member_use
+   info • The file name 'contact_info-section.dart' isn't a lower_case_with_underscores identifier • lib/ui/contact/contact_info-section.dart:1:1 • file_names
+   info • Don't use 'BuildContext's across async gaps • lib/ui/contact/map_preview_widget.dart:18:32 • use_build_context_synchronously
+warning • The value of the field '_scrollOffset' isn't used • lib/ui/home_page/home_page.dart:19:10 • unused_field
+   info • Use 'const' for final variables initialized to a constant value • lib/ui/methode_travail/methode_travail_view.dart:12:5 • prefer_const_declarations
+

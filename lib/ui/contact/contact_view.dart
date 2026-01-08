@@ -3,7 +3,7 @@ import 'package:mon_site_cv/theme.dart';
 import 'package:mon_site_cv/ui/contact/social_links_section.dart';
 
 import 'contact_form.dart';
-import 'contact_info-section.dart';
+import 'contact_info_section.dart';
 
 class ContactView extends StatelessWidget {
   const ContactView({super.key});
@@ -34,34 +34,30 @@ class ContactView extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   // ✅ Le titre de la page
-                  Text(
-                    'Contactez-moi',
+                  Text('Contactez-moi',
                       textAlign: TextAlign.center,
-                      style: titleStyleLarge(context)
-
-                    ),
-
+                      style: titleStyleLarge(context)),
 
                   const SizedBox(height: 32),
 
                   // ✅ Grille responsive
                   isWide
                       ? const Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Expanded(child: infoSection),
-                      SizedBox(width: 40),
-                      Expanded(child: formSection),
-                    ],
-                  )
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Expanded(child: infoSection),
+                            SizedBox(width: 40),
+                            Expanded(child: formSection),
+                          ],
+                        )
                       : const Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      formSection,
-                      SizedBox(height: 40),
-                      infoSection,
-                    ],
-                  ),
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            formSection,
+                            SizedBox(height: 40),
+                            infoSection,
+                          ],
+                        ),
                 ],
               ),
             ),

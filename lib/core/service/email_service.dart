@@ -6,8 +6,10 @@ import 'dart:convert';
 
 class EmailService {
   final BuildContext context;
+  final http.Client _client;
 
-  EmailService(this.context);
+  EmailService(this.context, {http.Client? client})
+      : _client = client ?? http.Client();
 
   Future<void> sendEmail({
     required Map<String, String> data,
@@ -54,8 +56,9 @@ class EmailService {
 
   Future<void> _sendWithHttp(Map<String, String> data) async {
     debugPrint('Envoi via HTTP direct...');
-    const url = 'https://us-central1-mon-site-cv-6cdc6.cloudfunctions.net/sendEmailHttp';
-    final response = await http.post(
+    const url =
+        'https://us-central1-mon-site-cv-6cdc6.cloudfunctions.net/sendEmailHttp';
+    final response = await _client.post(
       Uri.parse(url),
       headers: {'Content-Type': 'application/json'},
       body: jsonEncode(data),

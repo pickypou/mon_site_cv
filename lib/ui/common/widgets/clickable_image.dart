@@ -16,7 +16,8 @@ class ClickableImage extends StatelessWidget {
     this.url,
     this.width = 50,
     this.height = 50,
-  }) : assert(route != null || url != null, 'Vous devez fournir soit une route soit une URL.');
+  }) : assert(route != null || url != null,
+            'Vous devez fournir soit une route soit une URL.');
 
   @override
   Widget build(BuildContext context) {
@@ -46,6 +47,7 @@ class ClickableImage extends StatelessWidget {
       parsedUrl,
       mode: LaunchMode.externalApplication,
     )) {
+      if (!context.mounted) return;
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text('Impossible d\'ouvrir l\'URL $urlString')),
       );

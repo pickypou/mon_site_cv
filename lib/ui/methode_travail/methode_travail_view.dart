@@ -9,7 +9,7 @@ class MethodeTravailView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final methodes = MethodeItem.data;
+    const methodes = MethodeItem.data;
 
     return SingleChildScrollView(
       padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 24),

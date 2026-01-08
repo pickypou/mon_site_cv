@@ -1,0 +1,31 @@
+00:00 +0: loading /home/ludo/Documents/dev/mon_site_cv/test/ui/contact/contact_form_test.dart                                                                                                          00:01 +0: loading /home/ludo/Documents/dev/mon_site_cv/test/ui/contact/contact_form_test.dart                                                                                                          00:01 +0: FormContact Widget Tests shows validation errors when fields are empty                                                                                                                       00:01 +0: FormContact Widget Tests shows validation errors when fields are empty                                                                                                                       
+Form valid: false
+Text widgets count: 9
+══╡ EXCEPTION CAUGHT BY FLUTTER TEST FRAMEWORK ╞════════════════════════════════════════════════════
+The following TestFailure was thrown running a test:
+Expected: exactly one matching candidate
+  Actual: _TextWidgetFinder:<Found 0 widgets with text "Veuillez entrer votre Email": []>
+   Which: means none were found but one was expected
+
+When the exception was thrown, this was the stack:
+#4      main.<anonymous closure>.<anonymous closure> (file:///home/ludo/Documents/dev/mon_site_cv/test/ui/contact/contact_form_test.dart:53:7)
+<asynchronous suspension>
+#5      testWidgets.<anonymous closure>.<anonymous closure> (package:flutter_test/src/widget_tester.dart:192:15)
+<asynchronous suspension>
+#6      TestWidgetsFlutterBinding._runTestBody (package:flutter_test/src/binding.dart:1059:5)
+<asynchronous suspension>
+<asynchronous suspension>
+(elided one frame from package:stack_trace)
+
+This was caught by the test expectation on the following line:
+  file:///home/ludo/Documents/dev/mon_site_cv/test/ui/contact/contact_form_test.dart line 53
+The test description was:
+  shows validation errors when fields are empty
+════════════════════════════════════════════════════════════════════════════════════════════════════
+00:01 +0 -1: FormContact Widget Tests shows validation errors when fields are empty [E]                                                                                                                
+  Test failed. See exception logs above.
+  The test description was: shows validation errors when fields are empty
+  
+
+To run this test again: /home/ludo/flutter/bin/cache/dart-sdk/bin/dart test /home/ludo/Documents/dev/mon_site_cv/test/ui/contact/contact_form_test.dart -p vm --plain-name 'FormContact Widget Tests shows validation errors when fields are empty'
+00:01 +0 -1: Some tests failed.                                                                                                                                                                        

@@ -43,7 +43,9 @@ class _FormButtonState extends State<FormButton> {
       onSuccess: () {
         if (!mounted) return;
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('Email envoyé avec succès.'), backgroundColor: Colors.green),
+          const SnackBar(
+              content: Text('Email envoyé avec succès.'),
+              backgroundColor: Colors.green),
         );
         widget.formKey.currentState!.reset();
       },
@@ -65,13 +67,14 @@ class _FormButtonState extends State<FormButton> {
     return ElevatedButton(
       onPressed: _isSending ? null : _sendEmail,
       style: ButtonStyle(
-        padding: MaterialStateProperty.all(const EdgeInsets.symmetric(vertical: 15, horizontal: 30)),
-        backgroundColor: MaterialStateProperty.resolveWith(
-              (states) => states.contains(MaterialState.pressed)
+        padding: WidgetStateProperty.all(
+            const EdgeInsets.symmetric(vertical: 15, horizontal: 30)),
+        backgroundColor: WidgetStateProperty.resolveWith(
+          (states) => states.contains(WidgetState.pressed)
               ? theme.colorScheme.secondary
               : theme.colorScheme.surface,
         ),
-        shape: MaterialStateProperty.all(
+        shape: WidgetStateProperty.all(
           RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(30),
             side: BorderSide(color: theme.colorScheme.primary, width: 1.5),
@@ -80,13 +83,16 @@ class _FormButtonState extends State<FormButton> {
       ),
       child: _isSending
           ? const Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          SizedBox(width: 20, height: 20, child: CircularProgressIndicator(strokeWidth: 2)),
-          SizedBox(width: 10),
-          Text('Envoi en cours...'),
-        ],
-      )
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                SizedBox(
+                    width: 20,
+                    height: 20,
+                    child: CircularProgressIndicator(strokeWidth: 2)),
+                SizedBox(width: 10),
+                Text('Envoi en cours...'),
+              ],
+            )
           : const Text('Envoyer'),
     );
   }
