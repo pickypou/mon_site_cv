@@ -6,7 +6,7 @@ import 'package:mon_site_cv/theme.dart';
 void main() {
   Widget createWidgetUnderTest() {
     return MaterialApp(
-      theme: theme,
+      theme: lightTheme,
       home: const Scaffold(
         body: FormContact(),
       ),
@@ -27,11 +27,6 @@ void main() {
 
     testWidgets('shows validation errors when fields are empty',
         (WidgetTester tester) async {
-      tester.view.physicalSize = const Size(1080, 1920);
-      tester.view.devicePixelRatio = 1.0;
-      addTearDown(tester.view.resetPhysicalSize);
-      addTearDown(tester.view.resetDevicePixelRatio);
-
       await tester.pumpWidget(createWidgetUnderTest());
 
       // Tap the submit button without entering text
