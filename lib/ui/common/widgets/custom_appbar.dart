@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import '../../../core/di/di.dart';
+import '../../../theme.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String title;
@@ -16,7 +18,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   Size get preferredSize => Size.fromHeight(AppBar().preferredSize.height);
 
   Widget? _getLeading(BuildContext context) {
-    if (MediaQuery.of(context).size.width > 750) {
+    if (MediaQuery.of(context).size.width > 1100) {
       return null; // No menu button on large screens
     } else {
       return IconButton(
@@ -44,7 +46,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       ),
       leading: _getLeading(context),
       actions: [
-        if (MediaQuery.of(context).size.width > 750) // For large screens
+        if (MediaQuery.of(context).size.width > 1100) // For large screens
           ...[
           _buildNavItem(context, 'Accueil', 'accueil'),
           _buildNavItem(context, 'Mes réalisation', 'realisation'),
@@ -55,6 +57,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
           _buildNavItem(context, 'Tarifs', 'tarifs'),
           _buildNavItem(context, 'Contact', 'contact'),
         ],
+        const _ThemeToggleButton(),
       ],
     );
   }
@@ -68,7 +71,9 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
           child: Text(
             label,
             style: TextStyle(
-                fontSize: 16.0, color: Theme.of(context).colorScheme.surface),
+                fontSize: 16.0, color: Theme.of(context).colorScheme.brightness == Brightness.light 
+                    ? Theme.of(context).colorScheme.surface // Beige in light
+                    : Theme.of(context).colorScheme.primary), // Light Moss in dark
           ),
         ),
       ),
@@ -110,78 +115,71 @@ class CustomDrawer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isLight = Theme.of(context).colorScheme.brightness == Brightness.light;
+    final textColor = isLight 
+        ? Theme.of(context).colorScheme.surface 
+        : Theme.of(context).colorScheme.primary;
+
     return Drawer(
       backgroundColor: Theme.of(context).colorScheme.onPrimary,
       elevation: 0,
       child: ListView(
         padding: EdgeInsets.zero,
         children: [
-          ListTile(
-            title: Text('Accueil',
-                style: TextStyle(color: Theme.of(context).colorScheme.surface)),
-            onTap: () {
-              _scrollToSection(accueil);
-              Navigator.pop(context);
-            },
+          const DrawerHeader(
+            decoration: BoxDecoration(color: Colors.transparent),
+            child: Center(child: _ThemeToggleButton()),
           ),
-          ListTile(
-            title: Text('Mes réalisation',
-                style: TextStyle(color: Theme.of(context).colorScheme.surface)),
-            onTap: () {
-              _scrollToSection(portfolio);
-              Navigator.pop(context);
-            },
-          ),
-          ListTile(
-            title: Text('Méthode de travail',
-                style: TextStyle(color: Theme.of(context).colorScheme.surface)),
-            onTap: () {
-              _scrollToSection(methode);
-              Navigator.pop(context);
-            },
-          ),
-          ListTile(
-            title: Text('Mon parcours',
-                style: TextStyle(color: Theme.of(context).colorScheme.surface)),
-            onTap: () {
-              _scrollToSection(parcours);
-              Navigator.pop(context);
-            },
-          ),
-          ListTile(
-            title: Text('Etre vu sur le web',
-                style: TextStyle(color: Theme.of(context).colorScheme.surface)),
-            onTap: () {
-              _scrollToSection(viewWeb);
-              Navigator.pop(context);
-            },
-          ),
-          ListTile(
-            title: Text('Ma spécialisation',
-                style: TextStyle(color: Theme.of(context).colorScheme.surface)),
-            onTap: () {
-              _scrollToSection(flutter);
-              Navigator.pop(context);
-            },
-          ),
-          ListTile(
-            title: Text('Tarifs',
-                style: TextStyle(color: Theme.of(context).colorScheme.surface)),
-            onTap: () {
-              _scrollToSection(tarifs);
-              Navigator.pop(context);
-            },
-          ),
-          ListTile(
-            title: Text('Contact',
-                style: TextStyle(color: Theme.of(context).colorScheme.surface)),
-            onTap: () {
-              _scrollToSection(contact);
-              Navigator.pop(context);
-            },
-          ),
+          _buildDrawerItem(context, 'Accueil', accueil, textColor),
+          _buildDrawerItem(context, 'Mes réalisations', portfolio, textColor),
+          _buildDrawerItem(context, 'Méthode de travail', methode, textColor),
+          _buildDrawerItem(context, 'Mon parcours', parcours, textColor),
+          _buildDrawerItem(context, 'Être vu sur le web', viewWeb, textColor),
+          _buildDrawerItem(context, 'Ma spécialisation', flutter, textColor),
+          _buildDrawerItem(context, 'Tarifs', tarifs, textColor),
+          _buildDrawerItem(context, 'Contact', contact, textColor),
         ],
       ),
+    );
+  }
+
+  Widget _buildDrawerItem(BuildContext context, String label, GlobalKey key, Color textColor) {
+    return ListTile(
+      title: Text(
+        label,
+        style: TextStyle(color: textColor),
+      ),
+      onTap: () {
+        _scrollToSection(key);
+        Navigator.pop(context);
+      },
+    );
+  }
+}
+
+class _ThemeToggleButton extends StatelessWidget {
+  const _ThemeToggleButton({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final themeService = getIt<ThemeService>();
+    return ListenableBuilder(
+      listenable: themeService,
+      builder: (context, _) {
+        final isDark = themeService.isDarkMode;
+        final isLightMode = Theme.of(context).colorScheme.brightness == Brightness.light;
+        
+        return IconButton(
+          onPressed: themeService.toggleTheme,
+          icon: Icon(
+            isDark ? Icons.light_mode : Icons.dark_mode,
+            color: isLightMode 
+                ? Theme.of(context).colorScheme.surface 
+                : Theme.of(context).colorScheme.primary,
+          ),
+          tooltip: isDark ? 'Passer au mode clair' : 'Passer au mode sombre',
+        );
+      },
     );
   }
 }

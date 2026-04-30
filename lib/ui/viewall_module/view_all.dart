@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:mon_site_cv/ui/contact/contact_view.dart';
-import 'package:mon_site_cv/ui/raison_flutter/raison_flutter.dart';
-import 'package:mon_site_cv/ui/tarifs_page/tarifs_page.dart';
+import '../common/widgets/section_divider.dart';
+import '../contact/contact_view.dart';
+import '../raison_flutter/raison_flutter.dart';
+import '../tarifs_page/tarifs_page.dart';
 
 import '../common/widgets/custom_appbar.dart';
 import '../common/widgets/footer.dart';
@@ -75,7 +76,7 @@ class ViewAll extends StatelessWidget {
         onNavigate: _scrollToSection,
         actions: const [],
       ),
-      drawer: size.width < 749
+      drawer: size.width < 1100
           ? CustomDrawer(
               accueil: accueil,
               portfolio: portfolio,
@@ -95,48 +96,34 @@ class ViewAll extends StatelessWidget {
               key: accueil,
               // Ne passez PAS de scrollController ici
             ),
-            const SizedBox(height: 35),
-            Image.asset("assets/images/divider.png"),
-            const SizedBox(height: 35),
+            const SectionDivider(),
             PortfolioSection(
               key: portfolio,
               // Ne passez PAS de scrollController ici
             ),
-            const SizedBox(height: 35),
-            Image.asset("assets/images/divider.png"),
-            const SizedBox(height: 35),
+            const SectionDivider(),
             MethodeTravailView(
               key: methode,
             ),
-            const SizedBox(height: 35),
-            Image.asset("assets/images/divider.png"),
-            const SizedBox(height: 35),
+            const SectionDivider(),
             MonParcoursSection(
               key: parcours,
               // Ne passez PAS de scrollController ici
             ),
-            const SizedBox(height: 35),
-            Image.asset("assets/images/divider.png"),
-            const SizedBox(height: 35),
+            const SectionDivider(),
             ViewWeb(
               key: viewWeb,
               // Ne passez PAS de scrollController ici
             ),
-            const SizedBox(height: 35),
-            Image.asset("assets/images/divider.png"),
-            const SizedBox(height: 35),
+            const SectionDivider(),
             RaisonFlutter(
               key: flutter,
             ),
-            const SizedBox(height: 35),
-            Image.asset("assets/images/divider.png"),
-            const SizedBox(height: 35),
+            const SectionDivider(),
             TarifsPage(
               key: tarifs,
             ),
-            const SizedBox(height: 35),
-            Image.asset("assets/images/divider.png"),
-            const SizedBox(height: 35),
+            const SectionDivider(),
             ContactView(key: contact),
             const SizedBox(height: 35),
             const Footer(),

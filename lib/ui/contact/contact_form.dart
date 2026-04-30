@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../../theme.dart';
 import '../common/widgets/form_submit_button.dart';
 
 class FormContact extends StatefulWidget {
@@ -28,7 +27,7 @@ class FormContactState extends State<FormContact> {
           child: Container(
             decoration: BoxDecoration(
               color: Colors.transparent,
-              border: Border.all(color: theme.colorScheme.secondary, width: 2),
+              border: Border.all(color: Theme.of(context).colorScheme.secondary, width: 2),
               borderRadius: BorderRadius.circular(15),
             ),
             child: Form(
@@ -97,15 +96,15 @@ class FormContactState extends State<FormContact> {
         filled: true,
         fillColor: Colors.transparent,
         border: OutlineInputBorder(
-          borderSide: BorderSide(color: theme.colorScheme.secondary, width: 2),
+          borderSide: BorderSide(color: Theme.of(context).colorScheme.secondary, width: 2),
           borderRadius: BorderRadius.circular(15.0),
         ),
         enabledBorder: OutlineInputBorder(
-          borderSide: BorderSide(color: theme.colorScheme.secondary, width: 2),
+          borderSide: BorderSide(color: Theme.of(context).colorScheme.secondary, width: 2),
           borderRadius: BorderRadius.circular(15.0),
         ),
         focusedBorder: OutlineInputBorder(
-          borderSide: BorderSide(color: theme.colorScheme.secondary, width: 2),
+          borderSide: BorderSide(color: Theme.of(context).colorScheme.secondary, width: 2),
           borderRadius: BorderRadius.circular(15.0),
         ),
       ),

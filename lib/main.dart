@@ -39,11 +39,20 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final appRouterConfig = getIt<AppRouterConfig>();
-    return MaterialApp.router(
-      debugShowCheckedModeBanner: false,
-      title: 'Ludovic Spysschaert',
-      theme: theme,
-     routerConfig: appRouterConfig.router,
+    final themeService = getIt<ThemeService>();
+
+    return ListenableBuilder(
+      listenable: themeService,
+      builder: (context, _) {
+        return MaterialApp.router(
+          debugShowCheckedModeBanner: false,
+          title: 'Ludovic Spysschaert',
+          theme: lightTheme,
+          darkTheme: darkTheme,
+          themeMode: themeService.themeMode,
+          routerConfig: appRouterConfig.router,
+        );
+      },
     );
   }
 }

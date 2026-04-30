@@ -37,8 +37,10 @@ class _HomePageState extends State<HomePage> {
             Text("Ludovic SPYSSCHAERT",
                 textAlign: TextAlign.center, style: titleStyleLarge(context)),
             const SizedBox(height: 40),
-            Text("Développeur web et web mobile",
+            Text("Développeur Mobile & Web",
                 textAlign: TextAlign.center, style: titleStyleLarge(context)),
+            Text("Expert Flutter",
+                textAlign: TextAlign.center, style: titleStyleLarge(context).copyWith(color: Theme.of(context).colorScheme.primary)),
             const SizedBox(height: 50),
             const Wrap(
               alignment: WrapAlignment.center,
@@ -53,7 +55,7 @@ class _HomePageState extends State<HomePage> {
             ),
             const SizedBox(height: 50),
             Text(
-              "Spécialisé en développement flutter web et mobile",
+              "Je conçois des applications modernes, fluides et performantes pour propulser votre activité.",
               textAlign: TextAlign.center,
               style: titleStyleMedium(context),
             ),

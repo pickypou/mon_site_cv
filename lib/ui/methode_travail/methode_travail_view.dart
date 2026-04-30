@@ -29,8 +29,8 @@ class MethodeTravailView extends StatelessWidget {
               const SizedBox(height: 20),
               Center(
                 child: Text(
-                  "De la première rencontre à la mise en ligne, découvrez comment je transforme votre projet en réalité.",
-                  style: textStylePara(context),
+                  "De l'idée à la réussite : un accompagnement sur-mesure pour un projet qui dépasse vos attentes.",
+                  style: textStylePara(context).copyWith(fontSize: 18),
                   textAlign: TextAlign.center,
                 ),
               ),

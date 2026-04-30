@@ -13,7 +13,7 @@ class Footer extends StatelessWidget {
     return Column(
       children: [
         Divider(
-          color: theme.colorScheme.secondary,
+          color: Theme.of(context).colorScheme.secondary,
           thickness: 1,
         ),
         Padding(
@@ -35,8 +35,8 @@ class Footer extends StatelessWidget {
                 SizedBox(
                     width: 40, // ← Largeur garantie
                     child: PopupMenuButton<String>(
-                      icon: const Icon(Icons.info_outline, color: Colors.black), // Icône noire visible
-                      color: Colors.white, // Fond du menu
+                      icon: Icon(Icons.info_outline, color: Theme.of(context).colorScheme.onSurface), // Icône thématique
+                      color: Theme.of(context).colorScheme.surface, // Fond du menu
                       onSelected: (value) {
                         if (value == 'mentions') {
                           launchUrl(Uri.parse('/mentions-legales.html'));

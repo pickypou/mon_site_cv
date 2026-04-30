@@ -30,9 +30,9 @@ class MapPreviewWidget extends StatelessWidget {
       ),
       style: ElevatedButton.styleFrom(
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
-          backgroundColor: theme.colorScheme.primary,
+          backgroundColor: Theme.of(context).colorScheme.primary,
           side: BorderSide(
-            color: theme.colorScheme.secondary,
+            color: Theme.of(context).colorScheme.secondary,
             width: 1,
           )),
     );

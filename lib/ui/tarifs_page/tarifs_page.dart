@@ -17,12 +17,25 @@ class TarifsPage extends StatelessWidget {
             "Nos Tarifs",
             style: titleStyleLarge(context)
           ),
-          const SizedBox(height: 20),
+          const SizedBox(height: 8),
+          Container(
+            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
+            decoration: BoxDecoration(
+              color: Theme.of(context).colorScheme.primary.withOpacity(0.2),
+              borderRadius: BorderRadius.circular(20),
+              border: Border.all(color: Theme.of(context).colorScheme.primary),
+            ),
+            child: Text(
+              "Devis gratuit & personnalisé",
+              style: titleStyleSmall(context).copyWith(fontSize: 16),
+            ),
+          ),
+          const SizedBox(height: 30),
 
           // Tableau principal
           DataTable(
-            headingRowColor: WidgetStateProperty.all(theme.colorScheme.onPrimary),
-            border: TableBorder.all(color:theme.colorScheme.onPrimary),
+            headingRowColor: WidgetStateProperty.all(Theme.of(context).colorScheme.onPrimary),
+            border: TableBorder.all(color: Theme.of(context).colorScheme.onPrimary),
             columns:  [
               DataColumn(label: Text("Service",style: textStyleText(context)
                 ,)),
@@ -33,7 +46,7 @@ class TarifsPage extends StatelessWidget {
             rows: const [
               DataRow(cells: [
                 DataCell(Text("Site vitrine clé en main")),
-                DataCell(Text("Création complète + mise en ligne Firebase")),
+                DataCell(Text("Création complète + mise en production")),
                 DataCell(Text("1000 €")),
               ]),
               DataRow(cells: [
@@ -65,7 +78,7 @@ class TarifsPage extends StatelessWidget {
             style: titleStyleSmall(context)
           ),
           const SizedBox(height: 8),
-          const Text("• Les tarifs incluent la mise en ligne sur Firebase."),
+          const Text("• Les tarifs incluent l'hébergement et la mise en production."),
           const Text("• Les modifications mineures sont incluses dans la maintenance annuelle."),
           const Text("• Toute modification importante ou nouvelle page est facturée hors forfait."),
           const Text("• Le tarif journalier s’applique pour des missions spécifiques ou du développement sur mesure."),

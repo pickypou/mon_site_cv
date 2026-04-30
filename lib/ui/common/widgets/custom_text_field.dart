@@ -52,7 +52,7 @@ class CustomTextField extends StatelessWidget {
               focusedBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(20.0),
                 borderSide: BorderSide(
-                  color: theme.colorScheme.onSurface, // Couleur primaire au focus
+                  color: Theme.of(context).colorScheme.onSurface, // Couleur primaire au focus
                   width: 2.0, // Épaisseur accrue au focus
                 ),
               ),

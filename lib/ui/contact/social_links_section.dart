@@ -6,34 +6,40 @@ class SocialLinksSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Wrap(
-      spacing: 35, // Gère l'espacement horizontal entre les icônes
-      alignment: WrapAlignment.center, // Centre les icônes horizontalement
+    final screenWidth = MediaQuery.of(context).size.width;
+    final isMobile = screenWidth < 600;
+    final iconWidth = isMobile ? 55.0 : 75.0;
+
+    return Wrap(
+      spacing: isMobile ? 20 : 35, // Espacement horizontal
+      runSpacing: 25, // Espacement vertical entre les lignes
+      alignment: WrapAlignment.center,
+      crossAxisAlignment: WrapCrossAlignment.center,
       children: [
         ClickableImage(
           imagePath: 'assets/images/facebook.webp',
           url: 'https://www.facebook.com/ludowebfreelance/',
-          width: 75,
+          width: iconWidth,
         ),
         ClickableImage(
           imagePath: 'assets/images/whatsapp.png',
           url: 'https://wa.me/33638845768',
-          width: 75,
+          width: iconWidth,
         ),
         ClickableImage(
           imagePath: 'assets/images/malt.png',
           url: 'https://www.malt.fr/profile/ludovicspysschaert?overview',
-          width: 75,
+          width: iconWidth,
         ),
         ClickableImage(
           imagePath: 'assets/images/in.png',
           url: 'https://www.linkedin.com/in/ludovic-spysschaert-6503331b4',
-          width: 75,
+          width: iconWidth,
         ),
         ClickableImage(
           imagePath: 'assets/images/page_jaune.png',
           url: 'https://www.pagesjaunes.fr/pros/63924862',
-          width: 75,
+          width: iconWidth,
         ),
       ],
     );
