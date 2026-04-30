@@ -6,7 +6,7 @@ class MonParcoursSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final List<_ParcoursItem> parcours = const [
+    const List<_ParcoursItem> parcours = [
       _ParcoursItem(
         icon: Icons.auto_stories,
         titre: "Une passion devenue expertise",
