@@ -81,7 +81,7 @@ TextStyle titleStyle(BuildContext context) {
 TextStyle textStyleText(BuildContext context) {
   return TextStyle(
     fontFamily: 'Lato',
-    color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.9),
+    color: Theme.of(context).colorScheme.onSurface.withOpacity(0.9),
     decoration: TextDecoration.none
   );
 }
