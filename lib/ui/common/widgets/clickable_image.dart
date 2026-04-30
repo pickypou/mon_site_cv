@@ -45,7 +45,11 @@ class _ClickableImageState extends State<ClickableImage> {
           child: AnimatedContainer(
             duration: const Duration(milliseconds: 200),
             curve: Curves.easeInOut,
-            transform: Matrix4.identity()..scale(_isHovered ? 1.05 : 1.0),
+            transform: () {
+              final transformation = Matrix4.identity();
+              if (_isHovered) transformation.scaleByDouble(1.05, 1.05, 1.0, 1.0);
+              return transformation;
+            }(),
             transformAlignment: Alignment.center,
             child: ClipRRect(
               borderRadius: BorderRadius.circular(12),

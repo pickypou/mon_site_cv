@@ -158,7 +158,7 @@ class CustomDrawer extends StatelessWidget {
 }
 
 class _ThemeToggleButton extends StatelessWidget {
-  const _ThemeToggleButton({super.key});
+  const _ThemeToggleButton();
 
   @override
   Widget build(BuildContext context) {
