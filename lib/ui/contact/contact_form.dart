@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import '../common/widgets/form_submit_button.dart';
+import '../../core/service/email_service.dart';
 
 class FormContact extends StatefulWidget {
-  const FormContact({super.key});
+  final EmailService? emailService;
+
+  const FormContact({super.key, this.emailService});
 
   @override
   FormContactState createState() => FormContactState();
@@ -69,6 +72,7 @@ class FormContactState extends State<FormContact> {
                       surnameController: _surnameController,
                       emailController: _emailController,
                       messageController: _messageController,
+                      emailService: widget.emailService,
                     ),
                   ],
                 ),

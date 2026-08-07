@@ -1,14 +1,38 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:mocktail/mocktail.dart';
+import 'package:mon_site_cv/core/service/email_service.dart';
 import 'package:mon_site_cv/ui/contact/contact_form.dart';
 import 'package:mon_site_cv/theme.dart';
 
+class MockEmailService extends Mock implements EmailService {}
+
 void main() {
+  late MockEmailService mockEmailService;
+
+  setUpAll(() {
+    registerFallbackValue(<String, String>{});
+  });
+
+  setUp(() {
+    mockEmailService = MockEmailService();
+    when(() => mockEmailService.sendEmail(
+          data: any(named: 'data'),
+          onSuccess: any(named: 'onSuccess'),
+          onError: any(named: 'onError'),
+          useHttpFallback: any(named: 'useHttpFallback'),
+        )).thenAnswer((invocation) async {
+      // Simulate success callback
+      final Function onSuccess = invocation.namedArguments[#onSuccess];
+      onSuccess();
+    });
+  });
+
   Widget createWidgetUnderTest() {
     return MaterialApp(
       theme: lightTheme,
-      home: const Scaffold(
-        body: FormContact(),
+      home: Scaffold(
+        body: FormContact(emailService: mockEmailService),
       ),
     );
   }

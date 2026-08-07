@@ -7,6 +7,7 @@ class FormButton extends StatefulWidget {
   final TextEditingController surnameController;
   final TextEditingController emailController;
   final TextEditingController messageController;
+  final EmailService? emailService;
 
   const FormButton({
     super.key,
@@ -15,6 +16,7 @@ class FormButton extends StatefulWidget {
     required this.surnameController,
     required this.emailController,
     required this.messageController,
+    this.emailService,
   });
 
   @override
@@ -36,7 +38,7 @@ class _FormButtonState extends State<FormButton> {
       'message': widget.messageController.text,
     };
 
-    final emailService = EmailService(context);
+    final emailService = widget.emailService ?? EmailService(context);
 
     await emailService.sendEmail(
       data: data,
