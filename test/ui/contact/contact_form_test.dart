@@ -95,7 +95,7 @@ void main() {
 
       // Tap submit
       await tester.tap(find.text('Envoyer'));
-      await tester.pump();
+      await tester.pumpAndSettle();
 
       // Verify no validation errors are present
       expect(find.text('Veuillez entrer votre Nom'), findsNothing);
