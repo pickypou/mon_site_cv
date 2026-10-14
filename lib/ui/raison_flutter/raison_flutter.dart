@@ -21,41 +21,41 @@ class RaisonFlutter extends StatelessWidget {
     Center(
               child:
               Text(
-                "La puissance de Flutter au service de votre projet",
+                "La puissance d'une technologie moderne pour votre projet",
                 textAlign: TextAlign.center,
                 style: titleStyleLarge(context),
               ),
             ),
             const SizedBox(height: 50),
             Text(
-              "Pour donner vie à vos idées, j'ai choisi Flutter. Ce framework révolutionnaire créé par Google me permet de construire des applications performantes avec une approche radicalement plus efficace.",
+              "Pour donner vie à vos projets, j'utilise Flutter, la technologie développée par Google. Pour vous, cela se traduit par des avantages immédiats en termes de budget, de délais et de confort d'utilisation.",
               style: textStylePara(context).copyWith(fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 30),
             _buildFlutterPoint(
               context,
-              title: "🚀 Multiplateforme : Un seul code, partout.",
-              description: "Économisez du temps et du budget. Votre application fonctionne nativement sur Android, iOS et le Web à partir d'une base de code unique, garantissant une cohérence parfaite.",
+              title: "🚀 Multiplateforme : Un seul investissement pour être partout",
+              description: "Économisez du temps et du budget. Votre projet est disponible à la fois sur iPhone, Android et sur le Web grâce à un développement unique, assurant une parfaite cohérence visuelle.",
             ),
             _buildFlutterPoint(
               context,
-              title: "🎨 Design Moderne & Fluide",
-              description: "Ne faites aucun compromis sur l'esthétique. Flutter permet de créer des interfaces sur-mesure, élégantes et animées qui captivent vos utilisateurs dès la première seconde.",
+              title: "🎨 Design Moderne & Expérience Fluide",
+              description: "Ne faites aucun compromis sur l'esthétique. Profitez d'interfaces sur-mesure, élégantes et réactives qui captivent vos clients dès les premières secondes.",
             ),
             _buildFlutterPoint(
               context,
-              title: "⚡ Développement Ultra-Rapide",
-              description: "Grâce au 'Hot Reload', je peux itérer instantanément sur votre projet. Cela signifie des délais de livraison plus courts et une plus grande flexibilité pour vos ajustements.",
+              title: "⚡ Délais Raccourcis & Ajustements en Direct",
+              description: "Grâce à des outils modernes d'itération instantanée, nous testons les ajustements en direct. Vous bénéficiez ainsi d'une flexibilité maximale et d'une livraison plus rapide.",
             ),
             _buildFlutterPoint(
               context,
-              title: "🛡️ Technologie d'Avenir",
-              description: "En choisissant Flutter, vous investissez dans une technologie pérenne, maintenue par Google et adoptée par les plus grands noms de la tech mondiale.",
+              title: "🛡️ Une Solution Pérenne et Sécurisée",
+              description: "Propulsée par Google et utilisée par les plus grandes entreprises mondiales, cette technologie vous garantit un outil robuste, moderne et prêt à évoluer avec votre activité.",
             ),
             const SizedBox(height: 40),
             Center(
               child: Text(
-                "Opter pour Flutter, c'est choisir l'alliance entre performance native et agilité du web.",
+                "L'assurance d'un outil digital performant, élégant et taillé pour faire grandir votre entreprise.",
                 style: titleStyleSmall(context).copyWith(fontStyle: FontStyle.italic),
                 textAlign: TextAlign.center,
               ),

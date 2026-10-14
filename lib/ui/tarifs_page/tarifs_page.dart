@@ -46,27 +46,27 @@ class TarifsPage extends StatelessWidget {
             rows: const [
               DataRow(cells: [
                 DataCell(Text("Site vitrine clé en main")),
-                DataCell(Text("Création complète + mise en production")),
+                DataCell(Text("Création sur-mesure + mise en ligne sécurisée")),
                 DataCell(Text("1000 €")),
               ]),
               DataRow(cells: [
-                DataCell(Text("Maintenance annuelle")),
-                DataCell(Text("Débogage illimité + 3 mises à jour mineures")),
+                DataCell(Text("Maintenance & Sérénité")),
+                DataCell(Text("Assistance continue + mises à jour annuelles")),
                 DataCell(Text("200 € / an")),
               ]),
               DataRow(cells: [
-                DataCell(Text("Forfait complet")),
-                DataCell(Text("Site vitrine + maintenance incluse")),
+                DataCell(Text("Forfait Sérénité")),
+                DataCell(Text("Site vitrine complet + 1 an de maintenance inclus")),
                 DataCell(Text("1150 €")),
               ]),
               DataRow(cells: [
-                DataCell(Text("Modification hors forfait")),
-                DataCell(Text("Ajout / suppression de contenu, nouvelle page…")),
-                DataCell(Text("Sur devis ")),
+                DataCell(Text("Évolutions & Sur-mesure")),
+                DataCell(Text("Ajout de fonctionnalités, pages supplémentaires…")),
+                DataCell(Text("Sur devis")),
               ]),
               DataRow(cells: [
                 DataCell(Text("Tarif journalier")),
-                DataCell(Text("Développement spécifique ou missions ponctuelles")),
+                DataCell(Text("Développement spécifique ou missions sur-mesure")),
                 DataCell(Text("300 € / jour")),
               ]),
             ],
@@ -78,10 +78,9 @@ class TarifsPage extends StatelessWidget {
             style: titleStyleSmall(context)
           ),
           const SizedBox(height: 8),
-          const Text("• Les tarifs incluent l'hébergement et la mise en production."),
-          const Text("• Les modifications mineures sont incluses dans la maintenance annuelle."),
-          const Text("• Toute modification importante ou nouvelle page est facturée hors forfait."),
-          const Text("• Le tarif journalier s’applique pour des missions spécifiques ou du développement sur mesure."),
+          const Text("• Les tarifs incluent l'hébergement sécurisé et la mise en ligne."),
+          const Text("• Accompagnement humain et explications claires sans jargon technique."),
+          const Text("• Devis gratuit, transparent et sans engagement sous 48h."),
         ],
       ),
     );

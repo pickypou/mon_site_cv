@@ -7,9 +7,9 @@ class ContactInfoSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return
-      const ContactCard(phone: '33 6 38 84 57 68',
+      const ContactCard(phone: '+33 6 38 84 57 68',
         email: 'spysschaert.ludo@gmail.com',
-        address: '13 rue des martyrs 5911 Seclin'
+        address: '60 rue des martyrs, 59113 Seclin'
       );
   }
 }

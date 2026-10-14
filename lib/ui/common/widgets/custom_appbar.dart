@@ -49,10 +49,10 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
         if (MediaQuery.of(context).size.width > 1100) // For large screens
           ...[
           _buildNavItem(context, 'Accueil', 'accueil'),
-          _buildNavItem(context, 'Mes réalisation', 'realisation'),
+          _buildNavItem(context, 'Mes réalisations', 'realisation'),
           _buildNavItem(context, 'Méthode de travail', 'methode'),
           _buildNavItem(context, 'Mon parcours', 'parcours'),
-          _buildNavItem(context, 'Etre vu sur le web', 'viewWeb'),
+          _buildNavItem(context, 'Être vu sur le web', 'viewWeb'),
           _buildNavItem(context, 'Ma spécialisation', 'flutter'),
           _buildNavItem(context, 'Tarifs', 'tarifs'),
           _buildNavItem(context, 'Contact', 'contact'),

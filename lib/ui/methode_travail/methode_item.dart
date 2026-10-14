@@ -14,37 +14,37 @@ class MethodeItem {
   static const List<MethodeItem> data = [
     MethodeItem(
       stepNumber: "1",
-      titre: "Comprendre vos besoins",
+      titre: "Écoute & Analyse de vos besoins",
       description:
-          "Discussion approfondie pour définir objectifs, contraintes et attentes.",
+          "Échange approfondi pour cerner vos objectifs, vos clients cibles et vos attentes.",
       imagePath: "assets/images/cahier.png",
     ),
     MethodeItem(
       stepNumber: "2",
-      titre: "Conception et croquis",
+      titre: "Conception & Ergonomie",
       description:
-          "Croquis et schémas pour valider la structure et l’ergonomie.",
+          "Création de maquettes claires pour valider ensemble la structure et la navigation.",
       imagePath: "assets/images/croquis.png",
     ),
     MethodeItem(
       stepNumber: "3",
-      titre: "Développement Flutter",
+      titre: "Développement soigné & moderne",
       description:
-          "Code propre, architecture claire, composants réutilisables.",
+          "Conception d'une interface rapide, sécurisée et parfaitement fluide sur tous les écrans.",
       imagePath: "assets/images/code.png",
     ),
     MethodeItem(
       stepNumber: "4",
-      titre: "Tests et validation",
+      titre: "Tests & Contrôle qualité",
       description:
-          "Tests unitaires et validation fonctionnelle.",
+          "Vérifications rigoureuses sur smartphones, tablettes et ordinateurs pour un lancement sans accroc.",
       imagePath: "assets/images/test.png",
     ),
     MethodeItem(
       stepNumber: "5",
-      titre: "Mise en ligne et suivi",
+      titre: "Mise en ligne & Accompagnement",
       description:
-          "Déploiement, SEO et accompagnement.",
+          "Lancement officiel, visibilité sur Google et assistance continue pour une sérénité totale.",
     ),
   ];
 }

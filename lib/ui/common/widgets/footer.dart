@@ -23,7 +23,7 @@ class Footer extends StatelessWidget {
               children: [
                 Flexible( // ← Enveloppez les Text/TextButton dans Flexible
                   child: Text(
-                    "© 2025 Ludovic SPYSSCHAERT tous droits réservés",
+                    "© 2026 Ludovic SPYSSCHAERT - Tous droits réservés",
                     style: textStyleText(context),
                     overflow: TextOverflow.ellipsis, // ← Optionnel pour éviter les débordements
                   ),
