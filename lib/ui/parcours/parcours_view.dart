@@ -41,11 +41,19 @@ class MonParcoursSection extends StatelessWidget {
           child: Column(
             children: [
               Text(
-                "Mon Parcours Pro",
+                "Mon Parcours & Garanties",
                 textAlign: TextAlign.center,
                 style: titleStyleLarge(context),
               ),
-              const SizedBox(height: 50),
+              const SizedBox(height: 16),
+              Text(
+                "La rigueur d'un développeur diplômé d'État, la réactivité d'un artisan indépendant, sans les frais d'une agence.",
+                textAlign: TextAlign.center,
+                style: titleStyleSmall(context).copyWith(
+                  color: Theme.of(context).colorScheme.primary,
+                ),
+              ),
+              const SizedBox(height: 40),
               ...parcours.map((item) => _ParcoursCard(item: item)),
             ],
           ),

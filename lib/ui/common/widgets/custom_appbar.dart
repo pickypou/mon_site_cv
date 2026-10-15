@@ -50,6 +50,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
           ...[
           _buildNavItem(context, 'Accueil', 'accueil'),
           _buildNavItem(context, 'Mes réalisations', 'realisation'),
+          _buildNavItem(context, 'Avis clients', 'avis'),
           _buildNavItem(context, 'Méthode de travail', 'methode'),
           _buildNavItem(context, 'Mon parcours', 'parcours'),
           _buildNavItem(context, 'Être vu sur le web', 'viewWeb'),
@@ -84,6 +85,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
 class CustomDrawer extends StatelessWidget {
   final GlobalKey accueil;
   final GlobalKey portfolio;
+  final GlobalKey avis;
   final GlobalKey methode;
   final GlobalKey parcours;
   final GlobalKey viewWeb;
@@ -95,6 +97,7 @@ class CustomDrawer extends StatelessWidget {
     super.key,
     required this.accueil,
     required this.portfolio,
+    required this.avis,
     required this.methode,
     required this.parcours,
     required this.viewWeb,
@@ -107,7 +110,7 @@ class CustomDrawer extends StatelessWidget {
     if (sectionKey.currentContext != null) {
       Scrollable.ensureVisible(
         sectionKey.currentContext!,
-        duration: const Duration(seconds: 1),
+        duration: const Duration(milliseconds: 700),
         curve: Curves.easeInOut,
       );
     }
@@ -132,6 +135,7 @@ class CustomDrawer extends StatelessWidget {
           ),
           _buildDrawerItem(context, 'Accueil', accueil, textColor),
           _buildDrawerItem(context, 'Mes réalisations', portfolio, textColor),
+          _buildDrawerItem(context, 'Avis clients', avis, textColor),
           _buildDrawerItem(context, 'Méthode de travail', methode, textColor),
           _buildDrawerItem(context, 'Mon parcours', parcours, textColor),
           _buildDrawerItem(context, 'Être vu sur le web', viewWeb, textColor),

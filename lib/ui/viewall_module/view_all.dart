@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../avis_clients/avis_clients_view.dart';
 import '../common/widgets/section_divider.dart';
 import '../contact/contact_view.dart';
 import '../raison_flutter/raison_flutter.dart';
@@ -15,6 +16,7 @@ import '../view_web/view_web.dart';
 class ViewAll extends StatelessWidget {
   final GlobalKey accueil = GlobalKey();
   final GlobalKey portfolio = GlobalKey();
+  final GlobalKey avis = GlobalKey();
   final GlobalKey methode = GlobalKey();
   final GlobalKey parcours = GlobalKey();
   final GlobalKey viewWeb = GlobalKey();
@@ -36,22 +38,24 @@ class ViewAll extends StatelessWidget {
       case 'realisation':
         key = portfolio;
         break;
+      case 'avis':
+        key = avis;
+        break;
       case 'methode':
         key = methode;
         break;
       case 'parcours':
         key = parcours;
         break;
-      case 'viewWeb': // Assurez-vous que cela correspond à ce que vous utilisez dans l'AppBar
+      case 'viewWeb':
         key = viewWeb;
         break;
-      case 'flutter': // Assurez-vous que cela correspond à ce que vous utilisez dans l'AppBar
+      case 'flutter':
         key = flutter;
         break;
       case 'tarifs':
         key = tarifs;
         break;
-
       case 'contact':
         key = contact;
         break;
@@ -60,7 +64,7 @@ class ViewAll extends StatelessWidget {
     if (key?.currentContext != null) {
       Scrollable.ensureVisible(
         key!.currentContext!,
-        duration: const Duration(seconds: 3),
+        duration: const Duration(milliseconds: 700),
         curve: Curves.easeInOut,
       );
     }
@@ -80,6 +84,7 @@ class ViewAll extends StatelessWidget {
           ? CustomDrawer(
               accueil: accueil,
               portfolio: portfolio,
+              avis: avis,
               methode: methode,
               parcours: parcours,
               viewWeb: viewWeb,
@@ -89,17 +94,21 @@ class ViewAll extends StatelessWidget {
             )
           : null,
       body: SingleChildScrollView(
-        controller: _scrollController, // Un seul controller ici
+        controller: _scrollController,
         child: Column(
           children: [
             HomePage(
               key: accueil,
-              // Ne passez PAS de scrollController ici
+              onContactClick: () => _scrollToSection('contact'),
+              onPortfolioClick: () => _scrollToSection('realisation'),
             ),
             const SectionDivider(),
             PortfolioSection(
               key: portfolio,
-              // Ne passez PAS de scrollController ici
+            ),
+            const SectionDivider(),
+            AvisClientsView(
+              key: avis,
             ),
             const SectionDivider(),
             MethodeTravailView(
@@ -108,12 +117,10 @@ class ViewAll extends StatelessWidget {
             const SectionDivider(),
             MonParcoursSection(
               key: parcours,
-              // Ne passez PAS de scrollController ici
             ),
             const SectionDivider(),
             ViewWeb(
               key: viewWeb,
-              // Ne passez PAS de scrollController ici
             ),
             const SectionDivider(),
             RaisonFlutter(
@@ -122,6 +129,7 @@ class ViewAll extends StatelessWidget {
             const SectionDivider(),
             TarifsPage(
               key: tarifs,
+              onContactClick: () => _scrollToSection('contact'),
             ),
             const SectionDivider(),
             ContactView(key: contact),

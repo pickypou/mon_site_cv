@@ -75,13 +75,25 @@ class _PortfolioSectionState extends State<PortfolioSection> with SingleTickerPr
     children: [
     Center(
 
-            child: Text(
-              "Mes réalisations",
-              textAlign: TextAlign.center,
-              style: titleStyleLarge(context)
+            child: Column(
+              children: [
+                Text(
+                  "Mes réalisations",
+                  textAlign: TextAlign.center,
+                  style: titleStyleLarge(context),
+                ),
+                const SizedBox(height: 12),
+                Text(
+                  "Des sites vitrines sur-mesure conçus pour des artisans, indépendants et associations.",
+                  textAlign: TextAlign.center,
+                  style: titleStyleSmall(context).copyWith(
+                    color: Theme.of(context).colorScheme.primary,
+                  ),
+                ),
+              ],
             ),
           ),
-          const SizedBox(height: 25),
+          const SizedBox(height: 35),
           LayoutBuilder(
             builder: (context, constraints) {
               final isWide = constraints.maxWidth > 1000;

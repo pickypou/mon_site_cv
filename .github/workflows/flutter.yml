@@ -16,16 +16,20 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Test connection
-        run: curl "https://storage.googleapis.com/flutter_infra_release/releases/releases_linux.json"
-
       - name: Set up Flutter
         uses: subosito/flutter-action@v2
         with:
           channel: 'stable'
-          cache: true
+          cache: false
+
+      - name: Check Flutter version
+        run: flutter --version
+
       - name: Install dependencies
         run: flutter pub get
 
+      - name: Analyze code
+        run: flutter analyze
+
       - name: Run tests
-        run: flutter test
+        run: flutter test --reporter=expanded
