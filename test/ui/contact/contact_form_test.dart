@@ -3,7 +3,6 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:mon_site_cv/core/service/email_service.dart';
 import 'package:mon_site_cv/ui/contact/contact_form.dart';
-import 'package:mon_site_cv/theme.dart';
 
 class MockEmailService extends Mock implements EmailService {}
 
@@ -11,6 +10,7 @@ void main() {
   late MockEmailService mockEmailService;
 
   setUpAll(() {
+    TestWidgetsFlutterBinding.ensureInitialized();
     registerFallbackValue(<String, String>{});
   });
 
@@ -30,7 +30,6 @@ void main() {
 
   Widget createWidgetUnderTest() {
     return MaterialApp(
-      theme: lightTheme,
       home: Scaffold(
         body: FormContact(emailService: mockEmailService),
       ),

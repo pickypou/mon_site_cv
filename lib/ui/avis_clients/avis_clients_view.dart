@@ -20,7 +20,12 @@ class ClientReview {
 }
 
 class AvisClientsView extends StatefulWidget {
-  const AvisClientsView({super.key});
+  final bool fetchFromFirestore;
+
+  const AvisClientsView({
+    super.key,
+    this.fetchFromFirestore = true,
+  });
 
   static const String pagesJaunesUrl = 'https://www.pagesjaunes.fr/pros/63924862';
 
@@ -61,7 +66,9 @@ class _AvisClientsViewState extends State<AvisClientsView> {
   @override
   void initState() {
     super.initState();
-    _fetchApprovedReviews();
+    if (widget.fetchFromFirestore) {
+      _fetchApprovedReviews();
+    }
   }
 
   Future<void> _fetchApprovedReviews() async {

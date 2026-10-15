@@ -1,16 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mon_site_cv/ui/avis_clients/avis_clients_view.dart';
-import 'package:mon_site_cv/theme.dart';
 
 void main() {
+  setUpAll(() {
+    TestWidgetsFlutterBinding.ensureInitialized();
+  });
+
   testWidgets('AvisClientsView renders title, rating and reviews', (WidgetTester tester) async {
     await tester.pumpWidget(
-      MaterialApp(
-        theme: lightTheme,
-        home: const Scaffold(
+      const MaterialApp(
+        home: Scaffold(
           body: SingleChildScrollView(
-            child: AvisClientsView(),
+            child: AvisClientsView(fetchFromFirestore: false),
           ),
         ),
       ),
