@@ -65,12 +65,12 @@ class _PortfolioSectionState extends State<PortfolioSection> with SingleTickerPr
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-        padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 24),
-        child: Center(
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 24),
+      child: Center(
         child: ConstrainedBox(
-        constraints: const BoxConstraints(maxWidth: 900),
-    child: Column(
+          constraints: const BoxConstraints(maxWidth: 900),
+          child: Column(
     crossAxisAlignment: CrossAxisAlignment.start,
     children: [
     Center(
@@ -100,8 +100,8 @@ class _PortfolioSectionState extends State<PortfolioSection> with SingleTickerPr
           ),
         ],
       ),
-    )
-        )
-    );
+    ),
+  ),
+);
   }
 }

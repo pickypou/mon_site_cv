@@ -25,7 +25,7 @@ class ContactView extends StatelessWidget {
 
         const formSection = FormContact();
 
-        return SingleChildScrollView(
+        return Padding(
           padding: const EdgeInsets.all(16.0),
           child: Center(
             child: ConstrainedBox(

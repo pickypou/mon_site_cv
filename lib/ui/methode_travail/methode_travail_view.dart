@@ -11,7 +11,7 @@ class MethodeTravailView extends StatelessWidget {
   Widget build(BuildContext context) {
     const methodes = MethodeItem.data;
 
-    return SingleChildScrollView(
+    return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 24),
       child: Center(
         child: ConstrainedBox(

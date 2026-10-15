@@ -50,6 +50,10 @@ class _FormButtonState extends State<FormButton> {
               backgroundColor: Colors.green),
         );
         widget.formKey.currentState!.reset();
+        widget.nameController.clear();
+        widget.surnameController.clear();
+        widget.emailController.clear();
+        widget.messageController.clear();
       },
       onError: (message, color) {
         if (!mounted) return;

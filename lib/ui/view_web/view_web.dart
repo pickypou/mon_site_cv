@@ -8,7 +8,7 @@ class ViewWeb extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
+    return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 40),
       child: Center(
         child: ConstrainedBox(

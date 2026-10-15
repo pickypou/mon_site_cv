@@ -22,22 +22,22 @@ class SocialLinksSection extends StatelessWidget {
           width: iconWidth,
         ),
         ClickableImage(
-          imagePath: 'assets/images/whatsapp.png',
+          imagePath: 'assets/images/whatsapp.webp',
           url: 'https://wa.me/33638845768',
           width: iconWidth,
         ),
         ClickableImage(
-          imagePath: 'assets/images/malt.png',
+          imagePath: 'assets/images/malt.webp',
           url: 'https://www.malt.fr/profile/ludovicspysschaert?overview',
           width: iconWidth,
         ),
         ClickableImage(
-          imagePath: 'assets/images/in.png',
+          imagePath: 'assets/images/in.webp',
           url: 'https://www.linkedin.com/in/ludovic-spysschaert-6503331b4',
           width: iconWidth,
         ),
         ClickableImage(
-          imagePath: 'assets/images/page_jaune.png',
+          imagePath: 'assets/images/page_jaune.webp',
           url: 'https://www.pagesjaunes.fr/pros/63924862',
           width: iconWidth,
         ),

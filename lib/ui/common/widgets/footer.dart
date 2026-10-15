@@ -47,25 +47,31 @@ class Footer extends StatelessWidget {
                         }
                       },
                       itemBuilder: (BuildContext context) => [
-                        const PopupMenuItem<String>(
+                        PopupMenuItem<String>(
                           value: 'mentions',
                           child: Text(
                             'Mentions légales',
-                            style: TextStyle(color: Colors.black),
+                            style: TextStyle(
+                              color: Theme.of(context).colorScheme.onSurface,
+                            ),
                           ),
                         ),
-                        const PopupMenuItem<String>(
+                        PopupMenuItem<String>(
                           value: 'confidentialite',
                           child: Text(
                             'Politique de confidentialité',
-                            style: TextStyle(color: Colors.black),
+                            style: TextStyle(
+                              color: Theme.of(context).colorScheme.onSurface,
+                            ),
                           ),
                         ),
-                        const PopupMenuItem<String>(
+                        PopupMenuItem<String>(
                           value: 'cookies',
                           child: Text(
                             'Politique des cookies',
-                            style: TextStyle(color: Colors.black),
+                            style: TextStyle(
+                              color: Theme.of(context).colorScheme.onSurface,
+                            ),
                           ),
                         ),
                       ],

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class ImageProfile extends StatelessWidget {
   const ImageProfile({super.key});
 
-  static const String imagePath = 'assets/images/ludo.png';
+  static const String imagePath = 'assets/images/ludo.webp';
 
   @override
   Widget build(BuildContext context) {

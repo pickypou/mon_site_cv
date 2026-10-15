@@ -17,28 +17,28 @@ class MethodeItem {
       titre: "Écoute & Analyse de vos besoins",
       description:
           "Échange approfondi pour cerner vos objectifs, vos clients cibles et vos attentes.",
-      imagePath: "assets/images/cahier.png",
+      imagePath: "assets/images/cahier.webp",
     ),
     MethodeItem(
       stepNumber: "2",
       titre: "Conception & Ergonomie",
       description:
           "Création de maquettes claires pour valider ensemble la structure et la navigation.",
-      imagePath: "assets/images/croquis.png",
+      imagePath: "assets/images/croquis.webp",
     ),
     MethodeItem(
       stepNumber: "3",
       titre: "Développement soigné & moderne",
       description:
           "Conception d'une interface rapide, sécurisée et parfaitement fluide sur tous les écrans.",
-      imagePath: "assets/images/code.png",
+      imagePath: "assets/images/code.webp",
     ),
     MethodeItem(
       stepNumber: "4",
       titre: "Tests & Contrôle qualité",
       description:
           "Vérifications rigoureuses sur smartphones, tablettes et ordinateurs pour un lancement sans accroc.",
-      imagePath: "assets/images/test.png",
+      imagePath: "assets/images/test.webp",
     ),
     MethodeItem(
       stepNumber: "5",

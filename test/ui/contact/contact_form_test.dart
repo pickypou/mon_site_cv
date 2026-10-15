@@ -102,5 +102,26 @@ void main() {
       expect(find.text('Veuillez entrer votre Prénom'), findsNothing);
       expect(find.text('Veuillez entrer un email valide'), findsNothing);
     });
+
+    testWidgets('clears text fields on successful submission',
+        (WidgetTester tester) async {
+      await tester.pumpWidget(createWidgetUnderTest());
+
+      await tester.enterText(find.byType(TextFormField).at(0), 'Doe');
+      await tester.enterText(find.byType(TextFormField).at(1), 'John');
+      await tester.enterText(
+          find.byType(TextFormField).at(2), 'john.doe@example.com');
+      await tester.enterText(find.byType(TextFormField).at(3), 'Hello World');
+
+      await tester.tap(find.text('Envoyer'));
+      await tester.pumpAndSettle();
+
+      expect(find.text('Email envoyé avec succès.'), findsOneWidget);
+      expect(find.widgetWithText(TextFormField, 'Doe'), findsNothing);
+      expect(find.widgetWithText(TextFormField, 'John'), findsNothing);
+      expect(find.widgetWithText(TextFormField, 'john.doe@example.com'),
+          findsNothing);
+      expect(find.widgetWithText(TextFormField, 'Hello World'), findsNothing);
+    });
   });
 }

@@ -33,7 +33,7 @@ class MonParcoursSection extends StatelessWidget {
       ),
     ];
 
-    return SingleChildScrollView(
+    return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 40),
       child: Center(
         child: ConstrainedBox(

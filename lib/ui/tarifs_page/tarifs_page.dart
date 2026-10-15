@@ -33,7 +33,9 @@ class TarifsPage extends StatelessWidget {
           const SizedBox(height: 30),
 
           // Tableau principal
-          DataTable(
+          SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: DataTable(
             headingRowColor: WidgetStateProperty.all(Theme.of(context).colorScheme.onPrimary),
             border: TableBorder.all(color: Theme.of(context).colorScheme.onPrimary),
             columns:  [
@@ -71,6 +73,7 @@ class TarifsPage extends StatelessWidget {
               ]),
             ],
           ),
+        ),
 
           const SizedBox(height: 20),
           Text(

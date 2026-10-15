@@ -8,7 +8,7 @@ class SectionDivider extends StatelessWidget {
     return Column(
       children: [
         const SizedBox(height: 35),
-        Image.asset("assets/images/divider.png"),
+        Image.asset("assets/images/divider.webp"),
         const SizedBox(height: 35),
       ],
     );
