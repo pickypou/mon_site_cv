@@ -6,30 +6,24 @@ class MonParcoursSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const List<_ParcoursItem> parcours = [
+    const List<_ParcoursItem> piliers = [
       _ParcoursItem(
-        icon: Icons.auto_stories,
-        titre: "Une passion devenue expertise",
+        icon: Icons.person_pin_outlined,
+        titre: "Un interlocuteur unique et local",
         description:
-            "Mon aventure a débuté par une curiosité insatiable pour le code. En autodidacte passionné, j'ai forgé mes bases en HTML, CSS et JavaScript avant de structurer mes connaissances par des certifications reconnues sur Udemy.",
+            "Pas d'intermédiaire, pas de standard impersonnel. Vous échangez directement avec moi, de la première discussion jusqu'au suivi de votre site.",
       ),
       _ParcoursItem(
-        icon: Icons.school,
-        titre: "Formation & Fondations",
+        icon: Icons.lightbulb_outline,
+        titre: "Pragmatisme & écoute",
         description:
-            "Pour professionnaliser ma pratique, j'ai suivi des cursus intensifs en développement web : une certification en développement web (2019) suivie d'une spécialisation Apple Foundation chez Simplon (2020) pour maîtriser l'écosystème Swift.",
+            "Je privilégie les solutions utiles et rentables pour votre activité, sans vous vendre des options inutiles ou trop compliquées.",
       ),
       _ParcoursItem(
-        icon: Icons.workspace_premium,
-        titre: "Diplôme & Full-Stack",
+        icon: Icons.flash_on_outlined,
+        titre: "Réactivité & proximité",
         description:
-            "J'ai consolidé mon expertise chez Studi en obtenant mon diplôme de développeur Full-Stack (Bac +2). Cette étape a marqué mon passage à la maîtrise des architectures complexes Web et Mobile.",
-      ),
-      _ParcoursItem(
-        icon: Icons.star,
-        titre: "Spécialisation Flutter",
-        description:
-            "Aujourd'hui, je dédie mon savoir-faire au framework Flutter. Mon objectif : vous offrir des applications multiplateformes (iOS, Android, Web) d'une fluidité irréprochable avec une maintenance optimisée.",
+            "Basé à Seclin, je suis disponible rapidement si vous avez une question, une mise à jour ou un besoin d'ajustement.",
       ),
     ];
 
@@ -41,20 +35,21 @@ class MonParcoursSection extends StatelessWidget {
           child: Column(
             children: [
               Text(
-                "Mon Parcours & Garanties",
+                "Pourquoi travailler avec moi ?",
                 textAlign: TextAlign.center,
                 style: titleStyleLarge(context),
               ),
-              const SizedBox(height: 16),
+              const SizedBox(height: 18),
               Text(
-                "La rigueur d'un développeur diplômé d'État, la réactivité d'un artisan indépendant, sans les frais d'une agence.",
+                "Installé à Seclin, je mets mon exigence technique et mon sens de l'écoute au service des indépendants et entreprises de la région. Mon objectif : concevoir des outils web et mobiles fiables, esthétiques et faciles à vivre au quotidien pour vous faire gagner du temps et des clients.",
                 textAlign: TextAlign.center,
-                style: titleStyleSmall(context).copyWith(
-                  color: Theme.of(context).colorScheme.primary,
+                style: textStylePara(context).copyWith(
+                  fontSize: 17,
+                  height: 1.5,
                 ),
               ),
-              const SizedBox(height: 40),
-              ...parcours.map((item) => _ParcoursCard(item: item)),
+              const SizedBox(height: 50),
+              ...piliers.map((item) => _ParcoursCard(item: item)),
             ],
           ),
         ),
