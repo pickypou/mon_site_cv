@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import '../avis_clients/avis_clients_view.dart';
 import '../common/widgets/section_divider.dart';
 import '../contact/contact_view.dart';
-import '../raison_flutter/raison_flutter.dart';
 import '../tarifs_page/tarifs_page.dart';
 
 import '../common/widgets/custom_appbar.dart';
@@ -20,7 +19,6 @@ class ViewAll extends StatelessWidget {
   final GlobalKey methode = GlobalKey();
   final GlobalKey parcours = GlobalKey();
   final GlobalKey viewWeb = GlobalKey();
-  final GlobalKey flutter = GlobalKey();
   final GlobalKey tarifs = GlobalKey();
   final GlobalKey contact = GlobalKey();
 
@@ -49,9 +47,6 @@ class ViewAll extends StatelessWidget {
         break;
       case 'viewWeb':
         key = viewWeb;
-        break;
-      case 'flutter':
-        key = flutter;
         break;
       case 'tarifs':
         key = tarifs;
@@ -88,7 +83,6 @@ class ViewAll extends StatelessWidget {
               methode: methode,
               parcours: parcours,
               viewWeb: viewWeb,
-              flutter: flutter,
               tarifs: tarifs,
               contact: contact,
             )
@@ -121,10 +115,6 @@ class ViewAll extends StatelessWidget {
             const SectionDivider(),
             ViewWeb(
               key: viewWeb,
-            ),
-            const SectionDivider(),
-            RaisonFlutter(
-              key: flutter,
             ),
             const SectionDivider(),
             TarifsPage(

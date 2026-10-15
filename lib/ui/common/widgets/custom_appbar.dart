@@ -54,7 +54,6 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
           _buildNavItem(context, 'Ma méthode', 'methode'),
           _buildNavItem(context, 'Pourquoi moi', 'parcours'),
           _buildNavItem(context, 'Être vu sur le web', 'viewWeb'),
-          _buildNavItem(context, 'Ma spécialisation', 'flutter'),
           _buildNavItem(context, 'Tarifs', 'tarifs'),
           _buildNavItem(context, 'Contact', 'contact'),
         ],
@@ -89,7 +88,6 @@ class CustomDrawer extends StatelessWidget {
   final GlobalKey methode;
   final GlobalKey parcours;
   final GlobalKey viewWeb;
-  final GlobalKey flutter;
   final GlobalKey tarifs;
   final GlobalKey contact;
 
@@ -101,7 +99,6 @@ class CustomDrawer extends StatelessWidget {
     required this.methode,
     required this.parcours,
     required this.viewWeb,
-    required this.flutter,
     required this.tarifs,
     required this.contact,
   });
@@ -139,7 +136,6 @@ class CustomDrawer extends StatelessWidget {
           _buildDrawerItem(context, 'Ma méthode', methode, textColor),
           _buildDrawerItem(context, 'Pourquoi moi', parcours, textColor),
           _buildDrawerItem(context, 'Être vu sur le web', viewWeb, textColor),
-          _buildDrawerItem(context, 'Ma spécialisation', flutter, textColor),
           _buildDrawerItem(context, 'Tarifs', tarifs, textColor),
           _buildDrawerItem(context, 'Contact', contact, textColor),
         ],
