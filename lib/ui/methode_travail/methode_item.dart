@@ -14,37 +14,31 @@ class MethodeItem {
   static const List<MethodeItem> data = [
     MethodeItem(
       stepNumber: "1",
-      titre: "Écoute & Analyse de vos besoins",
+      titre: "On échange sur votre activité (30 min)",
       description:
-          "Échange approfondi pour cerner vos objectifs, vos clients cibles et vos attentes.",
+          "On fait le point ensemble par téléphone, autour d'un café ou directement dans vos locaux (je me déplace jusqu'à 70–80 km autour de Seclin). L'objectif : cerner précisément votre activité, vos clients cibles et vos objectifs.",
       imagePath: "assets/images/cahier.webp",
     ),
     MethodeItem(
       stepNumber: "2",
-      titre: "Conception & Ergonomie",
+      titre: "Proposition claire & Devis gratuit",
       description:
-          "Création de maquettes claires pour valider ensemble la structure et la navigation.",
+          "Vous recevez sous 48h une proposition détaillée avec un prix fixe, transparent et sans mauvaise surprise. Aucun engagement.",
       imagePath: "assets/images/croquis.webp",
     ),
     MethodeItem(
       stepNumber: "3",
-      titre: "Développement soigné & moderne",
+      titre: "Création & validation pas à pas",
       description:
-          "Conception d'une interface rapide, sécurisée et parfaitement fluide sur tous les écrans.",
+          "Je conçois votre site ou application sur-mesure. Vous suivez l'avancement en toute transparence et vous validez chaque étape avant la mise en ligne.",
       imagePath: "assets/images/code.webp",
     ),
     MethodeItem(
       stepNumber: "4",
-      titre: "Tests & Contrôle qualité",
+      titre: "Mise en ligne & accompagnement",
       description:
-          "Vérifications rigoureuses sur smartphones, tablettes et ordinateurs pour un lancement sans accroc.",
+          "Votre site est opérationnel, sécurisé et visible sur Google. Je vous montre pas à pas comment l'utiliser et je reste votre interlocuteur disponible pour vous assister.",
       imagePath: "assets/images/test.webp",
-    ),
-    MethodeItem(
-      stepNumber: "5",
-      titre: "Mise en ligne & Accompagnement",
-      description:
-          "Lancement officiel, visibilité sur Google et assistance continue pour une sérénité totale.",
     ),
   ];
 }

@@ -21,15 +21,15 @@ class MethodeTravailView extends StatelessWidget {
             children: [
               Center(
                 child: Text(
-                  "Ma Méthode de Travail",
+                  "Comment nous travaillons ensemble",
                   style: titleStyleLarge(context),
                   textAlign: TextAlign.center,
                 ),
               ),
-              const SizedBox(height: 20),
+              const SizedBox(height: 16),
               Center(
                 child: Text(
-                  "De l'idée à la réussite : un accompagnement sur-mesure pour un projet qui dépasse vos attentes.",
+                  "4 étapes simples, claires et sans jargon pour concrétiser votre projet en toute sérénité.",
                   style: textStylePara(context).copyWith(fontSize: 18),
                   textAlign: TextAlign.center,
                 ),
